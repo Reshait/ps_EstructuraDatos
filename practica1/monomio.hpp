@@ -57,11 +57,11 @@ class Monomio:public MonomioInterfaz{
 
             return resultado;
         }
-        Monomio operator* (const Monomio &recibido){
-            Monomio resultado;
+        Monomio operator* (const Monomio &m1, const Monomio &m2){
+            Monomio resultado(1,0);
 
-            resultado.setGrado(resultado.getGrado()+recibido.getGrado());
-            resultado.setCoeficiente(resultado.getCoeficiente()*recibido.getCoeficiente());
+            resultado.setGrado(m1.getGrado() + m2.getGrado());
+            resultado.setCoeficiente(m1.getCoeficiente() * m2.getCoeficiente());
 
             return resultado;
         }
