@@ -108,5 +108,12 @@ int menu(){
     return opcion;
 }
 
+Monomio multiplicaMonomios(const Monomio &m1, const Monomio &m2){
+    Monomio maux(m1);
+
+    maux = maux * m2;
+
+    return maux;
+}
 
 #endif
