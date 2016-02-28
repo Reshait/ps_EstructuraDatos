@@ -31,7 +31,7 @@ int main(){
         cout << " * ";
         monomio2.escribirMonomio();
         cout << " = ";
-        Monomio monomioAuxiliar(multiplicaMonomios(monomio1, monomio2));
+        Monomio monomioAuxiliar = monomio1 * monomio2 ;
         monomioAuxiliar.escribirMonomio();
         cout << endl;
     }
