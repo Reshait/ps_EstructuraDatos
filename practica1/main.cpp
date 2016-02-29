@@ -11,12 +11,9 @@ int main(){
     opcionMenu = menu();
     if(opcionMenu == 1){
         cout << endl << "Monomios que se resolverán..: ";
-        monomio1.escribirMonomio();
-        cout << ", ";
-        monomio2.escribirMonomio();
-        cout << ", ";
-        monomio3.escribirMonomio();
-        cout << endl;
+        cout << monomio1 << ", ";
+        cout << monomio2 << ", ";
+        cout << monomio3 << endl;
 
         cout << "Introduzca el valor de X para resolver los monomios..: ";
         cin >> valorX;
