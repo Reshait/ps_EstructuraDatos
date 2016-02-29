@@ -37,7 +37,7 @@ class Monomio:public MonomioInterfaz{
         void setCoeficiente(double coeficiente){
             coeficiente_ = coeficiente;
         }
-        /* ==== No tiene sentido si se sobrecarga el <<, no? ====
+        /* ==== No tiene sentido si se sobrecarga el operator<<, no? ====
         void escribirMonomio(){
             cout << getCoeficiente() << "x^" << getGrado();
         }
