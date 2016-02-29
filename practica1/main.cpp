@@ -6,7 +6,7 @@ using namespace std;
 int main(){
     int opcionMenu;
     double valorX;
-    Monomio::Monomio monomio1, monomio2(2.3,3), monomio3(monomio1);
+    Monomio::Monomio monomio1, monomio2(2.5,3), monomio3(monomio1);
 
     opcionMenu = menu();
     if(opcionMenu == 1){
@@ -27,12 +27,15 @@ int main(){
     }
     if(opcionMenu == 2){
         cout << "El resultado de la operación..:" << endl;
-        monomio1.escribirMonomio();
+        //monomio1.escribirMonomio();
+        cout << monomio1;
         cout << " * ";
-        monomio2.escribirMonomio();
+        //monomio2.escribirMonomio();
+        cout << monomio2;
         cout << " = ";
         Monomio monomioAuxiliar = monomio1 * monomio2 ;
-        monomioAuxiliar.escribirMonomio();
+        //monomioAuxiliar.escribirMonomio();
+        cout << monomioAuxiliar;
         cout << endl;
     }
 

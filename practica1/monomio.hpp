@@ -7,6 +7,8 @@
 using std::cout;
 using std::cin;
 using std::endl;
+using std::ostream;
+using std::istream;
 
 class Monomio:public MonomioInterfaz{
     private:
@@ -35,9 +37,11 @@ class Monomio:public MonomioInterfaz{
         void setCoeficiente(double coeficiente){
             coeficiente_ = coeficiente;
         }
+        /* ==== No tiene sentido si se sobrecarga el <<, no? ====
         void escribirMonomio(){
             cout << getCoeficiente() << "x^" << getGrado();
         }
+        */
         void leerMonomio(){
             int grado;
             double coeficiente;
@@ -70,6 +74,12 @@ class Monomio:public MonomioInterfaz{
             resultado = pow(valorX * getCoeficiente(), getGrado());
 
             return resultado;
+        }
+        //friend istream &operator>>(istream &stream, Monomio &m);
+        //friend ostream &operator<<(ostream &stream, Monomio const &m);
+        friend ostream &operator<< (ostream &salida, const Monomio &m){
+            salida << m.getCoeficiente() << "x^" << m.getGrado();
+            return salida;
         }
 };
 
