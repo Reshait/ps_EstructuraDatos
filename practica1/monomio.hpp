@@ -76,13 +76,18 @@ class Monomio:public ed::MonomioInterfaz{
         //friend istream &operator>>(istream &stream, Monomio &m);
         //friend ostream &operator<<(ostream &stream, Monomio const &m);
         friend ostream &operator<< (ostream &salida, const Monomio &m){
-            if(getCoeficiente == 1){
-                if(getGrado == 1)
+            if(m.getCoeficiente() == 1){
+                if(m.getGrado() == 1)
                     salida << "x";
                 else
-                    salida <<
+                    salida << "x^" << m.getGrado();
             }
-            salida << m.getCoeficiente() << "x^" << m.getGrado();
+            else{
+                if(m.getGrado() == 1)
+                    salida << m.getCoeficiente() << "x^";
+                else
+                    salida << m.getCoeficiente() << "x^" << m.getGrado();
+            }
             return salida;
         }
 };
