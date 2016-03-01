@@ -1,5 +1,7 @@
 #include "monomiointerfaz.hpp"
 #include "monomio.hpp"
+#include "polinomio.hpp"
+#include "polinomiointerfaz.hpp"
 
 using namespace std;
 
@@ -27,11 +29,9 @@ int main(){
         //monomio1.escribirMonomio();
         cout << monomio1;
         cout << " * ";
-        //monomio2.escribirMonomio();
         cout << monomio2;
         cout << " = ";
         Monomio monomioAuxiliar = monomio1 * monomio2 ;
-        //monomioAuxiliar.escribirMonomio();
         cout << monomioAuxiliar;
         cout << endl;
     }

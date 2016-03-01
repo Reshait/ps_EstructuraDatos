@@ -1,8 +1,8 @@
 #ifndef __MONOMIO_HPP__
 #define __MONOMIO_HPP__
-#include "monomiointerfaz.hpp"
 #include <iostream>
 #include <cmath>
+#include "monomiointerfaz.hpp"
 
 using std::cout;
 using std::cin;
@@ -15,14 +15,13 @@ class Monomio:public ed::MonomioInterfaz{
         double coeficiente_;
         int grado_;
     public:
-        //Monomio(); --> Constructor normal
         Monomio(double coeficiente = 1, int grado = 1){ //Constructor inicializado
             setGrado(grado);
             setCoeficiente(coeficiente);
         }
-        Monomio(const Monomio &m){ //Si el interior se deja en blanco, ¿debería funcionar??, compilar, sí me compila.
-            //setGrado(m.grado_);
-            //setCoeficiente(m.coeficiente_);
+        Monomio(const Monomio &m){
+            setGrado(m.grado_);
+            setCoeficiente(m.coeficiente_);
         }
 
         int getGrado() const{
