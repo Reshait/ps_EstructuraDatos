@@ -10,7 +10,7 @@ using std::endl;
 using std::ostream;
 using std::istream;
 
-class Monomio:public MonomioInterfaz{
+class Monomio:public ed::MonomioInterfaz{
     private:
         double coeficiente_;
         int grado_;
@@ -21,14 +21,14 @@ class Monomio:public MonomioInterfaz{
             setCoeficiente(coeficiente);
         }
         Monomio(const Monomio &m){ //Si el interior se deja en blanco, ¿debería funcionar??, compilar, sí me compila.
-            setGrado(m.grado_);
-            setCoeficiente(m.coeficiente_);
+            //setGrado(m.grado_);
+            //setCoeficiente(m.coeficiente_);
         }
 
         int getGrado() const{
             return grado_;
         }
-        int getCoeficiente() const{
+        double getCoeficiente() const{
             return coeficiente_;
         }
         void setGrado(int grado){
@@ -37,11 +37,9 @@ class Monomio:public MonomioInterfaz{
         void setCoeficiente(double coeficiente){
             coeficiente_ = coeficiente;
         }
-        /* ==== No tiene sentido si se sobrecarga el operator<<, no? ====
         void escribirMonomio(){
             cout << getCoeficiente() << "x^" << getGrado();
         }
-        */
         void leerMonomio(){
             int grado;
             double coeficiente;
@@ -53,13 +51,13 @@ class Monomio:public MonomioInterfaz{
             setGrado(grado);
             setCoeficiente(coeficiente);
         }
-        Monomio operator= (const Monomio &recibido){
-            Monomio resultado;
+        Monomio &operator= (const Monomio &recibido){
+            //Monomio resultado;
 
-            resultado.setGrado(recibido.getGrado());
-            resultado.setCoeficiente(recibido.getCoeficiente());
+            this->setGrado(recibido.getGrado());
+            this->setCoeficiente(recibido.getCoeficiente());
 
-            return resultado;
+            return *this;
         }
         Monomio operator* (const Monomio &m2){
             Monomio resultado(1,0);
@@ -78,6 +76,12 @@ class Monomio:public MonomioInterfaz{
         //friend istream &operator>>(istream &stream, Monomio &m);
         //friend ostream &operator<<(ostream &stream, Monomio const &m);
         friend ostream &operator<< (ostream &salida, const Monomio &m){
+            if(getCoeficiente == 1){
+                if(getGrado == 1)
+                    salida << "x";
+                else
+                    salida <<
+            }
             salida << m.getCoeficiente() << "x^" << m.getGrado();
             return salida;
         }

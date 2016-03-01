@@ -6,7 +6,7 @@ using namespace std;
 int main(){
     int opcionMenu;
     double valorX;
-    Monomio::Monomio monomio1, monomio2(2.5,3), monomio3(monomio1);
+    Monomio::Monomio monomio1, monomio2(2.5,3), monomio3(monomio2);
 
     opcionMenu = menu();
     if(opcionMenu == 1){
