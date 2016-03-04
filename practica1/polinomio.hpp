@@ -13,8 +13,7 @@ class Polinomio:public ed::PolinomioInterfaz{
         int grado_;
         int numMonomios_;
         list<Monomio> lista_;
-        //bool esVacio_;
-        //Me falta el vector o la lista
+
     public:
         Polinomio(int grado = 0, int numMonomios = 1){
             assert(getGrado()+1 >= numMonomios);
@@ -27,8 +26,8 @@ class Polinomio:public ed::PolinomioInterfaz{
             setList(p.getList());
         }
 
-        int getGrado(){ return grado_; }
-        int getNumMonomios(){ return numMonomios_;}
+        int getGrado() const{ return grado_; }
+        int getNumMonomios() const{ return numMonomios_;}
         void setGrado(int grado){
             grado_ = grado;
         }
@@ -44,7 +43,7 @@ class Polinomio:public ed::PolinomioInterfaz{
         list<Monomio> getList() const{
             return lista_;
         }
-        bool vacio(){
+        bool vacio() const{
             return getList().empty();
         }
         bool encuentraMonomio(Monomio monomioAecontrar){
@@ -61,15 +60,40 @@ class Polinomio:public ed::PolinomioInterfaz{
             do{
                 monomioIntroducido = false;
                 aux.leerMonomio();
-                if(encuentraMonomio(aux))
-                    cout << "El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado" << endl;
+                if(!getList().empty()){
+                    if(encuentraMonomio(aux))
+                        cout << "El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado" << endl;
+                    else{
+                        //aniadeMonomioAlista(aux);
+                        lista_.push_back(aux);
+                        monomioIntroducido = true;
+                    }
+                }
                 else{
-                    aniadeMonomioAlista(aux);
+                    //aniadeMonomioAlista(aux);
+                    lista_.push_back(aux);
                     monomioIntroducido = true;
                 }
                 cout << "Introduzca [s/S] para salir, cualquier otra letra o número para introducir otro monomio..: ";
                 cin >> opcionMenu;
-            }while(opcionMenu != "s" || opcionMenu != "S");
+            }while(opcionMenu != "s" && opcionMenu != "S");
+        }
+        void escribirPolinomio(){
+            list<Monomio>::iterator i;
+            int contador = 0;
+            if(getList().empty())
+                cout << "Su polinomio está vacío" << endl;
+            else{
+                for(i = getList().begin(); i !=  getList().end(); i++){
+                    //if(i != getList().begin() && i->getCoeficiente() >= 0)
+                    if(contador != 0 && i->getCoeficiente() >= 0)
+                        cout << " +";
+                    cout << *i;
+                    contador++;
+                }
+                cout << endl;
+                cout << "Contador..: " << contador << endl;
+            }
         }
 };
 
