@@ -58,6 +58,9 @@ class Monomio:public ed::MonomioInterfaz{
 
             return *this;
         }
+        bool operator== (Monomio &aux){
+            return this->getGrado() == aux.getGrado() && this->getCoeficiente() == aux.getCoeficiente();
+        }
         Monomio operator* (const Monomio &m2){
             Monomio resultado(1,0);
 

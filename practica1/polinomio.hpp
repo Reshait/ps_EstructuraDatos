@@ -29,7 +29,6 @@ class Polinomio:public ed::PolinomioInterfaz{
 
         int getGrado(){ return grado_; }
         int getNumMonomios(){ return numMonomios_;}
-
         void setGrado(int grado){
             grado_ = grado;
         }
@@ -48,14 +47,11 @@ class Polinomio:public ed::PolinomioInterfaz{
         bool vacio(){
             return getList().empty();
         }
-        //bool encuentraMonomio(list<Monomio> aux){
         bool encuentraMonomio(Monomio monomioAecontrar){
             list<Monomio>::iterator i;
             for(i = getList().begin(); i != getList().end(); i++)
-                //if(monomioAecontrar == *i)
-                if(monomioAecontrar.getGrado() == i->getGrado())
-                    if(monomioAecontrar.getCoeficiente() == i->getCoeficiente())
-                        return true;
+                if(monomioAecontrar == *i)//operador == sobrecargado en monomio.hpp
+                    return true;
             return false;
         }
         void leerPolinomio(){
