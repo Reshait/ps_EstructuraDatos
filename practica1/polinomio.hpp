@@ -105,7 +105,7 @@ class Polinomio:public ed::PolinomioInterfaz{
             }
         }
 
-        Polinomio operator+(Polinomio recibido){
+        Polinomio& operator+(Polinomio recibido){
             list<Monomio>::iterator i1, i2;
             if(this->getGrado() < recibido.getGrado()){
                 this->setGrado(recibido.getGrado());
@@ -115,7 +115,9 @@ class Polinomio:public ed::PolinomioInterfaz{
                 for(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){
 
                     if(i1->getGrado() == i2->getGrado())
-                        this->lista_[i1].setCoeficiente(i1->getCoeficiente() + i2->getCoeficiente());
+                        //this->lista_[i1].setCoeficiente(i1->getCoeficiente() + i2->getCoeficiente());
+                        i1->setCoeficiente(i1->getCoeficiente() + i2->getCoeficiente());
+
                     else{
                         this->aniadeMonomioAlista(*i2);
                         this->setNumMonomios(this->getNumMonomios()+1);
@@ -123,6 +125,14 @@ class Polinomio:public ed::PolinomioInterfaz{
 
                 }
             }
+            return *this;
+        }
+
+        Polinomio& operator=(Polinomio recibido){
+            this->setGrado(recibido.getGrado());
+            this->setNumMonomios(recibido.getNumMonomios());
+            this->setList(getList());
+
             return *this;
         }
 };
