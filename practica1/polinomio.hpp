@@ -82,6 +82,8 @@ class Polinomio:public ed::PolinomioInterfaz{
             }while(opcionMenu != "s" && opcionMenu != "S");
         }
 
+        //FALLA AL PASARLE POLINOMIO DE 4 MONOMIOS O MÁS.
+        //PQ NO PUEDO USAR GETLIST().BEGIN() Y GETLIST().END() EN EL FOR?????
         void escribirPolinomio(){
             list<Monomio>::iterator i;
             int contador = 0;
@@ -101,6 +103,27 @@ class Polinomio:public ed::PolinomioInterfaz{
                 //cout << "Contador..: " << contador << endl;
                 //cout << "Tamaño de la lista..: " << getList().size() << endl;
             }
+        }
+
+        Polinomio operator+(Polinomio recibido){
+            list<Monomio>::iterator i1, i2;
+            if(this->getGrado() < recibido.getGrado()){
+                this->setGrado(recibido.getGrado());
+            }
+
+            for(i1 = this->lista_.begin(); i1 != this->lista_.end(); i1++){
+                for(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){
+
+                    if(i1->getGrado() == i2->getGrado())
+                        this->lista_[i1].setCoeficiente(i1->getCoeficiente() + i2->getCoeficiente());
+                    else{
+                        this->aniadeMonomioAlista(*i2);
+                        this->setNumMonomios(this->getNumMonomios()+1);
+                    }
+
+                }
+            }
+            return *this;
         }
 };
 
