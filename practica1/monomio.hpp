@@ -1,24 +1,25 @@
 #ifndef __MONOMIO_HPP__
 #define __MONOMIO_HPP__
-#include "monomiointerfaz.hpp"
 #include <iostream>
 #include <cmath>
+#include "monomiointerfaz.hpp"
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::ostream;
+using std::istream;
 
-class Monomio:public MonomioInterfaz{
+class Monomio:public ed::MonomioInterfaz{
     private:
         double coeficiente_;
         int grado_;
     public:
-        //Monomio(); --> Constructor normal
         Monomio(double coeficiente = 1, int grado = 1){ //Constructor inicializado
             setGrado(grado);
             setCoeficiente(coeficiente);
         }
-        Monomio(const Monomio &m){ //Si el interior se deja en blanco, ¿debería funcionar??, compilar, sí me compila.
+        Monomio(const Monomio &m){
             setGrado(m.grado_);
             setCoeficiente(m.coeficiente_);
         }
@@ -26,7 +27,7 @@ class Monomio:public MonomioInterfaz{
         int getGrado() const{
             return grado_;
         }
-        int getCoeficiente() const{
+        double getCoeficiente() const{
             return coeficiente_;
         }
         void setGrado(int grado){
@@ -49,19 +50,22 @@ class Monomio:public MonomioInterfaz{
             setGrado(grado);
             setCoeficiente(coeficiente);
         }
-        Monomio operator= (const Monomio &recibido){
-            Monomio resultado;
+        Monomio &operator= (const Monomio &recibido){
+            //Monomio resultado;
 
-            resultado.setGrado(recibido.getGrado());
-            resultado.setCoeficiente(recibido.getCoeficiente());
+            this->setGrado(recibido.getGrado());
+            this->setCoeficiente(recibido.getCoeficiente());
 
-            return resultado;
+            return *this;
         }
-        Monomio operator* (const Monomio &recibido){
-            Monomio resultado;
+        bool operator== (Monomio &aux){
+            return this->getGrado() == aux.getGrado() && this->getCoeficiente() == aux.getCoeficiente();
+        }
+        Monomio operator* (const Monomio &m2){
+            Monomio resultado(1,0);
 
-            resultado.setGrado(resultado.getGrado()+recibido.getGrado());
-            resultado.setCoeficiente(resultado.getCoeficiente()*recibido.getCoeficiente());
+            resultado.setGrado(this->getGrado() + m2.getGrado());
+            resultado.setCoeficiente(this->getCoeficiente() * m2.getCoeficiente());
 
             return resultado;
         }
@@ -70,6 +74,23 @@ class Monomio:public MonomioInterfaz{
             resultado = pow(valorX * getCoeficiente(), getGrado());
 
             return resultado;
+        }
+        //friend istream &operator>>(istream &stream, Monomio &m);
+        //friend ostream &operator<<(ostream &stream, Monomio const &m);
+        friend ostream &operator<< (ostream &salida, const Monomio &m){
+            if(m.getCoeficiente() == 1){
+                if(m.getGrado() == 1)
+                    salida << "x";
+                else
+                    salida << "x^" << m.getGrado();
+            }
+            else{
+                if(m.getGrado() == 1)
+                    salida << m.getCoeficiente() << "x^";
+                else
+                    salida << m.getCoeficiente() << "x^" << m.getGrado();
+            }
+            return salida;
         }
 };
 
@@ -106,14 +127,6 @@ int menu(){
     }while(opcion < 0 || opcion > 2);
 
     return opcion;
-}
-
-Monomio multiplicaMonomios(const Monomio &m1, const Monomio &m2){
-    Monomio maux(m1);
-
-    maux = maux * m2;
-
-    return maux;
 }
 
 #endif
