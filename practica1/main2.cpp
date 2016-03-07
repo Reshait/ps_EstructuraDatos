@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(){
-    system("clear");
+	cabeceraEjercicios();
     Polinomio P;
     P.leerPolinomio();
     P.escribirPolinomio();

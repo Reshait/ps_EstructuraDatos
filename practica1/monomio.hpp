@@ -78,9 +78,11 @@ class Monomio:public ed::MonomioInterfaz{
         //friend istream &operator>>(istream &stream, Monomio &m);
         //friend ostream &operator<<(ostream &stream, Monomio const &m);
         friend ostream &operator<< (ostream &salida, const Monomio &m){
-            if(m.getCoeficiente() == 1){
-                if(m.getGrado() == 1)
+            if(m.getCoeficiente() == 1 || m.getCoeficiente() == -1){
+                if(m.getGrado() == 1 && m.getCoeficiente() == 1)
                     salida << "x";
+                else if(m.getGrado() == 1 && m.getCoeficiente() == -1)
+                    salida << "-x";
                 else
                     salida << "x^" << m.getGrado();
             }
@@ -94,19 +96,22 @@ class Monomio:public ed::MonomioInterfaz{
         }
 };
 
+void cabeceraEjercicios(){
+    system("clear");
+    system("tput bold");
+    system("tput setab 12");
+    cout << "+-------------------------------------------------------+" << endl;
+    cout << "| Teófilo Rojas Mata, Práctica 1 de Estructura de Datos |" << endl;
+    cout << "+-------------------------------------------------------+" << endl;
+    system("tput sgr0");
+    cout << endl;
+}
+
 int menu(){
     int opcion = -1;
 
     do{
-        system("clear");
-        system("tput bold");
-        system("tput setab 12");
-        cout << "+-------------------------------------------------------+" << endl;
-        cout << "| Teófilo Rojas Mata, Práctica 1 de Estructura de Datos |" << endl;
-        cout << "+-------------------------------------------------------+" << endl;
-        system("tput sgr0");
-
-        cout << endl;
+        cabeceraEjercicios();
         cout << "1.- Obtener el valor de un monomio para un dato concreto de X." << endl;
         cout << "2.- Obtener la multiplicación de dos monomios para almacenar el resultado en un tercero." << endl;
         cout << "0.- Salir sin hacer nada." << endl;
