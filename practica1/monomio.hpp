@@ -2,6 +2,7 @@
 #define __MONOMIO_HPP__
 #include <iostream>
 #include <cmath>
+#include <cstdlib> // Para los systems del menú en linux
 #include "monomiointerfaz.hpp"
 
 using std::cout;
@@ -72,8 +73,9 @@ class Monomio:public ed::MonomioInterfaz{
             return *this;
         }
 
-        bool operator== (Monomio &aux){
-            return this->getGrado() == aux.getGrado() && this->getCoeficiente() == aux.getCoeficiente();
+        bool operator== (Monomio &aux){    
+        	return (this->getGrado()==aux.getGrado()) && 
+        		   (this->getCoeficiente()==aux.getCoeficiente());
         }
 
         Monomio operator* (const Monomio &m2){
