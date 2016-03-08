@@ -2,7 +2,7 @@
 #define __POLINOMIO_HPP__
 #include <cassert>
 #include <string>
-//#include <list>
+#include <list>
 #include "polinomiointerfaz.hpp"
 #include "monomio.hpp"
 
@@ -56,7 +56,11 @@ class Polinomio:public ed::PolinomioInterfaz{
 
         bool encuentraMonomio(Monomio monomioAecontrar){
             list<Monomio>::iterator i;
-            for(i = getList().begin(); i != getList().end(); i++)
+            list<Monomio> aux = getList();
+// FALLA TB EL GETLIST().BEGIN(), NO SÉ PQ CARAJO HAY QUE HACERLO CON  UN AUXILIAR
+//            for(i = getList().begin(); i != getList().end(); i++)
+//            for(i = lista_.begin(); i != lista_.end(); i++)
+            for(i = aux.begin(); i != aux.end(); i++)
                 if(monomioAecontrar == *i)//operador == sobrecargado en monomio.hpp
                     return true;
             return false;
