@@ -12,6 +12,7 @@ using std::sort;
 
 //Tiene que estar antes de la clase, para que la pille la función ordenaPolinomio
 bool ordenaGrados (const Monomio mayor, const Monomio menor) { return (mayor.getGrado() > menor.getGrado()); }
+bool sonIguales(const Monomio m1, const Monomio m2){ return m1.getCoeficiente() == m2.getCoeficiente() && m1.getGrado() == m2.getGrado();}
 
 class Polinomio:public ed::PolinomioInterfaz{
     private:
@@ -28,8 +29,8 @@ class Polinomio:public ed::PolinomioInterfaz{
         }
 
         Polinomio(const Polinomio &p){
-            setGrado(p.grado_);
-            setNumMonomios(p.numMonomios_);
+            setGrado(p.getGrado());
+            setNumMonomios(p.getNumMonomios());
             setList(p.getList());
         }
 
@@ -147,8 +148,6 @@ class Polinomio:public ed::PolinomioInterfaz{
             list<Monomio>::iterator i1, i2;
             Polinomio auxiliar;
 
-            auxiliar.setGrado(this->getGrado() + recibido.getGrado());
-
             for(i1 = this->lista_.begin(); i1 != this->lista_.end(); i1++){
                 for(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){
 
@@ -157,15 +156,12 @@ class Polinomio:public ed::PolinomioInterfaz{
                 }
             }
 
-            for(i1 = auxiliar->lista_.begin(); i1 != auxiliar->lista_.end()-1; i1++){
-                for(i1 = i1+1; i2 != auxiliar.lista_.end(); i2++){
-                    if(i1->getGrado() == i2->getGrado())
-                        i1->setCoeficiente(i1->getCoeficiente() * i2->getCoeficiente());
-                }
-            }
+            auxiliar.ordenaPolinomio();
+            auxiliar.setGrado(auxiliar.getList().begin()->getGrado());
 
-            //falta borrar elementos repetidos en la lista.
+            //Falta sumar monomios del mismo grado
 
+            *this = auxiliar;
             return *this;
         }
 
@@ -173,12 +169,15 @@ class Polinomio:public ed::PolinomioInterfaz{
         Polinomio& operator=(Polinomio recibido){
             this->setGrado(recibido.getGrado());
             this->setNumMonomios(recibido.getNumMonomios());
-            this->setList(getList());
+            this->setList(recibido.getList());
 
             return *this;
         }
         void ordenaPolinomio(){
             getListForChange().sort(&ordenaGrados);
+        }
+        void eliminaRepetidos(){
+            getListForChange().unique(&sonIguales);
         }
         
 };
