@@ -6,6 +6,8 @@
 using namespace std;
 
 int main(){
-
-    
+	cabeceraEjercicios();
+    Polinomio P;
+    P.leerPolinomio();
+    P.escribirPolinomio();
 }

@@ -2,6 +2,7 @@
 #define __MONOMIO_HPP__
 #include <iostream>
 #include <cmath>
+#include <cstdlib> // Para los systems del menú en linux
 #include "monomiointerfaz.hpp"
 
 using std::cout;
@@ -19,6 +20,7 @@ class Monomio:public ed::MonomioInterfaz{
             setGrado(grado);
             setCoeficiente(coeficiente);
         }
+
         Monomio(const Monomio &m){
             setGrado(m.grado_);
             setCoeficiente(m.coeficiente_);
@@ -27,18 +29,22 @@ class Monomio:public ed::MonomioInterfaz{
         int getGrado() const{
             return grado_;
         }
+
         double getCoeficiente() const{
             return coeficiente_;
         }
         void setGrado(int grado){
             grado_ = grado;
         }
+
         void setCoeficiente(double coeficiente){
             coeficiente_ = coeficiente;
         }
+
         void escribirMonomio(){
             cout << getCoeficiente() << "x^" << getGrado();
         }
+
         void leerMonomio(){
             int grado;
             double coeficiente;
@@ -50,17 +56,28 @@ class Monomio:public ed::MonomioInterfaz{
             setGrado(grado);
             setCoeficiente(coeficiente);
         }
-        Monomio &operator= (const Monomio &recibido){
-            //Monomio resultado;
 
+        Monomio &operator= (const Monomio &recibido){
             this->setGrado(recibido.getGrado());
             this->setCoeficiente(recibido.getCoeficiente());
 
             return *this;
         }
-        bool operator== (Monomio &aux){
-            return this->getGrado() == aux.getGrado() && this->getCoeficiente() == aux.getCoeficiente();
+
+        Monomio &operator+ (const Monomio &recibido){
+            if(this->getGrado() == recibido.getGrado()){
+                this->setCoeficiente(this->getCoeficiente() + recibido.getCoeficiente());
+                return *this;
+            }
+            cout << "La suma no se ha podido realizar porque los grados de los monomios no son iguales" << endl;
+            return *this;
         }
+
+        bool operator== (Monomio &aux){    
+        	return (this->getGrado()==aux.getGrado()) && 
+        		   (this->getCoeficiente()==aux.getCoeficiente());
+        }
+
         Monomio operator* (const Monomio &m2){
             Monomio resultado(1,0);
 
@@ -69,18 +86,22 @@ class Monomio:public ed::MonomioInterfaz{
 
             return resultado;
         }
+
         double resuelveMonomio(double valorX){
             double resultado;
             resultado = pow(valorX * getCoeficiente(), getGrado());
 
             return resultado;
         }
+
         //friend istream &operator>>(istream &stream, Monomio &m);
         //friend ostream &operator<<(ostream &stream, Monomio const &m);
         friend ostream &operator<< (ostream &salida, const Monomio &m){
-            if(m.getCoeficiente() == 1){
-                if(m.getGrado() == 1)
+            if(m.getCoeficiente() == 1 || m.getCoeficiente() == -1){
+                if(m.getGrado() == 1 && m.getCoeficiente() == 1)
                     salida << "x";
+                else if(m.getGrado() == 1 && m.getCoeficiente() == -1)
+                    salida << "-x";
                 else
                     salida << "x^" << m.getGrado();
             }
@@ -94,19 +115,22 @@ class Monomio:public ed::MonomioInterfaz{
         }
 };
 
+void cabeceraEjercicios(){
+    system("clear");
+    system("tput bold");
+    system("tput setab 12");
+    cout << "+-------------------------------------------------------+" << endl;
+    cout << "| Teófilo Rojas Mata, Práctica 1 de Estructura de Datos |" << endl;
+    cout << "+-------------------------------------------------------+" << endl;
+    system("tput sgr0");
+    cout << endl;
+}
+
 int menu(){
     int opcion = -1;
 
     do{
-        system("clear");
-        system("tput bold");
-        system("tput setab 12");
-        cout << "+-------------------------------------------------------+" << endl;
-        cout << "| Teófilo Rojas Mata, Práctica 1 de Estructura de Datos |" << endl;
-        cout << "+-------------------------------------------------------+" << endl;
-        system("tput sgr0");
-
-        cout << endl;
+        cabeceraEjercicios();
         cout << "1.- Obtener el valor de un monomio para un dato concreto de X." << endl;
         cout << "2.- Obtener la multiplicación de dos monomios para almacenar el resultado en un tercero." << endl;
         cout << "0.- Salir sin hacer nada." << endl;
