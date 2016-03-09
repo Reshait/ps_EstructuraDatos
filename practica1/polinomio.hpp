@@ -3,10 +3,15 @@
 #include <cassert>
 #include <string>
 #include <list>
+#include <algorithm> //Para poder usar la función sort
 #include "polinomiointerfaz.hpp"
 #include "monomio.hpp"
 
 using std::string;
+using std::sort;
+
+//Tiene que estar antes de la clase, para que la pille la función ordenaPolinomio
+bool ordenaGrados (const Monomio mayor, const Monomio menor) { return (mayor.getGrado() > menor.getGrado()); }
 
 class Polinomio:public ed::PolinomioInterfaz{
     private:
@@ -15,6 +20,7 @@ class Polinomio:public ed::PolinomioInterfaz{
         list<Monomio> lista_;
 
     public:
+        //list<Monomio> lista_;
         Polinomio(int grado = 0, int numMonomios = 1){
             assert(getGrado()+1 >= numMonomios);
             setGrado(grado);
@@ -47,6 +53,10 @@ class Polinomio:public ed::PolinomioInterfaz{
         }
 
         list<Monomio> getList() const{
+            return lista_;
+        }
+
+        list<Monomio> &getListForChange(){
             return lista_;
         }
 
@@ -139,6 +149,10 @@ class Polinomio:public ed::PolinomioInterfaz{
 
             return *this;
         }
+        void ordenaPolinomio(){
+            getListForChange().sort(&ordenaGrados);
+        }
+        
 };
 
 #endif

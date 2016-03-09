@@ -10,4 +10,7 @@ int main(){
     Polinomio P;
     P.leerPolinomio();
     P.escribirPolinomio();
+    P.ordenaPolinomio();
+    cout << "Su polinomio Ordenado queda..:" << endl;
+    P.escribirPolinomio();
 }
