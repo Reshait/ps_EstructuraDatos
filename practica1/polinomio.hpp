@@ -145,24 +145,27 @@ class Polinomio:public ed::PolinomioInterfaz{
 ////////////// En fase de pruebas
         Polinomio& operator*(Polinomio recibido){
             list<Monomio>::iterator i1, i2;
-            if(this->getGrado() < recibido.getGrado()){
-                this->setGrado(recibido.getGrado());
-            }
+            Polinomio auxiliar;
+
+            auxiliar.setGrado(this->getGrado() + recibido.getGrado());
 
             for(i1 = this->lista_.begin(); i1 != this->lista_.end(); i1++){
                 for(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){
 
-                    if(i1->getGrado() == i2->getGrado())
-                        //this->lista_[i1].setCoeficiente(i1->getCoeficiente() + i2->getCoeficiente());
-                        i1->setCoeficiente(i1->getCoeficiente() + i2->getCoeficiente());
-
-                    else{
-                        this->aniadeMonomioAlista(*i2);
-                        this->setNumMonomios(this->getNumMonomios()+1);
-                    }
+                    auxiliar.aniadeMonomioAlista( (*i1) * (*i2) );
 
                 }
             }
+
+            for(i1 = auxiliar->lista_.begin(); i1 != auxiliar->lista_.end()-1; i1++){
+                for(i1 = i1+1; i2 != auxiliar.lista_.end(); i2++){
+                    if(i1->getGrado() == i2->getGrado())
+                        i1->setCoeficiente(i1->getCoeficiente() * i2->getCoeficiente());
+                }
+            }
+
+            //falta borrar elementos repetidos en la lista.
+
             return *this;
         }
 
