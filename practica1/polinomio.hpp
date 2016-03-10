@@ -156,7 +156,7 @@ class Polinomio:public ed::PolinomioInterfaz{
             auxiliar.ordenaPolinomio();
             auxiliar.setGrado(auxiliar.getList().begin()->getGrado());
 
-            //Suma de polinomios del mismo grado
+            //Suma de polinomios del mismo grado en la lista
             for(int i = auxiliar.getGrado(); i > 0; i--){
                 Monomio mAux(0,i);
 
