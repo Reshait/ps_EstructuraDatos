@@ -63,7 +63,7 @@ int main(){
     //. Lectura y escritura de un polinomio haciendo uso de los los operadores “>>” y “<<”
     
 //    	P2.leerPolinomio();
-    	//cin >> P2;
+    	cin >> P2;
     	cout << "Polinomio introducido..: ";
     	cout << P2 << endl;
     }

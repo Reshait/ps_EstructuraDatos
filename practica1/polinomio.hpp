@@ -95,6 +95,29 @@ class Polinomio:public ed::PolinomioInterfaz{
             }while(opcionMenu != "s" && opcionMenu != "S");
             this->ordenaPolinomio();
         }
+ ///////////////////////////////////////////////////////////////////////////////////       
+        friend istream &operator>>(istream &stream, Polinomio &P){
+            string opcionMenu;
+            Monomio aux;
+
+            do{
+                aux.leerMonomio();
+                if(!P.getList().empty()){
+                    if(P.encuentraMonomio(aux))
+                        cout << "El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado" << endl;
+                    else
+                        P.aniadeMonomioAlista(aux);
+                }
+                else
+                    P.aniadeMonomioAlista(aux);
+                
+                cout << "Introduzca [s/S] para salir, cualquier otra letra o número para introducir otro monomio..: ";
+                cin >> opcionMenu;
+            }while(opcionMenu != "s" && opcionMenu != "S");
+            P.ordenaPolinomio();
+            
+            return stream;
+        }
 
         void escribirPolinomio(){
             list<Monomio>::iterator i;
