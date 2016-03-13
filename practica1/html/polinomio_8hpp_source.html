@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Nombredelproyecto: Fichero Fuente polinomio.hpp</title>
+<title>Práctica1deEstructuradedatos.byTeo.: Fichero Fuente polinomio.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Nombredelproyecto
+   <div id="projectname">Práctica1deEstructuradedatos.byTeo.
    </div>
   </td>
  </tr>
@@ -84,314 +84,345 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="title">polinomio.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __POLINOMIO_HPP__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __POLINOMIO_HPP__</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span> <span class="comment">//Para poder usar la función sort y unique</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;polinomiointerfaz.hpp&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monomio_8hpp.html">monomio.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> std::string;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> std::sort;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//Tiene que estar antes de la clase, para que la pille la función ordenaPolinomio</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> ordenaGrados (<span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> mayor, <span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> menor) { <span class="keywordflow">return</span> (mayor.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>() &gt; menor.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>()); }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> sonIguales(<span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> m1, <span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> m2){ <span class="keywordflow">return</span> m1.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>() == m2.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>() &amp;&amp; m1.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>() == m2.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>();}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __POLINOMIO_HPP__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __POLINOMIO_HPP__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span> <span class="comment">//Para poder usar la función sort y unique</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;polinomiointerfaz.hpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monomio_8hpp.html">monomio.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classPolinomio.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPolinomio.html">Polinomio</a>:<span class="keyword">public</span> <a class="code" href="classed_1_1PolinomioInterfaz.html">ed::PolinomioInterfaz</a>{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">int</span> grado_;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">int</span> numMonomios_;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        list&lt;Monomio&gt; lista_;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> std::sort;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">//list&lt;Monomio&gt; lista_;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a>(<span class="keywordtype">int</span> grado = 0, <span class="keywordtype">int</span> numMonomios = 1){</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="comment">//assert(getGrado()+1 &gt;= numMonomios);</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            setGrado(grado);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            setNumMonomios(numMonomios);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a>(<span class="keyword">const</span> <a class="code" href="classPolinomio.html">Polinomio</a> &amp;p){</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            setGrado(p.getGrado());</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            setNumMonomios(p.getNumMonomios());</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            setList(p.getList());</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">int</span> getGrado()<span class="keyword"> const</span>{ <span class="keywordflow">return</span> grado_; }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">int</span> getNumMonomios()<span class="keyword"> const</span>{ <span class="keywordflow">return</span> numMonomios_;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> setGrado(<span class="keywordtype">int</span> grado){</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            grado_ = grado;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">void</span> setNumMonomios(<span class="keywordtype">int</span> numMonomios){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            numMonomios_ = numMonomios;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> aniadeMonomioAlista(<a class="code" href="classMonomio.html">Monomio</a> monomioAintroducir){</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            lista_.push_back(monomioAintroducir);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> setList(list&lt;Monomio&gt; lista){</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            lista_ = lista;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        list&lt;Monomio&gt; getList()<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> lista_;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        list&lt;Monomio&gt; &amp;getListForChange(){</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> lista_;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">bool</span> vacio()<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> getList().empty();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//Tiene que estar antes de la clase, para que la pille la función ordenaPolinomio</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span><span class="keywordtype">bool</span> ordenaGrados (<span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> mayor, <span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> menor) { <span class="keywordflow">return</span> (mayor.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>() &gt; menor.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>()); }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">bool</span> sonIguales(<span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> m1, <span class="keyword">const</span> <a class="code" href="classMonomio.html">Monomio</a> m2){ <span class="keywordflow">return</span> m1.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>() == m2.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>() &amp;&amp; m1.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>() == m2.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>();}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classPolinomio.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPolinomio.html">Polinomio</a>:<span class="keyword">public</span> <a class="code" href="classed_1_1PolinomioInterfaz.html">ed::PolinomioInterfaz</a>{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">int</span> grado_;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">int</span> numMonomios_;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        list&lt;Monomio&gt; lista_;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classPolinomio.html#ad972fc8629ed85d3082da9dd1c21fe91">   49</a></span>&#160;        <a class="code" href="classPolinomio.html#ad972fc8629ed85d3082da9dd1c21fe91">Polinomio</a>(<span class="keywordtype">int</span> grado = 0, <span class="keywordtype">int</span> numMonomios = 1){</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(grado);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">setNumMonomios</a>(numMonomios);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classPolinomio.html#a5c548494b06ad0bbcc98266cfb1d2cb5">   62</a></span>&#160;        <a class="code" href="classPolinomio.html#a5c548494b06ad0bbcc98266cfb1d2cb5">Polinomio</a>(<span class="keyword">const</span> <a class="code" href="classPolinomio.html">Polinomio</a> &amp;p){</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(p.<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>());</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">setNumMonomios</a>(p.<a class="code" href="classPolinomio.html#a6a7c32ba99165b510f7166f4ab6d2286">getNumMonomios</a>());</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">setList</a>(p.<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>());</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">bool</span> encuentraMonomio(<a class="code" href="classMonomio.html">Monomio</a> monomioAecontrar){</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            list&lt;Monomio&gt;::iterator i;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            list&lt;Monomio&gt; aux = getList();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">for</span>(i = aux.begin(); i != aux.end(); i++)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">if</span>(monomioAecontrar == *i)<span class="comment">//operador == sobrecargado en monomio.hpp</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">   76</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>()<span class="keyword"> const</span>{ <span class="keywordflow">return</span> grado_; }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> leerPolinomio(){</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordtype">string</span> opcionMenu;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="classMonomio.html">Monomio</a> aux;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">do</span>{</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                aux.<a class="code" href="classMonomio.html#a1d3ec4190c5e23d93eff79ad8e9486c0">leerMonomio</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span>(!getList().empty()){</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="keywordflow">if</span>(encuentraMonomio(aux))</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        cout &lt;&lt; <span class="stringliteral">&quot;El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        aniadeMonomioAlista(aux);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    aniadeMonomioAlista(aux);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;Introduzca [s/S] para salir, cualquier otra letra o número para introducir otro monomio..: &quot;</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                cin &gt;&gt; opcionMenu;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }<span class="keywordflow">while</span>(opcionMenu != <span class="stringliteral">&quot;s&quot;</span> &amp;&amp; opcionMenu != <span class="stringliteral">&quot;S&quot;</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            this-&gt;ordenaPolinomio();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">friend</span> istream &amp;operator&gt;&gt;(istream &amp;stream, <a class="code" href="classPolinomio.html">Polinomio</a> &amp;P){</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">string</span> opcionMenu;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <a class="code" href="classMonomio.html">Monomio</a> aux;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">do</span>{</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                aux.<a class="code" href="classMonomio.html#a1d3ec4190c5e23d93eff79ad8e9486c0">leerMonomio</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">if</span>(!P.getList().empty()){</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    <span class="keywordflow">if</span>(P.encuentraMonomio(aux))</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        cout &lt;&lt; <span class="stringliteral">&quot;El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        P.aniadeMonomioAlista(aux);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    P.aniadeMonomioAlista(aux);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;Introduzca [s/S] para salir, cualquier otra letra o número para introducir otro monomio..: &quot;</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                cin &gt;&gt; opcionMenu;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            }<span class="keywordflow">while</span>(opcionMenu != <span class="stringliteral">&quot;s&quot;</span> &amp;&amp; opcionMenu != <span class="stringliteral">&quot;S&quot;</span>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            P.ordenaPolinomio();</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">return</span> stream;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">void</span> escribirPolinomio(){</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            list&lt;Monomio&gt;::iterator i;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordtype">int</span> contador = 0;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span>(getList().empty())</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;Su polinomio está vacío&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">for</span>(i = lista_.begin(); i !=  lista_.end(); i++){</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classPolinomio.html#a6a7c32ba99165b510f7166f4ab6d2286">   84</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classPolinomio.html#a6a7c32ba99165b510f7166f4ab6d2286">getNumMonomios</a>()<span class="keyword"> const</span>{ <span class="keywordflow">return</span> numMonomios_;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">   92</a></span>&#160;        list&lt;Monomio&gt; <a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> lista_;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classPolinomio.html#a7c0bd7515379ea15ed431295e0aa82cf">  102</a></span>&#160;        list&lt;Monomio&gt; &amp;<a class="code" href="classPolinomio.html#a7c0bd7515379ea15ed431295e0aa82cf">getListForChange</a>(){</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span> lista_;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">  115</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(<span class="keywordtype">int</span> grado){</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            grado_ = grado;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">  126</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">setNumMonomios</a>(<span class="keywordtype">int</span> numMonomios){</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            numMonomios_ = numMonomios;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    <span class="keywordflow">if</span>(i != getList().begin() &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        <span class="keywordflow">if</span>(contador != 0 &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                            cout &lt;&lt; <span class="stringliteral">&quot;+ &quot;</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    cout &lt;&lt; *i &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    contador++;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                }</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                cout &lt;&lt; endl;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keyword">friend</span> ostream &amp;operator&lt;&lt; (ostream &amp;salida, <span class="keyword">const</span> <a class="code" href="classPolinomio.html">Polinomio</a> &amp;P){</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            list&lt;Monomio&gt;::const_iterator i;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordtype">int</span> contador = 0;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">if</span>(P.getList().empty())</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                salida &lt;&lt; <span class="stringliteral">&quot;Su polinomio está vacío&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">for</span>(i = P.lista_.begin(); i !=  P.lista_.end(); i++){</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    <span class="keywordflow">if</span>(i != P.lista_.begin() &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="keywordflow">if</span>(contador != 0 &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                            salida &lt;&lt; <span class="stringliteral">&quot;+ &quot;</span>;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    salida &lt;&lt; *i &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    contador++;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="comment">//salida &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">return</span> salida;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a> operator+(<a class="code" href="classPolinomio.html">Polinomio</a> recibido){</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            list&lt;Monomio&gt;::iterator i1, i2;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <a class="code" href="classPolinomio.html">Polinomio</a> resultado;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordflow">if</span>(this-&gt;getGrado() &lt; recibido.getGrado())</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                resultado.setGrado(recibido.getGrado());</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                resultado.setGrado(this-&gt;getGrado());</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;           </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;           resultado.setList(this-&gt;getList());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;           <span class="keywordflow">for</span>(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordtype">bool</span> encontrado = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">for</span>(i1 = resultado.lista_.begin(); i1 != resultado.lista_.end(); i1++){</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <span class="keywordflow">if</span>(i1-&gt;getGrado() == i2-&gt;getGrado()){</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        i1-&gt;setCoeficiente(i1-&gt;getCoeficiente() + i2-&gt;getCoeficiente());</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        encontrado = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keywordflow">if</span>(!encontrado)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    resultado.aniadeMonomioAlista(*i2);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            }               </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;           </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            resultado.setNumMonomios(resultado.lista_.size());</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">return</span> resultado;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a> operator+(<a class="code" href="classMonomio.html">Monomio</a> recibido){</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            list&lt;Monomio&gt;::iterator i1;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <a class="code" href="classPolinomio.html">Polinomio</a> resultado;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordtype">bool</span> encontrado;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span>(this-&gt;getGrado() &lt; recibido.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>())</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                resultado.setGrado(recibido.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>());</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                resultado.setGrado(this-&gt;getGrado());</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;           </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;           resultado.setList(this-&gt;getListForChange());</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">for</span>(i1 = resultado.lista_.begin(); i1 != resultado.lista_.end(); i1++){</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="keywordflow">if</span>(i1-&gt;getGrado() == recibido.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>()){</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    i1-&gt;setCoeficiente(i1-&gt;getCoeficiente() + recibido.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>());</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    encontrado = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                }</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            }   </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">if</span>(!encontrado)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                resultado.aniadeMonomioAlista(recibido);        </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;           </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            resultado.setNumMonomios(resultado.lista_.size());</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> resultado;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a> operator*(<a class="code" href="classPolinomio.html">Polinomio</a> recibido){</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            list&lt;Monomio&gt;::iterator i1, i2;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <a class="code" href="classPolinomio.html">Polinomio</a> auxiliar, auxiliar2;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">for</span>(i1 = this-&gt;lista_.begin(); i1 != this-&gt;lista_.end(); i1++){</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">for</span>(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    auxiliar.aniadeMonomioAlista( (*i1) * (*i2) );</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            auxiliar.ordenaPolinomio();</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            auxiliar.setGrado(auxiliar.getList().begin()-&gt;getGrado());</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="comment">//Suma de polinomios del mismo grado en la lista</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = auxiliar.getGrado(); i &gt; 0; i--){</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <a class="code" href="classMonomio.html">Monomio</a> mAux(0,i);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <span class="keywordflow">for</span>(i1 = auxiliar.lista_.begin(); i1 != auxiliar.lista_.end(); i1++){</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="keywordflow">if</span>( i1-&gt;getGrado() == i)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                        <span class="keywordflow">if</span>(i1-&gt;getCoeficiente() != 0)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                            mAux.<a class="code" href="classMonomio.html#ad6dd3afacff14b0d7edac54dbb63f5d3">setCoeficiente</a>(mAux.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>()+i1-&gt;getCoeficiente());</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <span class="keywordflow">if</span>(mAux.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>() != 0)</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    auxiliar2.aniadeMonomioAlista(mAux);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordflow">return</span> auxiliar2;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a>&amp; operator=(<a class="code" href="classPolinomio.html">Polinomio</a> recibido){</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            this-&gt;setGrado(recibido.getGrado());</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            this-&gt;setNumMonomios(recibido.getNumMonomios());</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            this-&gt;setList(recibido.getList());</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordtype">void</span> ordenaPolinomio(){</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            getListForChange().sort(&amp;ordenaGrados);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordtype">void</span> eliminaRepetidos(){</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            getListForChange().unique(&amp;sonIguales);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordtype">double</span> resuelvePolinomio(<span class="keywordtype">double</span> valorX){</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            list&lt;Monomio&gt;::iterator i;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordtype">double</span> resultado = 0;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordflow">for</span>(i = lista_.begin(); i != lista_.end(); i++){</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                resultado += i-&gt;resuelveMonomio(valorX);        </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">return</span> resultado;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;};</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keywordtype">int</span> menuPolinomio(){</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordtype">int</span> opcion = -1;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">do</span>{</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <a class="code" href="monomio_8hpp.html#a0aa106a33acb482f8b13ba3500320603">cabeceraEjercicios</a>();</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;1.- Obtener el valor de un Polinomio para un dato concreto de X.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;2.- Obtener la suma de dos Polinomios.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;3.- Obtener la multiplicación de dos Polinomios.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;4.- Leer y escribir polinomio.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;0.- Salir sin hacer nada.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        cout &lt;&lt; endl;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;&gt;&gt; Introduzca la opción deseada..: &quot;</span>;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        cin &gt;&gt; opcion;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">if</span>(opcion == 0)</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Saliendo...&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">if</span>(opcion &lt; 0 || opcion &gt; 4){</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            system(<span class="stringliteral">&quot;tput setaf 1&quot;</span>);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Error de opcion.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            system(<span class="stringliteral">&quot;tput sgr0&quot;</span>);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Presione intro para continuar...&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            cin.ignore();</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            cin.get();</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }<span class="keywordflow">while</span>(opcion &lt; 0 || opcion &gt; 4);</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span> opcion;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">  137</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">setList</a>(list&lt;Monomio&gt; lista){</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            lista_ = lista;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">  148</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(<a class="code" href="classMonomio.html">Monomio</a> monomioAintroducir){</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            lista_.push_back(monomioAintroducir);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classPolinomio.html#a712ecb553d9e8f1af5122d06d6643215">  160</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classPolinomio.html#a712ecb553d9e8f1af5122d06d6643215">vacio</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().empty();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classPolinomio.html#a3ff2d33abef44a6abb359a1dc80405ac">  171</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classPolinomio.html#a3ff2d33abef44a6abb359a1dc80405ac">encuentraMonomio</a>(<a class="code" href="classMonomio.html">Monomio</a> monomioAecontrar){</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            list&lt;Monomio&gt;::iterator i;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            list&lt;Monomio&gt; aux = <a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">for</span>(i = aux.begin(); i != aux.end(); i++)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">if</span>(monomioAecontrar == *i)<span class="comment">//operador == sobrecargado en monomio.hpp</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classPolinomio.html#ada80935d3e99914906c46592d6efdcd4">  190</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#ada80935d3e99914906c46592d6efdcd4">leerPolinomio</a>(){</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordtype">string</span> opcionMenu;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="classMonomio.html">Monomio</a> aux;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                aux.<a class="code" href="classMonomio.html#a1d3ec4190c5e23d93eff79ad8e9486c0">leerMonomio</a>();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">if</span>(!<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().empty()){</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <span class="keywordflow">if</span>(<a class="code" href="classPolinomio.html#a3ff2d33abef44a6abb359a1dc80405ac">encuentraMonomio</a>(aux))</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        cout &lt;&lt; <span class="stringliteral">&quot;El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        <a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(aux);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    <a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(aux);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;Introduzca [s/S] para salir, cualquier otra letra o número para introducir otro monomio..: &quot;</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                cin &gt;&gt; opcionMenu;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            }<span class="keywordflow">while</span>(opcionMenu != <span class="stringliteral">&quot;s&quot;</span> &amp;&amp; opcionMenu != <span class="stringliteral">&quot;S&quot;</span>);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            this-&gt;<a class="code" href="classPolinomio.html#af3d3f6039cca70ef876d216b104d1816">ordenaPolinomio</a>();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classPolinomio.html#a0b3c4ee8142675ff03a4b16e87cf2eee">  218</a></span>&#160;        <span class="keyword">friend</span> istream &amp;<a class="code" href="classPolinomio.html#a0b3c4ee8142675ff03a4b16e87cf2eee">operator&gt;&gt;</a>(istream &amp;stream, <a class="code" href="classPolinomio.html">Polinomio</a> &amp;P){</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordtype">string</span> opcionMenu;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <a class="code" href="classMonomio.html">Monomio</a> aux;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                aux.<a class="code" href="classMonomio.html#a1d3ec4190c5e23d93eff79ad8e9486c0">leerMonomio</a>();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keywordflow">if</span>(!P.<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().empty()){</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    <span class="keywordflow">if</span>(P.<a class="code" href="classPolinomio.html#a3ff2d33abef44a6abb359a1dc80405ac">encuentraMonomio</a>(aux))</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        cout &lt;&lt; <span class="stringliteral">&quot;El grado introducido ya está ocupado, por favor, introduzca un polinomio de otro grado&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        P.<a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(aux);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    P.<a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(aux);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;Introduzca [s/S] para salir, cualquier otra letra o número para introducir otro monomio..: &quot;</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                cin &gt;&gt; opcionMenu;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            }<span class="keywordflow">while</span>(opcionMenu != <span class="stringliteral">&quot;s&quot;</span> &amp;&amp; opcionMenu != <span class="stringliteral">&quot;S&quot;</span>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            P.<a class="code" href="classPolinomio.html#af3d3f6039cca70ef876d216b104d1816">ordenaPolinomio</a>();</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">return</span> stream;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="classPolinomio.html#ad8c9a4ff8fd9253e42dfaa4a6ced9409">  247</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#ad8c9a4ff8fd9253e42dfaa4a6ced9409">escribirPolinomio</a>(){</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            list&lt;Monomio&gt;::iterator i;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordtype">int</span> contador = 0;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().empty())</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                cout &lt;&lt; <span class="stringliteral">&quot;Su polinomio está vacío&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <span class="keywordflow">for</span>(i = lista_.begin(); i !=  lista_.end(); i++){</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    <span class="keywordflow">if</span>(i != <a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().begin() &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        <span class="keywordflow">if</span>(contador != 0 &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                            cout &lt;&lt; <span class="stringliteral">&quot;+ &quot;</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    cout &lt;&lt; *i &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    contador++;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                cout &lt;&lt; endl;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="classPolinomio.html#acf2f677c0c8b9ff47b106a11fe2d2963">  271</a></span>&#160;        <span class="keyword">friend</span> ostream &amp;<a class="code" href="classPolinomio.html#acf2f677c0c8b9ff47b106a11fe2d2963">operator&lt;&lt; </a>(ostream &amp;salida, <span class="keyword">const</span> <a class="code" href="classPolinomio.html">Polinomio</a> &amp;P){</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            list&lt;Monomio&gt;::const_iterator i;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordtype">int</span> contador = 0;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">if</span>(P.<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().empty())</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                salida &lt;&lt; <span class="stringliteral">&quot;Su polinomio está vacío&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                <span class="keywordflow">for</span>(i = P.lista_.begin(); i !=  P.lista_.end(); i++){</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    <span class="keywordflow">if</span>(i != P.lista_.begin() &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <span class="keywordflow">if</span>(contador != 0 &amp;&amp; i-&gt;getCoeficiente() &gt;= 0)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                            salida &lt;&lt; <span class="stringliteral">&quot;+ &quot;</span>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    salida &lt;&lt; *i &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    contador++;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="comment">//salida &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> salida;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    </div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="classPolinomio.html#a1e27de3dbcbec6b0552a7418ed4dc839">  300</a></span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a> <a class="code" href="classPolinomio.html#a1e27de3dbcbec6b0552a7418ed4dc839">operator+</a>(<a class="code" href="classPolinomio.html">Polinomio</a> recibido){</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            list&lt;Monomio&gt;::iterator i1, i2;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <a class="code" href="classPolinomio.html">Polinomio</a> resultado;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">if</span>(this-&gt;<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>() &lt; recibido.<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>())</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                resultado.<a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(recibido.<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>());</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                resultado.<a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(this-&gt;<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>());</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;           </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;           resultado.<a class="code" href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">setList</a>(this-&gt;<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>());</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;           <span class="keywordflow">for</span>(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                <span class="keywordtype">bool</span> encontrado = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordflow">for</span>(i1 = resultado.lista_.begin(); i1 != resultado.lista_.end(); i1++){</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    <span class="keywordflow">if</span>(i1-&gt;getGrado() == i2-&gt;getGrado()){</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                        i1-&gt;setCoeficiente(i1-&gt;getCoeficiente() + i2-&gt;getCoeficiente());</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                        encontrado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="keywordflow">if</span>(!encontrado)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    resultado.<a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(*i2);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            }               </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;           </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            resultado.<a class="code" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">setNumMonomios</a>(resultado.lista_.size());</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">return</span> resultado;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="classPolinomio.html#ab9664157ccf85aa44d71f257cd5fa939">  337</a></span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a> <a class="code" href="classPolinomio.html#ab9664157ccf85aa44d71f257cd5fa939">operator+</a>(<a class="code" href="classMonomio.html">Monomio</a> recibido){</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            list&lt;Monomio&gt;::iterator i1;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <a class="code" href="classPolinomio.html">Polinomio</a> resultado;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordtype">bool</span> encontrado;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">if</span>(this-&gt;<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>() &lt; recibido.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>())</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                resultado.<a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(recibido.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>());</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                resultado.<a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(this-&gt;<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>());</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;           </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;           resultado.<a class="code" href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">setList</a>(this-&gt;<a class="code" href="classPolinomio.html#a7c0bd7515379ea15ed431295e0aa82cf">getListForChange</a>());</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="keywordflow">for</span>(i1 = resultado.lista_.begin(); i1 != resultado.lista_.end(); i1++){</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordflow">if</span>(i1-&gt;getGrado() == recibido.<a class="code" href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">getGrado</a>()){</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                    i1-&gt;setCoeficiente(i1-&gt;getCoeficiente() + recibido.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>());</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                    encontrado = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            }   </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">if</span>(!encontrado)</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                resultado.<a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(recibido);        </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;           </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            resultado.<a class="code" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">setNumMonomios</a>(resultado.lista_.size());</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">return</span> resultado;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
+<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="classPolinomio.html#a768917ae40dc27541a6891a51a7c36c2">  370</a></span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a> <a class="code" href="classPolinomio.html#a768917ae40dc27541a6891a51a7c36c2">operator*</a>(<a class="code" href="classPolinomio.html">Polinomio</a> recibido){</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            list&lt;Monomio&gt;::iterator i1, i2;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <a class="code" href="classPolinomio.html">Polinomio</a> auxiliar, auxiliar2;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">for</span>(i1 = this-&gt;lista_.begin(); i1 != this-&gt;lista_.end(); i1++){</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">for</span>(i2 = recibido.lista_.begin(); i2 != recibido.lista_.end(); i2++){</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                    auxiliar.<a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>( (*i1) * (*i2) );</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                }</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            auxiliar.<a class="code" href="classPolinomio.html#af3d3f6039cca70ef876d216b104d1816">ordenaPolinomio</a>();</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            auxiliar.<a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(auxiliar.<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>().begin()-&gt;getGrado());</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            <span class="comment">//Suma de polinomios del mismo grado en la lista</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = auxiliar.<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>(); i &gt; 0; i--){</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                <a class="code" href="classMonomio.html">Monomio</a> mAux(0,i);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                <span class="keywordflow">for</span>(i1 = auxiliar.lista_.begin(); i1 != auxiliar.lista_.end(); i1++){</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    <span class="keywordflow">if</span>( i1-&gt;getGrado() == i)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                        <span class="keywordflow">if</span>(i1-&gt;getCoeficiente() != 0)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                            mAux.<a class="code" href="classMonomio.html#ad6dd3afacff14b0d7edac54dbb63f5d3">setCoeficiente</a>(mAux.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>()+i1-&gt;getCoeficiente());</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                <span class="keywordflow">if</span>(mAux.<a class="code" href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">getCoeficiente</a>() != 0)</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                    auxiliar2.<a class="code" href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">aniadeMonomioAlista</a>(mAux);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <span class="keywordflow">return</span> auxiliar2;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
+<div class="line"><a name="l00405"></a><span class="lineno"><a class="line" href="classPolinomio.html#a4ff8f806d2079231ce9819a8f3acdbd5">  405</a></span>&#160;        <a class="code" href="classPolinomio.html">Polinomio</a>&amp; <a class="code" href="classPolinomio.html#a4ff8f806d2079231ce9819a8f3acdbd5">operator=</a>(<a class="code" href="classPolinomio.html">Polinomio</a> recibido){</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            this-&gt;<a class="code" href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">setGrado</a>(recibido.<a class="code" href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">getGrado</a>());</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            this-&gt;<a class="code" href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">setNumMonomios</a>(recibido.<a class="code" href="classPolinomio.html#a6a7c32ba99165b510f7166f4ab6d2286">getNumMonomios</a>());</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            this-&gt;<a class="code" href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">setList</a>(recibido.<a class="code" href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">getList</a>());</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        }</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno"><a class="line" href="classPolinomio.html#af3d3f6039cca70ef876d216b104d1816">  420</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#af3d3f6039cca70ef876d216b104d1816">ordenaPolinomio</a>(){</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <a class="code" href="classPolinomio.html#a7c0bd7515379ea15ed431295e0aa82cf">getListForChange</a>().sort(&amp;ordenaGrados);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        }</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
+<div class="line"><a name="l00430"></a><span class="lineno"><a class="line" href="classPolinomio.html#ae9ce70f0adbd4aa3961eb5fc576b2890">  430</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classPolinomio.html#ae9ce70f0adbd4aa3961eb5fc576b2890">eliminaRepetidos</a>(){</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <a class="code" href="classPolinomio.html#a7c0bd7515379ea15ed431295e0aa82cf">getListForChange</a>().unique(&amp;sonIguales);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno"><a class="line" href="classPolinomio.html#a31b1659f19791a78a4768f22b94ed560">  441</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="classPolinomio.html#a31b1659f19791a78a4768f22b94ed560">resuelvePolinomio</a>(<span class="keywordtype">double</span> valorX){</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            list&lt;Monomio&gt;::iterator i;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            <span class="keywordtype">double</span> resultado = 0;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            <span class="keywordflow">for</span>(i = lista_.begin(); i != lista_.end(); i++){</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                resultado += i-&gt;resuelveMonomio(valorX);        </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordflow">return</span> resultado;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        </div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;};<span class="comment">// Fin de la definición de la clase Monomio y del namespace ed</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="keywordtype">int</span> menuPolinomio(){</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="keywordtype">int</span> opcion = -1;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        <a class="code" href="monomio_8hpp.html#a0aa106a33acb482f8b13ba3500320603">cabeceraEjercicios</a>();</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;1.- Obtener el valor de un Polinomio para un dato concreto de X.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;2.- Obtener la suma de dos Polinomios.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;3.- Obtener la multiplicación de dos Polinomios.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;4.- Leer y escribir polinomio.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;0.- Salir sin hacer nada.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        cout &lt;&lt; endl;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;&gt;&gt; Introduzca la opción deseada..: &quot;</span>;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        cin &gt;&gt; opcion;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <span class="keywordflow">if</span>(opcion == 0)</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Saliendo...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        <span class="keywordflow">if</span>(opcion &lt; 0 || opcion &gt; 4){</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            system(<span class="stringliteral">&quot;tput setaf 1&quot;</span>);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Error de opcion.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            system(<span class="stringliteral">&quot;tput sgr0&quot;</span>);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;Presione intro para continuar...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            cin.ignore();</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            cin.get();</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        }</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    }<span class="keywordflow">while</span>(opcion &lt; 0 || opcion &gt; 4);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keywordflow">return</span> opcion;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;}</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classMonomio_html_ad6dd3afacff14b0d7edac54dbb63f5d3"><div class="ttname"><a href="classMonomio.html#ad6dd3afacff14b0d7edac54dbb63f5d3">Monomio::setCoeficiente</a></div><div class="ttdeci">void setCoeficiente(double coeficiente)</div><div class="ttdoc">Asigna un valor "coeficiente" a la coordenada "coeficiente_" de un Monomio. </div><div class="ttdef"><b>Definition:</b> <a href="monomio_8hpp_source.html#l00105">monomio.hpp:105</a></div></div>
+<div class="ttc" id="classPolinomio_html_ad3e23d98a287dc002a780c42989e46fb"><div class="ttname"><a href="classPolinomio.html#ad3e23d98a287dc002a780c42989e46fb">Polinomio::getList</a></div><div class="ttdeci">list&lt; Monomio &gt; getList() const </div><div class="ttdoc">Devuelve la lista de forma constante del polinomio. Función virtual pura. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00092">polinomio.hpp:92</a></div></div>
+<div class="ttc" id="classPolinomio_html_a6a7c32ba99165b510f7166f4ab6d2286"><div class="ttname"><a href="classPolinomio.html#a6a7c32ba99165b510f7166f4ab6d2286">Polinomio::getNumMonomios</a></div><div class="ttdeci">int getNumMonomios() const </div><div class="ttdoc">Devuelve el número de Monomios. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00084">polinomio.hpp:84</a></div></div>
+<div class="ttc" id="classPolinomio_html_a4ff8f806d2079231ce9819a8f3acdbd5"><div class="ttname"><a href="classPolinomio.html#a4ff8f806d2079231ce9819a8f3acdbd5">Polinomio::operator=</a></div><div class="ttdeci">Polinomio &amp; operator=(Polinomio recibido)</div><div class="ttdoc">Suma a un Polinomio el valor completo de otro Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00405">polinomio.hpp:405</a></div></div>
+<div class="ttc" id="classPolinomio_html_a36c809a6d879807f9016097272130d4f"><div class="ttname"><a href="classPolinomio.html#a36c809a6d879807f9016097272130d4f">Polinomio::setNumMonomios</a></div><div class="ttdeci">void setNumMonomios(int numMonomios)</div><div class="ttdoc">Asigna un valor "numMonomios" a la coordenada "numMonomios_" de un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00126">polinomio.hpp:126</a></div></div>
+<div class="ttc" id="classPolinomio_html_af3d3f6039cca70ef876d216b104d1816"><div class="ttname"><a href="classPolinomio.html#af3d3f6039cca70ef876d216b104d1816">Polinomio::ordenaPolinomio</a></div><div class="ttdeci">void ordenaPolinomio()</div><div class="ttdoc">Ordena a un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00420">polinomio.hpp:420</a></div></div>
+<div class="ttc" id="classPolinomio_html_a1e27de3dbcbec6b0552a7418ed4dc839"><div class="ttname"><a href="classPolinomio.html#a1e27de3dbcbec6b0552a7418ed4dc839">Polinomio::operator+</a></div><div class="ttdeci">Polinomio operator+(Polinomio recibido)</div><div class="ttdoc">Asigna a un Polinomio auxiliar la suma de dos Polinomios. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00300">polinomio.hpp:300</a></div></div>
 <div class="ttc" id="classMonomio_html_ae17f79c832d4e1cd185ddce5bbbd46e1"><div class="ttname"><a href="classMonomio.html#ae17f79c832d4e1cd185ddce5bbbd46e1">Monomio::getGrado</a></div><div class="ttdeci">int getGrado() const </div><div class="ttdoc">Devuelve el grado de un Monomio. </div><div class="ttdef"><b>Definition:</b> <a href="monomio_8hpp_source.html#l00070">monomio.hpp:70</a></div></div>
 <div class="ttc" id="monomio_8hpp_html"><div class="ttname"><a href="monomio_8hpp.html">monomio.hpp</a></div><div class="ttdoc">Monomio representa la clase monomio definida por la interfaz monomiointerfaz.hpp. ...</div></div>
-<div class="ttc" id="classPolinomio_html"><div class="ttname"><a href="classPolinomio.html">Polinomio</a></div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00017">polinomio.hpp:17</a></div></div>
+<div class="ttc" id="classPolinomio_html_a3ff2d33abef44a6abb359a1dc80405ac"><div class="ttname"><a href="classPolinomio.html#a3ff2d33abef44a6abb359a1dc80405ac">Polinomio::encuentraMonomio</a></div><div class="ttdeci">bool encuentraMonomio(Monomio monomioAecontrar)</div><div class="ttdoc">Busca si el monomio está en la lista ya incluído. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00171">polinomio.hpp:171</a></div></div>
+<div class="ttc" id="classPolinomio_html"><div class="ttname"><a href="classPolinomio.html">Polinomio</a></div><div class="ttdoc">Definición de la plantilla de la clase Ponomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00029">polinomio.hpp:29</a></div></div>
+<div class="ttc" id="classPolinomio_html_a7c0bd7515379ea15ed431295e0aa82cf"><div class="ttname"><a href="classPolinomio.html#a7c0bd7515379ea15ed431295e0aa82cf">Polinomio::getListForChange</a></div><div class="ttdeci">list&lt; Monomio &gt; &amp; getListForChange()</div><div class="ttdoc">Devuelve la lista del polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00102">polinomio.hpp:102</a></div></div>
 <div class="ttc" id="monomio_8hpp_html_a0aa106a33acb482f8b13ba3500320603"><div class="ttname"><a href="monomio_8hpp.html#a0aa106a33acb482f8b13ba3500320603">cabeceraEjercicios</a></div><div class="ttdeci">void cabeceraEjercicios()</div><div class="ttdoc">Cabecera personalizada de presentación para el menú </div><div class="ttdef"><b>Definition:</b> <a href="monomio_8hpp_source.html#l00256">monomio.hpp:256</a></div></div>
+<div class="ttc" id="classPolinomio_html_a768917ae40dc27541a6891a51a7c36c2"><div class="ttname"><a href="classPolinomio.html#a768917ae40dc27541a6891a51a7c36c2">Polinomio::operator*</a></div><div class="ttdeci">Polinomio operator*(Polinomio recibido)</div><div class="ttdoc">Multiplica el valor de un Polinomio por otro Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00370">polinomio.hpp:370</a></div></div>
+<div class="ttc" id="classPolinomio_html_a31b1659f19791a78a4768f22b94ed560"><div class="ttname"><a href="classPolinomio.html#a31b1659f19791a78a4768f22b94ed560">Polinomio::resuelvePolinomio</a></div><div class="ttdeci">double resuelvePolinomio(double valorX)</div><div class="ttdoc">Resuelve un Polinomio con el valor pasado. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00441">polinomio.hpp:441</a></div></div>
+<div class="ttc" id="classPolinomio_html_ad8c9a4ff8fd9253e42dfaa4a6ced9409"><div class="ttname"><a href="classPolinomio.html#ad8c9a4ff8fd9253e42dfaa4a6ced9409">Polinomio::escribirPolinomio</a></div><div class="ttdeci">void escribirPolinomio()</div><div class="ttdoc">Imprime por pantalla la lista de Monomios que componen el Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00247">polinomio.hpp:247</a></div></div>
 <div class="ttc" id="classed_1_1PolinomioInterfaz_html"><div class="ttname"><a href="classed_1_1PolinomioInterfaz.html">ed::PolinomioInterfaz</a></div><div class="ttdef"><b>Definition:</b> <a href="polinomiointerfaz_8hpp_source.html#l00007">polinomiointerfaz.hpp:7</a></div></div>
+<div class="ttc" id="classPolinomio_html_acf2f677c0c8b9ff47b106a11fe2d2963"><div class="ttname"><a href="classPolinomio.html#acf2f677c0c8b9ff47b106a11fe2d2963">Polinomio::operator&lt;&lt;</a></div><div class="ttdeci">friend ostream &amp; operator&lt;&lt;(ostream &amp;salida, const Polinomio &amp;P)</div><div class="ttdoc">Imprime por pantalla la lista de Monomios que componen el Polinomio Sobrecargando el operador de fluj...</div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00271">polinomio.hpp:271</a></div></div>
+<div class="ttc" id="classPolinomio_html_a712ecb553d9e8f1af5122d06d6643215"><div class="ttname"><a href="classPolinomio.html#a712ecb553d9e8f1af5122d06d6643215">Polinomio::vacio</a></div><div class="ttdeci">bool vacio() const </div><div class="ttdoc">Indica si la lista está vacía. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00160">polinomio.hpp:160</a></div></div>
 <div class="ttc" id="classMonomio_html"><div class="ttname"><a href="classMonomio.html">Monomio</a></div><div class="ttdoc">Definición de la plantilla de la clase Monomio. </div><div class="ttdef"><b>Definition:</b> <a href="monomio_8hpp_source.html#l00025">monomio.hpp:25</a></div></div>
+<div class="ttc" id="classPolinomio_html_a0146e0c4bd5771562d29edd1e7dca8c3"><div class="ttname"><a href="classPolinomio.html#a0146e0c4bd5771562d29edd1e7dca8c3">Polinomio::setGrado</a></div><div class="ttdeci">void setGrado(int grado)</div><div class="ttdoc">Asigna un valor "grado" a la coordenada "grado_" de un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00115">polinomio.hpp:115</a></div></div>
+<div class="ttc" id="classPolinomio_html_ad972fc8629ed85d3082da9dd1c21fe91"><div class="ttname"><a href="classPolinomio.html#ad972fc8629ed85d3082da9dd1c21fe91">Polinomio::Polinomio</a></div><div class="ttdeci">Polinomio(int grado=0, int numMonomios=1)</div><div class="ttdoc">Constructor que crea un Polinomio a partir de su numero de monomios y grado. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00049">polinomio.hpp:49</a></div></div>
+<div class="ttc" id="classPolinomio_html_ab9664157ccf85aa44d71f257cd5fa939"><div class="ttname"><a href="classPolinomio.html#ab9664157ccf85aa44d71f257cd5fa939">Polinomio::operator+</a></div><div class="ttdeci">Polinomio operator+(Monomio recibido)</div><div class="ttdoc">Asigna a un Polinomio la suma de otros 2 polinomios. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00337">polinomio.hpp:337</a></div></div>
+<div class="ttc" id="classPolinomio_html_ac085a3dec71ec2db21aa0819aba5fd16"><div class="ttname"><a href="classPolinomio.html#ac085a3dec71ec2db21aa0819aba5fd16">Polinomio::setList</a></div><div class="ttdeci">void setList(list&lt; Monomio &gt; lista)</div><div class="ttdoc">Asigna un valor "lista" a la coordenada "lista_" de un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00137">polinomio.hpp:137</a></div></div>
+<div class="ttc" id="classPolinomio_html_a0b3c4ee8142675ff03a4b16e87cf2eee"><div class="ttname"><a href="classPolinomio.html#a0b3c4ee8142675ff03a4b16e87cf2eee">Polinomio::operator&gt;&gt;</a></div><div class="ttdeci">friend istream &amp; operator&gt;&gt;(istream &amp;stream, Polinomio &amp;P)</div><div class="ttdoc">Asigna a un Polinomio los monomios introducidos por el teclado, sobrecargando el operador de flujo >>...</div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00218">polinomio.hpp:218</a></div></div>
+<div class="ttc" id="classPolinomio_html_ada80935d3e99914906c46592d6efdcd4"><div class="ttname"><a href="classPolinomio.html#ada80935d3e99914906c46592d6efdcd4">Polinomio::leerPolinomio</a></div><div class="ttdeci">void leerPolinomio()</div><div class="ttdoc">Asigna a un Polinomio los monomios introducidos por el teclado. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00190">polinomio.hpp:190</a></div></div>
+<div class="ttc" id="classPolinomio_html_a0003960030c76ee30a995c6f97066c30"><div class="ttname"><a href="classPolinomio.html#a0003960030c76ee30a995c6f97066c30">Polinomio::aniadeMonomioAlista</a></div><div class="ttdeci">void aniadeMonomioAlista(Monomio monomioAintroducir)</div><div class="ttdoc">Añade un monomio a la "lista_" de un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00148">polinomio.hpp:148</a></div></div>
+<div class="ttc" id="classPolinomio_html_a7ceeefcceacd49fb692a89ab3729bee9"><div class="ttname"><a href="classPolinomio.html#a7ceeefcceacd49fb692a89ab3729bee9">Polinomio::getGrado</a></div><div class="ttdeci">int getGrado() const </div><div class="ttdoc">Devuelve el grado de un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00076">polinomio.hpp:76</a></div></div>
 <div class="ttc" id="classMonomio_html_a1d3ec4190c5e23d93eff79ad8e9486c0"><div class="ttname"><a href="classMonomio.html#a1d3ec4190c5e23d93eff79ad8e9486c0">Monomio::leerMonomio</a></div><div class="ttdeci">void leerMonomio()</div><div class="ttdoc">Asigna a un Monomio el "coeficiente" y "grado" leídas desde el teclado. </div><div class="ttdef"><b>Definition:</b> <a href="monomio_8hpp_source.html#l00129">monomio.hpp:129</a></div></div>
+<div class="ttc" id="classPolinomio_html_ae9ce70f0adbd4aa3961eb5fc576b2890"><div class="ttname"><a href="classPolinomio.html#ae9ce70f0adbd4aa3961eb5fc576b2890">Polinomio::eliminaRepetidos</a></div><div class="ttdeci">void eliminaRepetidos()</div><div class="ttdoc">Elimina los monomios repetidos en un Polinomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00430">polinomio.hpp:430</a></div></div>
+<div class="ttc" id="classPolinomio_html_a5c548494b06ad0bbcc98266cfb1d2cb5"><div class="ttname"><a href="classPolinomio.html#a5c548494b06ad0bbcc98266cfb1d2cb5">Polinomio::Polinomio</a></div><div class="ttdeci">Polinomio(const Polinomio &amp;p)</div><div class="ttdoc">Constructor de "copia" que crea un Polinomio a partir de otro Monomio. </div><div class="ttdef"><b>Definition:</b> <a href="polinomio_8hpp_source.html#l00062">polinomio.hpp:62</a></div></div>
 <div class="ttc" id="classMonomio_html_a1099d2b8faa55f2dd84e2a3aecf062be"><div class="ttname"><a href="classMonomio.html#a1099d2b8faa55f2dd84e2a3aecf062be">Monomio::getCoeficiente</a></div><div class="ttdeci">double getCoeficiente() const </div><div class="ttdoc">Devuelve el coeficiente de un Monomio. </div><div class="ttdef"><b>Definition:</b> <a href="monomio_8hpp_source.html#l00081">monomio.hpp:81</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['escribirmonomio',['escribirMonomio',['../classMonomio.html#a42484a47d0d877232ee7775b97b1d480',1,'Monomio']]]
+  ['cabeceraejercicios',['cabeceraEjercicios',['../monomio_8hpp.html#a0aa106a33acb482f8b13ba3500320603',1,'monomio.hpp']]]
 ];

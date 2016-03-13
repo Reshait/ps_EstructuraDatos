@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['setcoeficiente',['setCoeficiente',['../classMonomio.html#ad6dd3afacff14b0d7edac54dbb63f5d3',1,'Monomio']]],
-  ['setgrado',['setGrado',['../classMonomio.html#af927fa9f9a744884a431e6ab2304ea9a',1,'Monomio']]]
+  ['polinomio',['Polinomio',['../classPolinomio.html#ad972fc8629ed85d3082da9dd1c21fe91',1,'Polinomio::Polinomio(int grado=0, int numMonomios=1)'],['../classPolinomio.html#a5c548494b06ad0bbcc98266cfb1d2cb5',1,'Polinomio::Polinomio(const Polinomio &amp;p)']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['menu',['menu',['../monomio_8hpp.html#ae83fcdbeb2b6757fc741ae953b633ee1',1,'monomio.hpp']]],
-  ['monomio',['Monomio',['../classMonomio.html#a1e5d0abf4d74a5be0f22212759b1940f',1,'Monomio::Monomio(double coeficiente=1, int grado=1)'],['../classMonomio.html#add37cbe5c971396b94ea5e53b29232f3',1,'Monomio::Monomio(const Monomio &amp;m)']]]
+  ['leermonomio',['leerMonomio',['../classMonomio.html#a1d3ec4190c5e23d93eff79ad8e9486c0',1,'Monomio']]],
+  ['leerpolinomio',['leerPolinomio',['../classPolinomio.html#ada80935d3e99914906c46592d6efdcd4',1,'Polinomio']]]
 ];

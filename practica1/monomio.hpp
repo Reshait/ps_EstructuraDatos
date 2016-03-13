@@ -82,7 +82,7 @@ class Monomio:public ed::MonomioInterfaz{
             return coeficiente_;
         }
         
-       	//! \name Funciones de modificación de Punto2D
+       	//! \name Funciones de modificación de Monomio
 
 	/*! 
 		\brief Asigna un valor "grado" a la coordenada "grado_" de un Monomio
@@ -106,7 +106,7 @@ class Monomio:public ed::MonomioInterfaz{
             coeficiente_ = coeficiente;
         }
         
-	//! \name Funciones lectura y escritura de la clase Punto2D      
+	//! \name Funciones lectura y escritura de la clase Monomio      
         
 	/*! 
 		\brief Imprime por pantalla el coeficiente y el grado de un Monomio.
@@ -248,7 +248,7 @@ class Monomio:public ed::MonomioInterfaz{
             }
             return salida;
         }
-};
+};// Fin de la definición de la clase Monomio y del namespace ed
 
 	/*! 
 		\brief Cabecera personalizada de presentación para el menú
@@ -292,6 +292,6 @@ int menu(){
     }while(opcion < 0 || opcion > 2);
 
     return opcion;
-}  // Fin de la definición de la clase Punto2D y del namespace ed
+}  
 
 #endif

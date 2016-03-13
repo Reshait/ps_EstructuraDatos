@@ -5,5 +5,5 @@ digraph "Representación gráfica de la clase"
   rankdir="LR";
   Node1 [label="ed::PolinomioInterfaz",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classed_1_1PolinomioInterfaz.html"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="Polinomio",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPolinomio.html"];
+  Node2 [label="Polinomio",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPolinomio.html",tooltip="Definición de la plantilla de la clase Ponomio. "];
 }
