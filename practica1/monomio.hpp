@@ -94,8 +94,14 @@ class Monomio:public ed::MonomioInterfaz{
             return resultado;
         }
 
-        //friend istream &operator>>(istream &stream, Monomio &m);
-        //friend ostream &operator<<(ostream &stream, Monomio const &m);
+        friend istream &operator>>(istream &stream, Monomio &m){
+        	cout << endl << "Introduzca el coeficiente del monomio..: " << endl;
+			stream >> m.coeficiente_;
+			cout << endl << "Introduzca el grado del monomio..: " << endl;
+			stream >>  m.grado_;
+			return stream;     
+        }
+
         friend ostream &operator<< (ostream &salida, const Monomio &m){
             if(m.getCoeficiente() == 1 || m.getCoeficiente() == -1){
                 if(m.getGrado() == 1 && m.getCoeficiente() == 1)
@@ -107,7 +113,7 @@ class Monomio:public ed::MonomioInterfaz{
             }
             else{
                 if(m.getGrado() == 1)
-                    salida << m.getCoeficiente() << "x^";
+                    salida << m.getCoeficiente() << "x";
                 else
                     salida << m.getCoeficiente() << "x^" << m.getGrado();
             }
