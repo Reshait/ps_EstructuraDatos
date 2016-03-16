@@ -44,9 +44,10 @@ class Donante: public ed::DonanteInterfaz {
         	cout << "Introduzca los apellidos del donante\t..: ";
         	getline(cin, apellidos);
         	cout << "Introduzca el grupo sanguíneo\t..: ";
-        	cin >> grupo;
+        	getline(cin, grupo);
         	cout << "Introduzca el factor RH\t\t..: ";
-        	cin >> factor;
+        	getline(cin, factor);
+        	cout << "==========================================" << endl;
         	setNombre(nombre);
         	setApellidos(apellidos);
         	setGrupo(grupo);
@@ -71,6 +72,19 @@ class Donante: public ed::DonanteInterfaz {
         
         bool operator==(const Donante &D){
         	return  this->getNombre() == D.getNombre() && this->getApellidos() == D.getApellidos();
+        }
+
+        bool operator<=(const Donante &D){
+        	bool devuelve = false;
+        	if(this->getApellidos() == D.getApellidos()){
+        		if(this->getNombre() <= D.getNombre())
+        			devuelve = true;
+        	}
+        	else if(this->getApellidos() <= D.getApellidos()){
+        		devuelve = true;
+        	}
+
+        	return devuelve;
         }
 };
 
