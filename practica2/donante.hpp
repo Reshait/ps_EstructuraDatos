@@ -32,6 +32,7 @@ class Donante: public ed::DonanteInterfaz {
         		cout << "El Grupo sanguíneo no puede ser distinto de 0|A|B|AB." << endl;
         		cout << "Por favor Introduzca de nuevo el Grupo sanguíneo ..: ";
         		cin >> grupo;
+                getchar();
         	}
         	grupo_ = grupo; 
         }        
@@ -40,6 +41,7 @@ class Donante: public ed::DonanteInterfaz {
         		cout << "El Factor RH no puede ser distinto de 'Positivo' o 'Negativo'." << endl;
         		cout << "Por favor Introduzca de nuevo el Factor RH ..: ";
         		cin >> factor;
+                getchar();
         	}
         	factor_ = factor; 
         }    
