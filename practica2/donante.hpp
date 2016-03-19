@@ -110,24 +110,36 @@ class Donante: public ed::DonanteInterfaz {
 						cout << "Introduzca el nuevo nombre\t ..: ";
 						getline(cin, cadena);
 						setNombre(cadena);
+						cout << endl << ">> Nombre modificado correctamente." << endl;
+						cout << " Presione la tecla 'Intro' para continuar..." << endl;
+						system("read");
 						break;
 					case 2:
 						cout << "Los apellidos actuales son\t ..: " << getApellidos() << endl;
 						cout << "Introduzca los nuevos apellidos\t ..: ";
 						getline(cin, cadena);
 						setApellidos(cadena);
+						cout << endl << ">> Apellidos modificados correctamente." << endl;
+						cout << " Presione la tecla 'Intro' para continuar..." << endl;
+						system("read");
 						break;
 					case 3:
 						cout << "El Grupo sanguíneo actual es (0|A|B|AB)\t ..: " << getGrupo() << endl;
 						cout << "Introduzca el nuevo grupo sanguíneo\t ..: ";
 						getline(cin, cadena);
 						setGrupo(cadena);
+						cout << endl << ">> Grupo sanguíneo modificado correctamente." << endl;
+						cout << " Presione la tecla 'Intro' para continuar..." << endl;
+						system("read");
 						break;
 					case 4:
 						cout << "Factor RH actual (positivo|negativo)\t ..: " << getFactor() << endl;
 						cout << "Introduzca el nuevo factor RH\t\t ..: ";
 						getline(cin, cadena);
 						setFactor(cadena);
+						cout << endl << ">> Factor RH modificado correctamente." << endl;
+						cout << " Presione la tecla 'Intro' para continuar..." << endl;
+						system("read");
 						break;
 					case 0:
 						cout << "Saliendo..." << endl;
