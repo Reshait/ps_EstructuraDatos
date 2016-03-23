@@ -59,13 +59,10 @@ class Donante: public ed::DonanteInterfaz {
         	setGrupo(D.getGrupo());
         	setFactor(D.getFactor());
         }
-
-        //¿Acceso y modificación?
-       	//Si hay problemas usar getchar();       	
+     	
         void leeDonante(){
         	string nombre, apellidos, grupo, factor;
         	cout << "Introduzca el nombre del donante\t..: ";
-        	//getchar();
         	getline(cin, nombre);
         	cout << "Introduzca los apellidos del donante\t..: ";
         	getline(cin, apellidos);

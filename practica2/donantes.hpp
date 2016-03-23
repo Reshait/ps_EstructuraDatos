@@ -2,16 +2,21 @@
 #define __DONANTES_HPP__
 
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <cassert>
+#include <sstream> //para cazar las líneas del fichero
 #include "donantesinterfaz.hpp"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::ifstream;
+using std::stringstream;
 
 namespace ed{
-template <class G>
+	template <class G>
 	struct Nodo{
 		G data;
 		Nodo *sig;
@@ -21,7 +26,7 @@ template <class G>
 		}
 	};
 
-template <class G>
+	template <class G>
 	class Donantes: public DonantesInterfaz <G>{
 		private:
 			Nodo <G> *cabeza_;
@@ -29,13 +34,13 @@ template <class G>
 
 		public:
 			bool estaVacia() const{
-				if(*cabeza_ == 0)
+				if(cabeza_ == 0)
 					return true;
 				else
 					return false;
 			}
 
-			void insertar(const G &x){
+			void insertarElemento(const G &x){
 				Nodo <G> * nuevo = new Nodo <G> (x);
 
 				if(estaVacia())
@@ -45,13 +50,15 @@ template <class G>
 					Nodo <G> *aux = cabeza_;
 					Nodo <G> *ant;
 					bool encontrado = false;
-					if(nuevo->data <= aux->data){//El nodo a insertar va a ser la cabeza
+					//El nodo a insertar va a ser la cabeza
+					if(nuevo->data <= aux->data){
 						nuevo->sig = aux;
 						cursor_ = cabeza_ = nuevo;
 					}
 
 					else{
-						while(aux && !encontrado){ //Se recorre mientras no llegue al final y no lo encuentro
+						//Se recorre mientras no llegue al final y no lo encuentro
+						while(aux && !encontrado){ 
 							if(nuevo->data <= aux->data)
 								encontrado = true;
 
@@ -68,7 +75,7 @@ template <class G>
 				}
 			}
 
-			bool buscar(G &x){
+			bool buscarElemento(G &x){
 				assert(! estaVacia());
 				Nodo <G> *aux = cabeza_;
 				bool encontrado = false;
@@ -78,8 +85,8 @@ template <class G>
 						encontrado = true;
 						cursor_ = aux;
 					}
-
-					else if(x <= aux->data) //Si no lo encuentra, no vamos a buscar por encima, factor eficiencia; la lista tiene que estar ordenada obviamente.
+					//Si no lo encuentra, no vamos a buscar por encima, factor eficiencia; la lista tiene que estar ordenada obviamente.
+					else if(x <= aux->data) 
 						return false;
 
 					else
@@ -96,22 +103,22 @@ template <class G>
 				do{
 					cin >> D;
 					if(estaVacia())
-						insertar(D);
+						insertarElemento(D);
 
 					else{
-						encontrado = buscar(D);
+						encontrado = buscarElemento(D);
 
 						if(!encontrado)
-							insertar(D);
+							insertarElemento(D);
 
 						else
 							cout << "El donante introducido ya está en la lista" << endl;
 
-						cout << "Introduzca S para salir, cualquier otra tecla para introduzir otro donante." << endl;
+						cout << "Introduzca S/s para salir, cualquier otra tecla para introduzir otro donante." << endl;
 						cin >> opcion;
 					}
 
-				}while(opcion != "S");
+				}while(opcion != "S" && opcion != "s");
 
 			}
 
@@ -121,6 +128,40 @@ template <class G>
 					cout << aux->data;
 					aux = aux->sig;
 				}
+			}
+
+			bool cargarBBDD(string nombreFichero){
+				G D;
+				string linea, apellidos, nombre, grupo, factor;
+
+				ifstream bbddEntrada(nombreFichero.c_str());
+
+				if(!bbddEntrada)
+					return false;
+
+				else{
+					while (getline(bbddEntrada, linea))
+					{
+					    stringstream lineaCompleta(linea);
+
+					    getline(lineaCompleta, apellidos, ';');
+					    getline(lineaCompleta, nombre, ';');
+					    getline(lineaCompleta, grupo, ';');
+					    getline(lineaCompleta, factor, '\n');
+
+						D.setApellidos(apellidos);
+						D.setNombre(nombre);
+						D.setGrupo(grupo);
+						D.setFactor(factor);
+
+						insertarElemento(D); 
+					}
+
+					bbddEntrada.close(); 
+				}
+	
+				return true;
+
 			}
 
 	};

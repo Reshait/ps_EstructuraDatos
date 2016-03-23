@@ -2,17 +2,7 @@
 #define __MENU_DONANTE_HPP__
 #include "donanteInterfaz.hpp"
 #include "donante.hpp"
-
-void cabeceraEjercicios(){
-    system("clear");
-    system("tput bold");
-    system("tput setab 12");
-    cout << "+-------------------------------------------------------+" << endl;
-    cout << "| Teófilo Rojas Mata, Práctica 2 de Estructura de Datos |" << endl;
-    cout << "+-------------------------------------------------------+" << endl;
-    system("tput sgr0");
-    cout << endl;
-}
+#include "cabecera.hpp"
 
 void menu(Donante &D1, Donante &D2, Donante &D3){
 	int opcion;
@@ -20,8 +10,7 @@ void menu(Donante &D1, Donante &D2, Donante &D3){
 	do{
 		system("clear");
 
-		cabeceraEjercicios();
-		//cout << "Menú de Donante" << endl;
+		cabecera();
 		cout << "1.- Para leer un donante desde el teclado." << endl;
 		cout << "2.- Escribir un donante por pantalla." << endl;
 		cout << "3.- Modificar los datos de un donante." << endl;

@@ -4,11 +4,12 @@
 #include "donantesinterfaz.hpp"
 #include "donantes.hpp"
 #include "donantesinterfaz.hpp"
+#include "menuDonantes.hpp"
 
 using namespace std;
 
 int main(){
-
+	menuDonantes();
 
 	return 0;
 }
