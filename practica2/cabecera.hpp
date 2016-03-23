@@ -9,10 +9,12 @@ void cabecera(){
     system("clear");
     system("tput bold");
     system("tput setab 12");
-    cout << "+-------------------------------------------------------+" << endl;
-    cout << "| Teófilo Rojas Mata, Práctica 2 de Estructura de Datos |" << endl;
-    cout << "+-------------------------------------------------------+" << endl;
+
+    cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
+    cout << "┃ Teófilo Rojas Mata, Práctica 2 de Estructura de Datos ┃" << endl;
+    cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
     system("tput sgr0");
+
     cout << endl;
 }
 

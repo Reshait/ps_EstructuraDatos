@@ -56,12 +56,14 @@ void menuDonantes(){
 					cin >> fichero;
 				}
  		       	cout << "==========================================" << endl;
- 		       	cout << "Fichero cargado correctamente."
+ 		       	cout << "Fichero cargado correctamente." << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");
 				break;
 			case 3:
-				//Me falta por hacer
+				cout << "Introduzca el nombre (sin espacios) del archivo que desea guardar (ej. bbddSalida.txt)\t..: ";
+				cin >> fichero;
+				lista.guardarBBDD(fichero);
  		       	cout << "==========================================" << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");
@@ -86,7 +88,9 @@ void menuDonantes(){
 				system("read");
 				break;	
 			case 7:
-				cout << "***** Lista de donantes *****" << endl;
+    			cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
+    			cout << "┃            LISTA DE DONANTES            ┃" << endl;
+    			cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 				lista.mostrarDatos();
 				cout << "==========================================" << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;

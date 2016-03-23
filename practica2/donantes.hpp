@@ -14,23 +14,24 @@ using std::endl;
 using std::string;
 using std::ifstream;
 using std::stringstream;
+using std::ofstream;
 
 namespace ed{
-	template <class G>
+	template <class T>
 	struct Nodo{
-		G data;
+		T data;
 		Nodo *sig;
-		Nodo(const G &x){
+		Nodo(const T &x){
 			data = x;
 			sig = 0;
 		}
 	};
 
-	template <class G>
-	class Donantes: public DonantesInterfaz <G>{
+	template <class T>
+	class Donantes: public DonantesInterfaz <T>{
 		private:
-			Nodo <G> *cabeza_;
-			Nodo <G> *cursor_;
+			Nodo <T> *cabeza_;
+			Nodo <T> *cursor_;
 
 		public:
 			bool estaVacia() const{
@@ -40,15 +41,15 @@ namespace ed{
 					return false;
 			}
 
-			void insertarElemento(const G &x){
-				Nodo <G> * nuevo = new Nodo <G> (x);
+			void insertarElemento(const T &x){
+				Nodo <T> * nuevo = new Nodo <T> (x);
 
 				if(estaVacia())
 					cursor_ = cabeza_ = nuevo;
 
 				else{
-					Nodo <G> *aux = cabeza_;
-					Nodo <G> *ant;
+					Nodo <T> *aux = cabeza_;
+					Nodo <T> *ant;
 					bool encontrado = false;
 					//El nodo a insertar va a ser la cabeza
 					if(nuevo->data <= aux->data){
@@ -75,9 +76,9 @@ namespace ed{
 				}
 			}
 
-			bool buscarElemento(G &x){
+			bool buscarElemento(T &x){
 				assert(! estaVacia());
-				Nodo <G> *aux = cabeza_;
+				Nodo <T> *aux = cabeza_;
 				bool encontrado = false;
 				while(aux && !encontrado){
 					if(x == aux->data){
@@ -96,7 +97,7 @@ namespace ed{
 			}
 
 			void leerDatos(){
-				G D;
+				T D;
 				bool encontrado;
 				string opcion;
 
@@ -123,7 +124,7 @@ namespace ed{
 			}
 
 			void mostrarDatos(){
-				Nodo <G> *aux = cabeza_;
+				Nodo <T> *aux = cabeza_;
 				while(aux){
 					cout << aux->data;
 					aux = aux->sig;
@@ -131,7 +132,7 @@ namespace ed{
 			}
 
 			bool cargarBBDD(string nombreFichero){
-				G D;
+				T D;
 				string linea, apellidos, nombre, grupo, factor;
 
 				ifstream bbddEntrada(nombreFichero.c_str());
@@ -159,9 +160,22 @@ namespace ed{
 
 					bbddEntrada.close(); 
 				}
-	
 				return true;
+			}
 
+			void guardarBBDD(string nombreFichero){
+				Nodo <T> *aux = cabeza_;
+				ofstream bbddSalida(nombreFichero.c_str()); 
+	
+				while(aux){
+					bbddSalida 	<< aux->data.getApellidos() << ";" 
+								<< aux->data.getNombre() << ";"
+								<< aux->data.getGrupo() << ";"
+								<< aux->data.getFactor() << "\n";
+					aux = aux->sig;
+				}
+
+				bbddSalida.close(); 
 			}
 
 	};
