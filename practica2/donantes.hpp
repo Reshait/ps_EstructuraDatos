@@ -104,27 +104,34 @@ namespace ed{
 				}
 				return encontrado;
 			}
-
-/*			Nodo buscarElemento(T &x){
+///////////////////////
+			/*
+			Nodo <T> &buscarNodo(T &x){
 				assert(! estaVacia());
 				Nodo <T> *aux = cabeza_;
-				bool encontrado = 0;
+				bool encontrado = false;
+
 				while(aux && !encontrado){
 					if(x == aux->data){
 						x = aux->data;
 						cursor_ = aux;
-						return 
+						encontrado = true;
+						return aux->data;
 					}
-					//Si no lo encuentra, no vamos a buscar por encima, factor eficiencia; la lista tiene que estar ordenada obviamente.
-					else if(x <= aux->data) 
-						return false;
 
 					else
 						aux = aux->sig;
 				}
-				return encontrado;
+				return 0;
 			}
-*/
+
+			void modificaDonante(T &x){
+				T aux;
+				T = buscarNodo(x)
+				T.modificaDonante();
+			}
+			*/
+////////////////////////
 			void leerDatos(){
 				T D;
 				bool encontrado;
