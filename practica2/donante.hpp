@@ -2,7 +2,9 @@
 #define __DONANTE_HPP__
 
 #include <string>
+#include <cstdio>
 #include <iostream>
+#include <cstdlib>
 #include "donanteinterfaz.hpp"
 
 using std::string; 

@@ -1,6 +1,7 @@
 #ifndef __MENU_DONANTE_HPP__
 #define __MENU_DONANTE_HPP__
-#include "donanteInterfaz.hpp"
+#include <cstdlib> // para los systems
+#include "donanteinterfaz.hpp"
 #include "donante.hpp"
 #include "cabecera.hpp"
 

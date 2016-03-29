@@ -34,6 +34,15 @@ namespace ed{
 			Nodo <T> *cursor_;
 
 		public:
+			Donantes(const T &x){
+				cabeza_ = new Nodo <T> (x);
+				cursor_ = new Nodo <T> (x);
+			}
+
+			Donantes(){
+				cabeza_ = cursor_ = NULL;
+			}
+
 			bool estaVacia() const{
 				if(cabeza_ == 0)
 					return true;
@@ -77,6 +86,26 @@ namespace ed{
 			}
 
 			bool buscarElemento(T &x){
+				assert(! estaVacia());
+				Nodo <T> *aux = cabeza_;
+				bool encontrado = false;
+				while(aux && !encontrado){
+					if(x == aux->data){
+						x = aux->data;
+						encontrado = true;
+						cursor_ = aux;
+					}
+					//Si no lo encuentra, no vamos a buscar por encima, factor eficiencia; la lista tiene que estar ordenada obviamente.
+					else if(x <= aux->data) 
+						return false;
+
+					else
+						aux = aux->sig;
+				}
+				return encontrado;
+			}
+
+			Nodo buscarElemento(T &x){
 				assert(! estaVacia());
 				Nodo <T> *aux = cabeza_;
 				bool encontrado = false;
