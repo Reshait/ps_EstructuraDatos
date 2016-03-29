@@ -105,15 +105,15 @@ namespace ed{
 				return encontrado;
 			}
 
-			Nodo buscarElemento(T &x){
+/*			Nodo buscarElemento(T &x){
 				assert(! estaVacia());
 				Nodo <T> *aux = cabeza_;
-				bool encontrado = false;
+				bool encontrado = 0;
 				while(aux && !encontrado){
 					if(x == aux->data){
 						x = aux->data;
-						encontrado = true;
 						cursor_ = aux;
+						return 
 					}
 					//Si no lo encuentra, no vamos a buscar por encima, factor eficiencia; la lista tiene que estar ordenada obviamente.
 					else if(x <= aux->data) 
@@ -124,7 +124,7 @@ namespace ed{
 				}
 				return encontrado;
 			}
-
+*/
 			void leerDatos(){
 				T D;
 				bool encontrado;
