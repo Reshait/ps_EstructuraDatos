@@ -1,0 +1,5 @@
+Canales Martinez;Davinia;0;positivo
+Mata Serrano;Francisca;B;positivo
+Rojas Carmona;Rafael;AB;positivo
+Rojas Mata;Teófilo;A;negativo
+Sanchez María;Pedro Antonio;AB;negativo
