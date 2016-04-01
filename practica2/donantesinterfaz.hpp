@@ -1,13 +1,14 @@
 #ifndef __DONANTES_INTERFAZ_HPP_
 #define __DONANTES_INTERFAZ_HPP_
+#include "Donante.hpp"
 
 namespace ed{
-	template <class T>
 	class DonantesInterfaz{
-		virtual void insertarElemento(const T &x) = 0;
-		//virtual void borrarElemento() = 0;
-		virtual bool buscarElemento(T &x) = 0;
-		virtual bool estaVacia() const = 0;
+		public:
+			virtual void insertarDonante(Donante &x) = 0;
+			//virtual void borrarElemento() = 0;
+			virtual bool buscarDonante(Donante &x) = 0;
+			virtual bool estaVacia() const = 0;
 	};
 }
 

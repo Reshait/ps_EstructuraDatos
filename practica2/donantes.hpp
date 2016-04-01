@@ -7,6 +7,8 @@
 #include <cassert>
 #include <sstream> //para cazar las líneas del fichero
 #include "donantesinterfaz.hpp"
+#include "donante.hpp"
+#include "listaSimpleOrdenada.hpp"
 
 using std::cin;
 using std::cout;
@@ -17,72 +19,125 @@ using std::stringstream;
 using std::ofstream;
 
 namespace ed{
-	template <class T>
-	struct Nodo{
-		T data;
-		Nodo *sig;
-		Nodo(const T &x){
-			data = x;
-			sig = 0;
-		}
-	};
-
-	template <class T>
-	class Donantes: public DonantesInterfaz <T>{
+	class Donantes: public DonantesInterfaz {
 		private:
-			Nodo <T> *cabeza_;
-			Nodo <T> *cursor_;
+			ListaSimpleOrdenada lista_;
 
 		public:
-			Donantes(const T &x){
-				cabeza_ = new Nodo <T> (x);
-				cursor_ = new Nodo <T> (x);
+			Donantes(){} //¿Qué quiere que recibamos aquí?
+			
+			bool comprobar() const{
+				return lista_.estaVacia();
+			}
+
+			bool buscarDonante(Donante &D){ //buscar un donante para añadirle el factor y el grupo
+				int cont = 0;
+
+				while(!lista_.isLast(cont)){
+					if(lista_.item(cont) == D){
+						D = lista_.item(cont);
+						return true;
+					}
+					cont++;
+				}
+				return false;
+			}
+
+			void insertarDonante(Donante &D){
+
+				if(lista_.estaVacia()){
+					lista_.insertarElemento(D);
+				}
+
+				else{
+					int cont = 0;
+					bool encontrado = false;
+
+					while(not lista_.isLast(cont) && !encontrado){
+						if(lista_.item(cont) == D)
+							encontrado = true;
+
+						cont++;
+					}
+
+					if(encontrado == false){
+						lista_.insertarElemento(D);
+					}
+				}
+				
+
+			}
+
+			void mostrarDatos(){
+				int cont = 0; Donante D;
+				while(not lista_.isLast(cont)){ 
+					D = lista_.item(cont);
+					cout << D;
+					cont++;
+				}
+			}
+
+			bool cargarBBDD(string nombreFichero){
+				Donante D;
+				string linea, apellidos, nombre, grupo, factor;
+
+				ifstream bbddEntrada(nombreFichero.c_str());
+
+				if(!bbddEntrada)
+					return false;
+
+				else{
+					while (getline(bbddEntrada, linea))
+					{
+					    stringstream lineaCompleta(linea);
+
+					    getline(lineaCompleta, apellidos, ';');
+					    getline(lineaCompleta, nombre, ';');
+					    getline(lineaCompleta, grupo, ';');
+					    getline(lineaCompleta, factor, '\n');
+
+						D.setApellidos(apellidos);
+						D.setNombre(nombre);
+						D.setGrupo(grupo);
+						D.setFactor(factor);
+
+						insertarDonante(D); 
+					}
+
+					bbddEntrada.close(); 
+				}
+				return true;
+			}
+
+			void guardarBBDD(string nombreFichero){
+				
+				ofstream bbddSalida(nombreFichero.c_str()); 
+
+				int cont = 0; Donante data;
+				while(not lista_.isLast(cont)){
+				data=lista_.item(cont); 
+					bbddSalida 	<< data.getApellidos() << ";" 
+								<< data.getNombre() << ";"
+								<< data.getGrupo() << ";"
+								<< data.getFactor() << "\n";
+					cont++;
+				}
+	
+
+				bbddSalida.close(); 
+			}
+
+			bool estaVacia() const{
+				return lista_.estaVacia();
+			}
+/*
+			Donantes(const Donante &x){
+				cabeza_ = new Nodo(x);e
+				cursor_ = new Nodo(x);
 			}
 
 			Donantes(){
 				cabeza_ = cursor_ = NULL;
-			}
-
-			bool estaVacia() const{
-				if(cabeza_ == 0)
-					return true;
-				else
-					return false;
-			}
-
-			void insertarElemento(const T &x){
-				Nodo <T> * nuevo = new Nodo <T> (x);
-
-				if(estaVacia())
-					cursor_ = cabeza_ = nuevo;
-
-				else{
-					Nodo <T> *aux = cabeza_;
-					Nodo <T> *ant;
-					bool encontrado = false;
-					//El nodo a insertar va a ser la cabeza
-					if(nuevo->data <= aux->data){
-						nuevo->sig = aux;
-						cursor_ = cabeza_ = nuevo;
-					}
-
-					else{
-						//Se recorre mientras no llegue al final y no lo encuentro
-						while(aux && !encontrado){ 
-							if(nuevo->data <= aux->data)
-								encontrado = true;
-
-							else{
-								ant = aux;
-								aux = aux->sig;
-							}
-
-						}
-						ant->sig = nuevo;
-						nuevo->sig = aux;
-						cursor_ = nuevo;
-					}
-				}
 			}
 
 			bool buscarElemento(T &x){
@@ -105,7 +160,7 @@ namespace ed{
 				return encontrado;
 			}
 ///////////////////////
-			/*
+			
 			Nodo <T> &buscarNodo(T &x){
 				assert(! estaVacia());
 				Nodo <T> *aux = cabeza_;
@@ -130,7 +185,7 @@ namespace ed{
 				T = buscarNodo(x)
 				T.modificaDonante();
 			}
-			*/
+			
 ////////////////////////
 			void leerDatos(){
 				T D;
@@ -213,7 +268,7 @@ namespace ed{
 
 				bbddSalida.close(); 
 			}
-
+*/
 	};
 
 }
