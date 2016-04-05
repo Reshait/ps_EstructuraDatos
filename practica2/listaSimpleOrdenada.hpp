@@ -25,42 +25,38 @@ namespace ed{
 			void insertarElemento(Donante &x){
 				Nodo * nuevo = new Nodo (x);
 
-				if(estaVacia()){
-					cabeza_ = nuevo;
-				
-					cout<<"hola1"<<endl;
-				}
+				if(estaVacia())
+					cabeza_ = nuevo;						//Si la lista está vacía, el nodo creado va a ser la cabeza de la lista.
+
 
 				else{
 					Nodo *aux = cabeza_;
 					Nodo *ant = cabeza_;
 					bool encontrado = false;
-					//El nodo a insertar va a ser la cabeza
-					if(nuevo->getData() <= aux->getData()){
-						nuevo->setNext(aux);
-						cabeza_ = nuevo;
-						cout<<"hola2"<<endl;
+													//INSERTAR ORDENADO ALFABÉTICAMENTE
+					if(nuevo->getData() <= aux->getData()){				//El nuevo nodo pasa a ser la cabeza y apunta a la anterior cabeza.
+						nuevo->setNext(aux);					//El nuevo nodo pasa a ser el primero de la lista(cabeza).
+						cabeza_ = nuevo;					
 					}
 
-					else{
-						//Se recorre mientras no llegue al final y no lo encuentro
-						while(aux && !encontrado){ 
-							if(nuevo->getData() <= aux->getData())
+					else{								//Si el nuevo nodo NO es lexicográficamente menor que el primero(va detrás):
+						while(aux && !encontrado){ 				//Mientras que haya nodos y el nodo nuevo no encuentre su sitio:
+							if(nuevo->getData() <= aux->getData())		//Si el nuevo nodo va antes que el siguiente a comparar, ha encontrado su sitio.
 								encontrado = true;
 
-							else{
+							else{						//Si no, avanza de posición.
 								ant = aux;
 								aux = aux->next();
 							}
 
+
 						}
-						ant->setNext(nuevo);
-						nuevo->setNext(aux);
-						cout<<"hola3="<<endl;
+						ant->setNext(nuevo);					//Como ha encontrado su sitio, el que tenía detrás ahora apunta al nuevo.
+						nuevo->setNext(aux);					//El nuevo ahora apunta al siguiente.
 					}
 					
 				}
-					nEle_ ++;
+				nEle_ ++;								//Al insertar aumenta el número de nodos en la lista.(cantidad de donantes)
 			}
 
 			bool estaVacia() const{

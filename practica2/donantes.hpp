@@ -46,21 +46,21 @@ namespace ed{
 			void insertarDonante(Donante &D){
 
 				if(lista_.estaVacia()){
-					lista_.insertarElemento(D);
+					lista_.insertarElemento(D);			//Si la lista está vacía, insértalo sin miramientos.
 				}
 
 				else{
 					int cont = 0;
 					bool encontrado = false;
 
-					while(not lista_.isLast(cont) && !encontrado){
-						if(lista_.item(cont) == D)
+					while(!lista_.isLast(cont) && !encontrado){ 	//Mientras que no sea el último nodo y no se haya encontrado.
+						if(lista_.item(cont) == D)		//Si lo encuentra en la posición cont marca que se ha encontrado.		
 							encontrado = true;
 
 						cont++;
 					}
 
-					if(encontrado == false){
+					if(encontrado == false){ 			//Si no lo ha encontrado en la lista, insértalo.
 						lista_.insertarElemento(D);
 					}
 				}

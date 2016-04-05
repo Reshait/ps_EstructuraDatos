@@ -17,7 +17,7 @@ using namespace ed;
 void menuDonantes(){
 	int opcion;
 	Donantes lista;
-					Donante D1;
+	Donante D1;
 
 	string fichero;
 
@@ -71,12 +71,12 @@ void menuDonantes(){
 				system("read");
 				break;
 			case 4:
-				//lista.leerDatos();
-				cout << "Introduzca el Donante" << endl;
+    			cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
+    			cout << "┃           INTRODUCA EL DONANTE          ┃" << endl;
+    			cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 				cin >> D1;
 				lista.insertarDonante(D1);
-				cout << "==========================================" << endl;
-				cout << "Donante/s Introducido/s correctamente." << endl;
+				cout << "Donante Introducido correctamente." << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");
 				break;	

@@ -1,6 +1,6 @@
 #ifndef __DONANTES_INTERFAZ_HPP_
 #define __DONANTES_INTERFAZ_HPP_
-#include "Donante.hpp"
+#include "donante.hpp"
 
 namespace ed{
 	class DonantesInterfaz{
