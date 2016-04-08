@@ -56,8 +56,11 @@ namespace ed{
 					}
 					
 				}
+
 				nEle_ ++;								//Al insertar aumenta el número de nodos en la lista.(cantidad de donantes)
 			}
+
+			inline int tamanio(){ return nEle_; }
 
 			bool estaVacia() const{
 				if(cabeza_ == 0)
@@ -66,23 +69,24 @@ namespace ed{
 					return false;
 			}
 
-			int findItem(Donante D, int pos){ // busca un elemento a partir de una posición y devuelve su posición o -1
-				assert(isValid(pos));
+			int findItem(Donante D){ // busca un elemento a partir de una posición y devuelve su posición o -1
 				int cont = 0;
 				Nodo * aux = cabeza_;
+				
 				while(aux){
-					if(pos <= cont){
-						if(aux->getData() == D){
-							return cont;
-						}
-					}
+					
+					if(aux->getData() == D)
+						return cont;
+								
 					cont++;
-					aux->setNext(aux);
+					aux = aux->next();
 				}
+
 				return -1;
 			}
 
 			bool isValid(int pos) const {
+				//assert(pos < 0);
 				if(pos <= nEle_)
 					return true;
 				return false;				
@@ -97,14 +101,52 @@ namespace ed{
 			Donante item(int pos){
 				assert(isValid(pos));
 				int cont = 0;
+				Donante D;
+
 				Nodo *aux = cabeza_;
 				while(aux){
 					if(cont == pos){
-						return aux->getData();
+						D = aux->getData();
 					}
 					cont++;
 					aux = aux->next();
 				}
+				return D;
+
+			}
+
+			void delPosicion(int pos){
+				assert(!estaVacia());
+				assert(isValid(pos));
+				Nodo *aux = cabeza_;
+				int cont = 0;
+
+				if(pos == 0){
+					cabeza_ = cabeza_->next();
+					delete aux;
+				}
+
+				else{
+					Nodo * ant;
+					bool enc = false;
+
+					while(aux && !enc){
+
+						if(cont == pos)
+							enc = true;
+
+						else{
+							ant = aux;
+							cont++;
+							aux = aux->next();
+						}
+					}
+
+					ant->setNext(aux->next());
+					delete aux;
+				}
+
+				nEle_--;
 			}
 
 

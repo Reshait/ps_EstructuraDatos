@@ -30,20 +30,7 @@ namespace ed{
 				return lista_.estaVacia();
 			}
 
-			bool buscarDonante(Donante &D){ //buscar un donante para añadirle el factor y el grupo
-				int cont = 0;
-
-				while(!lista_.isLast(cont)){
-					if(lista_.item(cont) == D){
-						D = lista_.item(cont);
-						return true;
-					}
-					cont++;
-				}
-				return false;
-			}
-
-			void insertarDonante(Donante &D){
+			void insertarDonante(Donante &D){			//Para controlar que no se insertan repetidos se hace:
 
 				if(lista_.estaVacia()){
 					lista_.insertarElemento(D);			//Si la lista está vacía, insértalo sin miramientos.
@@ -130,145 +117,44 @@ namespace ed{
 			bool estaVacia() const{
 				return lista_.estaVacia();
 			}
-/*
-			Donantes(const Donante &x){
-				cabeza_ = new Nodo(x);e
-				cursor_ = new Nodo(x);
+
+			bool delDonante(Donante D){
+				int pos = lista_.findItem(D);
+
+				if(pos != -1){
+					lista_.delPosicion(pos);
+					return true;
+				}
+
+				return false;
 			}
 
-			Donantes(){
-				cabeza_ = cursor_ = NULL;
-			}
+			bool buscarDonante(Donante &D){ //buscar un donante para añadirle el factor y el grupo
+				int cont = 0;
 
-			bool buscarElemento(T &x){
-				assert(! estaVacia());
-				Nodo <T> *aux = cabeza_;
-				bool encontrado = false;
-				while(aux && !encontrado){
-					if(x == aux->data){
-						x = aux->data;
-						encontrado = true;
-						cursor_ = aux;
+				while(!lista_.isLast(cont)){
+					if(lista_.item(cont) == D){
+						D = lista_.item(cont);
+						return true;
 					}
-					//Si no lo encuentra, no vamos a buscar por encima, factor eficiencia; la lista tiene que estar ordenada obviamente.
-					else if(x <= aux->data) 
-						return false;
-
-					else
-						aux = aux->sig;
+					cont++;
 				}
-				return encontrado;
+				return false;
 			}
-///////////////////////
-			
-			Nodo <T> &buscarNodo(T &x){
-				assert(! estaVacia());
-				Nodo <T> *aux = cabeza_;
-				bool encontrado = false;
 
-				while(aux && !encontrado){
-					if(x == aux->data){
-						x = aux->data;
-						cursor_ = aux;
-						encontrado = true;
-						return aux->data;
-					}
+			Donante devuelveDatosDonante(Donante D){ //Para buscar un donante de la lista y devolverlo con todos sus valores
+				int cont = 0;
 
-					else
-						aux = aux->sig;
+				while(!lista_.isLast(cont)){
+					if(lista_.item(cont) == D)
+						D = lista_.item(cont);
+
+					cont++;
 				}
-				return 0;
+				return D;				
 			}
 
-			void modificaDonante(T &x){
-				T aux;
-				T = buscarNodo(x)
-				T.modificaDonante();
-			}
-			
-////////////////////////
-			void leerDatos(){
-				T D;
-				bool encontrado;
-				string opcion;
 
-				do{
-					cin >> D;
-					if(estaVacia())
-						insertarElemento(D);
-
-					else{
-						encontrado = buscarElemento(D);
-
-						if(!encontrado)
-							insertarElemento(D);
-
-						else
-							cout << "El donante introducido ya está en la lista" << endl;
-
-						cout << "Introduzca S/s para salir, cualquier otra tecla para introduzir otro donante." << endl;
-						cin >> opcion;
-					}
-
-				}while(opcion != "S" && opcion != "s");
-
-			}
-
-			void mostrarDatos(){
-				Nodo <T> *aux = cabeza_;
-				while(aux){
-					cout << aux->data;
-					aux = aux->sig;
-				}
-			}
-
-			bool cargarBBDD(string nombreFichero){
-				T D;
-				string linea, apellidos, nombre, grupo, factor;
-
-				ifstream bbddEntrada(nombreFichero.c_str());
-
-				if(!bbddEntrada)
-					return false;
-
-				else{
-					while (getline(bbddEntrada, linea))
-					{
-					    stringstream lineaCompleta(linea);
-
-					    getline(lineaCompleta, apellidos, ';');
-					    getline(lineaCompleta, nombre, ';');
-					    getline(lineaCompleta, grupo, ';');
-					    getline(lineaCompleta, factor, '\n');
-
-						D.setApellidos(apellidos);
-						D.setNombre(nombre);
-						D.setGrupo(grupo);
-						D.setFactor(factor);
-
-						insertarElemento(D); 
-					}
-
-					bbddEntrada.close(); 
-				}
-				return true;
-			}
-
-			void guardarBBDD(string nombreFichero){
-				Nodo <T> *aux = cabeza_;
-				ofstream bbddSalida(nombreFichero.c_str()); 
-	
-				while(aux){
-					bbddSalida 	<< aux->data.getApellidos() << ";" 
-								<< aux->data.getNombre() << ";"
-								<< aux->data.getGrupo() << ";"
-								<< aux->data.getFactor() << "\n";
-					aux = aux->sig;
-				}
-
-				bbddSalida.close(); 
-			}
-*/
 	};
 
 }

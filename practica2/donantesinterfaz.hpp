@@ -6,7 +6,7 @@ namespace ed{
 	class DonantesInterfaz{
 		public:
 			virtual void insertarDonante(Donante &x) = 0;
-			//virtual void borrarElemento() = 0;
+			virtual bool delDonante(Donante D) = 0;
 			virtual bool buscarDonante(Donante &x) = 0;
 			virtual bool estaVacia() const = 0;
 	};
