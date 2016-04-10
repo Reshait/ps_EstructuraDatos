@@ -1,3 +1,13 @@
+/*! 
+  \file     menuDonante.hpp
+  \brief    Menú para realizar las funciones requeridas en la parte Donante de la práctica de ED.
+  \author   Teófilo Rojas Mata
+  \date     10/04/2016
+*/
+
+//compilar con:
+//g++ main.cpp
+
 #ifndef __MENU_DONANTE_HPP__
 #define __MENU_DONANTE_HPP__
 #include <cstdlib> // para los systems

@@ -1,3 +1,10 @@
+/*! 
+  \file     menuDonantes.hpp
+  \brief    Menú para realizar las funciones requeridas en la parte Donantes de la práctica de ED.
+  \author   Teófilo Rojas Mata
+  \date     10/04/2016
+*/
+
 //Compilar con:
 //g++ menu2.cpp
 

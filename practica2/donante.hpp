@@ -1,3 +1,10 @@
+/*! 
+  \file     donante.hpp
+  \brief    Donante representa la calse donante definida por la interfaz donanteinterfaz.hpp
+  \author   Teófilo Rojas Mata
+  \date     10/04/2016
+*/
+
 #ifndef __DONANTE_HPP__
 #define __DONANTE_HPP__
 
@@ -7,6 +14,9 @@
 #include <cstdlib>
 #include "donanteinterfaz.hpp"
 
+/*!
+   \brief Partes necesiaras de espacio de nombres para la asignatura de Estructura de datos.
+*/
 using std::string; 
 using std::cin;
 using std::cout;
@@ -14,21 +24,81 @@ using std::endl;
 using std::istream;
 using std::ostream;
 
+//!  Definición de la plantilla de la clase Donante
 class Donante: public ed::DonanteInterfaz {
+    //! \name Atributos privados de la clase Donante (nombre, apellidos, grupo y factor)
     private:
     	string nombre_;
     	string apellidos_;
     	string grupo_;
     	string factor_;
-    	
+
+//! \name Métodos públicos de la clase Donante     	
     public:
+        //! \name Funciones de obtención de datos de Donante
+        /*! 
+            \brief Devuelve el nombre de un Donante
+            \return componente "nombre" del Donante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa getNombre()
+        */
         string getNombre() const{ return nombre_; }
+
+        /*! 
+            \brief Devuelve los apellidos de un Donante
+            \return componente "apellidos" del Donante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa getApellidos()
+        */
         string getApellidos() const{ return apellidos_; }
+
+        /*! 
+            \brief Devuelve el grupo de un Donante
+            \return componente "grupo" del Donante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa getGrupo()
+        */
         string getGrupo() const{ return grupo_; }
+
+        /*! 
+            \brief Devuelve el factor de un Donante
+            \return componente "factor" del Donante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa getFactor()
+        */
         string getFactor() const{ return factor_; }         
-        
+
+        //! \name Funciones de modificación de Donante
+
+        /*! 
+            \brief Asigna un valor "nombre" a la coordenada "nombre_" de un Donante
+            \param grado de tipo string
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa setNombre()
+        */
         void setNombre(string nombre){ nombre_ = nombre; }
+
+        /*! 
+            \brief Asigna un valor "apellidos" a la coordenada "apellidos_" de un Donante
+            \param grado de tipo string
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa setApellidos()
+        */
         void setApellidos(string apellidos){ apellidos_ = apellidos; }
+
+        /*! 
+            \brief Asigna un valor "grupo" a la coordenada "grupo_" de un Donante
+            \param grado de tipo string
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa setGrupo()
+        */
         void setGrupo(string grupo){
         	while(grupo != "0" && grupo != "A" && grupo != "B" && grupo != "AB" && grupo != "@"){
         		cout << "El Grupo sanguíneo no puede ser distinto de 0|A|B|AB." << endl;
@@ -37,7 +107,15 @@ class Donante: public ed::DonanteInterfaz {
                 getchar();
         	}
         	grupo_ = grupo; 
-        }        
+        }
+
+        /*! 
+            \brief Asigna un valor "factor" a la coordenada "factor_" de un Donante
+            \param grado de tipo string
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa setFactor()
+        */        
         void setFactor(string factor){ 
         	while(factor != "positivo" && factor != "Positivo" && factor != "POSITIVO" && factor != "negativo" && factor != "Negativo" && factor != "NEGATIVO" && factor != "@@@@@@@@"){
         		cout << "El Factor RH no puede ser distinto de 'Positivo' o 'Negativo'." << endl;
@@ -47,14 +125,33 @@ class Donante: public ed::DonanteInterfaz {
         	}
         	factor_ = factor; 
         }    
-        
+ 
+        //! \name Constructores de la clase Donante
+        /*! 
+        \brief Constructor que crea un Donante a partir de sus datos.
+        \attention Función sobrecargada con Constructor de copia        
+        \note Los parámetros tienen valores por defecto
+        \param nombre valor por defecto "XXXXX"
+        \param apellidos valor por defecto "XXXXX XXXXX"
+        \pre Ninguna
+        \post Ninguna
+        \sa setNombre(), setApellidos(), setGrupo(), setFactor()
+        */        
         Donante(string nombre = "XXXXX", string apellidos = "XXXXX XXXXX", string grupo = "@", string factor = "@@@@@@@@"){
         	setNombre(nombre);
         	setApellidos(apellidos);
         	setGrupo(grupo);
         	setFactor(factor);  
         }   
-        
+
+        /*! 
+            \brief Constructor de "copia" que crea un Donante a partir de otro Donante
+            \attention Función sobrecargada de Constructor       
+            \param D de tipo Donante pasado como referencia constante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa setCoeficiente(), setGrado()
+        */        
         Donante(const Donante &D){
         	setNombre(D.getNombre());
         	setApellidos(D.getApellidos());
@@ -62,6 +159,13 @@ class Donante: public ed::DonanteInterfaz {
         	setFactor(D.getFactor());
         }
      	
+        //! \name Funciones de tratamiento por pantalla de Donante
+
+        /*! 
+            \brief guarda el valor Donante introducido por teclado
+            \post Ninguna
+            \sa leeDonante()
+        */       
         void leeDonante(){
         	string nombre, apellidos, grupo, factor;
         	cout << "Introduzca el nombre del donante\t..: ";
@@ -78,7 +182,12 @@ class Donante: public ed::DonanteInterfaz {
         	setGrupo(grupo);
         	setFactor(factor); 
         }
-        
+
+        /*! 
+            \brief Muestra por pantalla los datos de un Donante
+            \post Ninguna
+            \sa escribeDonante()
+        */       
         void escribeDonante(){
         	cout << "==========================================" << endl;
         	cout << "\tNombre\t\t..: " << getNombre() << endl;
@@ -87,6 +196,12 @@ class Donante: public ed::DonanteInterfaz {
         	cout << "\tFactor RH\t..: " << getFactor() << endl;
         }
 
+        /*! 
+            \brief Función para modificar los datos de un Donante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa modificaDatosDonante()
+        */       
 		void modificaDatosDonante(){
 			int opcion;
 			string cadena;
@@ -149,6 +264,13 @@ class Donante: public ed::DonanteInterfaz {
 			}while(opcion != 0);
 		}
 
+        /*! 
+            \brief Sobrecarga del operador = para poder igualar Donantes.
+            \param D de tipo Donante por referencia
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa operator=()
+        */       
         Donante &operator=(const Donante &D){
         	this->setNombre(D.getNombre());
         	this->setApellidos(D.getApellidos());
@@ -157,10 +279,24 @@ class Donante: public ed::DonanteInterfaz {
         	return *this;
         }
         
+        /*! 
+            \brief Sobrecarga del operador == para poder comparar Donantes.
+            \param D de tipo Donante por referencia
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa operator==()
+        */ 
         bool operator==(const Donante &D){
         	return  this->getNombre() == D.getNombre() && this->getApellidos() == D.getApellidos();
         }
 
+        /*! 
+            \brief Sobrecarga del operador <= para poder comparar Donantes.
+            \param D de tipo Donante por referencia
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa operator<=()
+        */ 
         bool operator<=(const Donante &D){
         	bool devuelve = false;
         	if(this->getApellidos() == D.getApellidos()){
@@ -174,6 +310,14 @@ class Donante: public ed::DonanteInterfaz {
         	return devuelve;
         }
 
+        /*! 
+            \brief Sobrecarga del operador de flujo >> para simplificar la introducción de donantes.
+            \param D de tipo Donante por referencia
+            \param salida de tipo de control de flujo istream
+            \pre El Donante debe estar correctamente declarado.
+            \post Ninguna
+            \sa operator>>()
+        */ 
         friend istream &operator>>(istream &salida, Donante &D){
         	string nombre, apellidos, grupo, factor;
         	cout << "Introduzca el nombre del donante\t..: ";
@@ -193,6 +337,14 @@ class Donante: public ed::DonanteInterfaz {
         	return salida;
         }
 
+        /*! 
+            \brief Sobrecarga del operador de flujo << para simplificar la introducción de donantes.
+            \param D de tipo Donante por referencia
+            \param entrada de tipo de control de flujo ostream
+            \pre El Donante debe estar correctamente declarado.
+            \post Ninguna
+            \sa operator<<()
+        */ 
         friend ostream &operator<<(ostream &entrada, Donante &D){
        		entrada << "==========================================" << endl;
         	entrada << "\tNombre\t\t..: " << D.getNombre() << endl;
