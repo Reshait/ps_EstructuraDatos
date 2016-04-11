@@ -2,16 +2,13 @@
 #define __DONANTES_INTERFAZ_HPP_
 #include "donante.hpp"
 
-/*!
-   \brief Espacio de nombres de la asignatura ED.
-*/
 namespace ed{
 	//!  Definición de la plantilla de la clase Donantes
 	class DonantesInterfaz{
 		public:
 	        /*! 
 	            \brief inserta un objeto Donante en la lista, definición virtual pura
-	            \param por referencia D, de tipo Donante
+	            \param x por referencia, de tipo Donante
 	            \pre El Donante debe existir
 	            \post Ninguna
 	            \sa insertarDonante()
@@ -29,7 +26,7 @@ namespace ed{
 
 	        /*! 
 	            \brief busca un Donante de la lista, definición virtual pura
-	            \param D de tipo Donante por referencia.
+	            \param x de tipo Donante por referencia.
 	            \pre El Donante debe existir.
 	            \post Ninguna
 	            \sa buscarDonante()

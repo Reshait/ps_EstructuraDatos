@@ -15,6 +15,14 @@
 #include "donante.hpp"
 #include "cabecera.hpp"
 
+/*! 
+	\brief Menú para gestionar la parte de la lista de donante (singular) de la práctica2
+        \param D1 de tipo Donante por referencia
+        \param D2 de tipo Donante por referencia
+        \param D3 de tipo Donante por referencia
+        \post Ninguna
+        \sa menuDonantes()
+*/
 void menu(Donante &D1, Donante &D2, Donante &D3){
 	int opcion;
 	

@@ -56,7 +56,7 @@ namespace ed{
 
 	        /*! 
 	            \brief inserta un objeto Donante en la lista
-	            \param por referencia D, de tipo Donante
+	            \param D por referencia, de tipo Donante
 	            \pre El Donante debe existir
 	            \post Ninguna
 	            \sa insertarDonante()

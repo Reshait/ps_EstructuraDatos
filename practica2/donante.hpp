@@ -76,7 +76,7 @@ class Donante: public ed::DonanteInterfaz {
 
         /*! 
             \brief Asigna un valor "nombre" a la coordenada "nombre_" de un Donante
-            \param grado de tipo string
+            \param nombre de tipo string
             \pre El Donante debe existir
             \post Ninguna
             \sa setNombre()
@@ -85,7 +85,7 @@ class Donante: public ed::DonanteInterfaz {
 
         /*! 
             \brief Asigna un valor "apellidos" a la coordenada "apellidos_" de un Donante
-            \param grado de tipo string
+            \param apellidos de tipo string
             \pre El Donante debe existir
             \post Ninguna
             \sa setApellidos()
@@ -94,7 +94,7 @@ class Donante: public ed::DonanteInterfaz {
 
         /*! 
             \brief Asigna un valor "grupo" a la coordenada "grupo_" de un Donante
-            \param grado de tipo string
+            \param grupo de tipo string
             \pre El Donante debe existir
             \post Ninguna
             \sa setGrupo()
@@ -111,7 +111,7 @@ class Donante: public ed::DonanteInterfaz {
 
         /*! 
             \brief Asigna un valor "factor" a la coordenada "factor_" de un Donante
-            \param grado de tipo string
+            \param factor de tipo string
             \pre El Donante debe existir
             \post Ninguna
             \sa setFactor()
@@ -133,6 +133,8 @@ class Donante: public ed::DonanteInterfaz {
         \note Los parámetros tienen valores por defecto
         \param nombre valor por defecto "XXXXX"
         \param apellidos valor por defecto "XXXXX XXXXX"
+	\param grupo valor por defecto "@"
+	\param factor valor por defecto "@@@@@@@@"
         \pre Ninguna
         \post Ninguna
         \sa setNombre(), setApellidos(), setGrupo(), setFactor()

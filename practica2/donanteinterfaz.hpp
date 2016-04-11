@@ -54,7 +54,7 @@ namespace ed{
 
         /*! 
             \brief Declaración virtual pura de la función setNombre
-            \param grado de tipo string
+            \param nombre de tipo string
             \pre El Donante debe existir
             \post Ninguna
         */        
@@ -62,7 +62,7 @@ namespace ed{
 
        /*! 
             \brief Declaración virtual pura de la función setApellidos
-            \param grado de tipo string
+            \param apellidos de tipo string
             \pre El Donante debe existir
             \post Ninguna
         */
@@ -70,7 +70,7 @@ namespace ed{
 
         /*! 
             \brief Declaración virtual pura de la función setGrupo
-            \param grado de tipo string
+            \param nombre de tipo string
             \pre El Donante debe existir
             \post Ninguna
         */
@@ -78,7 +78,7 @@ namespace ed{
 
         /*! 
             \brief Declaración virtual pura de la función setFactor
-            \param grado de tipo string
+            \param nombre de tipo string
             \pre El Donante debe existir
             \post Ninguna
         */    

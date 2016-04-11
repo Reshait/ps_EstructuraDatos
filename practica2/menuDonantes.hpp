@@ -25,6 +25,13 @@ using std::string;
 
 using namespace ed;
 
+/*! 
+	\brief Menú para tratar con cariño el código de modificar un donante.
+        \param D de tipo Donante por referencia
+        \pre El Donante debe existir
+        \post Ninguna
+        \sa menuModificaDonante()
+*/
 void menuModificaDonante(Donante &D){
 	int opcion;
 	string valorDonante;
@@ -93,6 +100,11 @@ void menuModificaDonante(Donante &D){
 		cout << "No se realizaron cambios en el donante." << endl;
 }
 
+/*! 
+	\brief Menú para gestionar la parte de la lista de donantes de la práctica2
+        \post Ninguna
+        \sa menuDonantes()
+*/
 void menuDonantes(){
 	int opcion;
 	Donantes lista;

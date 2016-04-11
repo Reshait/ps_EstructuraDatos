@@ -1,6 +1,6 @@
 /*! 
   \file     listaSimpleOrdenada.hpp
-  \brief    Representa la lista de nodos simulando el objeto <list> de la stl.
+  \brief    Representa la lista de nodos simulando el objeto list de la stl.
   \author   Teófilo Rojas Mata
   \date     10/04/2016
 */
@@ -49,7 +49,7 @@ namespace ed{
 
 	        /*! 
 	            \brief Inserta un nuevo nodo en la lista, ordenado alfabéticamente atendiendo a los datos del donante.
-	            \param D de tipo Donante por referencia
+	            \param x de tipo Donante por referencia
 	            \pre El Donante debe existir
 	            \post Ninguna
 	            \sa insertarElemento()

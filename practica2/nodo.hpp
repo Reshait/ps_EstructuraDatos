@@ -44,7 +44,6 @@ namespace ed{
 
 	        /*! 
 	            \brief devuelve la dirección de apunte del nodo.
-	            \param *aux tipo Nodo
 	            \pre El Nodo debe existir
 	            \post Ninguna
 	            \sa next()
