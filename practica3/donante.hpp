@@ -377,7 +377,7 @@ class Donante: public ed::DonanteInterfaz {
             \post Ninguna
             \sa operator<<()
         */ 
-        friend ostream &operator<<(ostream &entrada, Donante &D){
+        friend ostream &operator<<(ostream &entrada, const Donante &D){
        		entrada << "==========================================" << endl;
         	entrada << "\tNombre\t\t..: " << D.getNombre() << endl;
         	entrada << "\tApellidos\t..: " << D.getApellidos() << endl;

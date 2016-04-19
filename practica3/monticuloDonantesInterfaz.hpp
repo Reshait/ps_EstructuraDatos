@@ -26,7 +26,7 @@ namespace ed{
 	
 			virtual bool isEmpty() const=0;
 			virtual Donante top() const=0;
-			virtual void insert(Donante d)=0;
+			virtual void insertarDonante(Donante d)=0;
 			//virtual void remove()=0;
 
 

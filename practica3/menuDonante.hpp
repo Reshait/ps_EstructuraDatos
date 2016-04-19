@@ -10,10 +10,17 @@
 
 #ifndef __MENU_DONANTE_HPP__
 #define __MENU_DONANTE_HPP__
+
 #include <cstdlib> // para los systems
+#include <string>
+#include <iostream>
 #include "donanteinterfaz.hpp"
 #include "donante.hpp"
 #include "cabecera.hpp"
+#include "monticuloDonantes.hpp"
+
+using namespace std;
+using namespace ed;
 
 /*! 
 	\brief Menú para gestionar la parte de la lista de donante (singular) de la práctica2
@@ -23,17 +30,21 @@
         \post Ninguna
         \sa menuDonantes()
 */
-void menu(Donante &D1, Donante &D2, Donante &D3){
+void menu(){
 	int opcion;
-	
+	string fichero;
+	Donante D1("Teófilo", "Rojas Mata", "A", "positivo");
+	MonticuloDonantes Monticulo;
+
 	do{
 		system("clear");
 
-		cabecera();
-		cout << "1.- Para leer un donante desde el teclado." << endl;
-		cout << "2.- Escribir un donante por pantalla." << endl;
-		cout << "3.- Modificar los datos de un donante." << endl;
-		cout << "4.- Comparar lexicográficamente dos donantes." << endl;
+		cabecera(3);
+		cout << "1.- Para comprobar si el montículo está vacío." << endl;
+		cout << "2.- Cargar un montículo desde un fichero." << endl;
+		cout << "3.- Guardar el montículo en un fichero." << endl;
+		cout << "4.- Mostrar el donante que se encuentra en la cima." << endl;
+		cout << "5.- Realizar una donación." << endl;
 		cout << "0.- Para Salir." << endl;
 		cout << "\tIntroduzca una opción >> ";
 		cin >> opcion;
@@ -43,43 +54,47 @@ void menu(Donante &D1, Donante &D2, Donante &D3){
 
 		switch(opcion){
 			case 1: 
-				D1.leeDonante();
+				if(Monticulo.isEmpty())
+					cout << "El montículo está vacío" << endl;
+				else
+					cout << "El montículo NO está vacío" << endl;
  		       	cout << "==========================================" << endl;
-				cout << "Donante Introducido correctamente." << endl; 
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");
 				break;
 			case 2:
-				D1.escribeDonante();
+				cout << "Introduzca el nombre (sin espacios) del archivo que desea cargar (ej. bbdd.txt)\t..: ";
+				cin >> fichero;
+				while(!Monticulo.cargarBBDD(fichero)){
+					cout << "El nombre del fichero introducido no existe." << endl;
+					cout << "Por favor, introduzca de nuevo el nombre del fichero ..: ";
+					cin >> fichero;
+				}
  		       	cout << "==========================================" << endl;
+ 		       	cout << "Fichero cargado correctamente." << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
-				system("read");
+				system("read");			
 				break;
 			case 3:
-				D1.modificaDatosDonante();
+				cout << "Introduzca el nombre (sin espacios) del archivo que desea guardar (ej. bbddSalida.txt)\t..: ";
+				cin >> fichero;
+				Monticulo.guardarBBDD(fichero);
+ 		       	cout << "==========================================" << endl;
+				cout << "Presione la tecla 'Intro' para continuar..." << endl;
+				system("read");			
 				break;
 			case 4:
-				D1.leeDonante();
-				cout << "==========================================" << endl;
-				cout << "Donante 1 Introducido correctamente." << endl;
-				cout << "Presione la tecla 'Intro' para continuar..." << endl;
-				system("read");
-
-				D2.leeDonante();
-				cout << "==========================================" << endl;
-				cout << "Donante 2 Introducido correctamente." << endl;
-				cout << "Presione la tecla 'Intro' para continuar..." << endl;
-				system("read");
-
-				if(D1 == D2)
-					cout << "Los nombres introducidos son iguales" << endl;
-				else if(D1 <= D2)
-					cout << D1.getApellidos() << " " << D1.getNombre() << " es lexicográficamente menor que " << D2.getApellidos() << " " <<D2.getNombre() << endl;
+				if(Monticulo.isEmpty())
+					cout << "El montículo está actualmente vacío." << endl;
 				else
-					cout << D1.getApellidos() << " " << D1.getNombre() << " es lexicográficamente mayor que " << D2.getApellidos() << " " << D2.getNombre() << endl;
-				cout << "Pulse Intro para continuar..." << endl;
-				system("read");
+					cout << Monticulo.top();
+ 		       	cout << "==========================================" << endl;		
+				cout << "Presione la tecla 'Intro' para continuar..." << endl;
+				system("read");	
 				break;	
+			case 5:
+				//Falta por hacer.
+				break;				
 			case 0:
 				cout << "Saliendo ..." << endl;
 				break;	

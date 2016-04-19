@@ -1,5 +1,5 @@
-Rojas Mata;Teófilo;A;negativo
-Canales Martinez;Davinia;0;positivo
-Rojas Carmona;Rafael;AB;positivo
-Mata Serrano;Francisca;B;positivo
-a;a;A;positivo
+Rojas Mata;Teófilo;A;negativo;20
+Canales Martinez;Davinia;0;positivo;30
+Rojas Carmona;Rafael;AB;positivo;3
+Mata Serrano;Francisca;B;positivo;9
+a;a;A;positivo;15

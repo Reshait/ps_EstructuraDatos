@@ -1,8 +1,16 @@
 #ifndef MONTICULODONANTES_HPP
 #define MONTICULODONANTES_HPP
 
+#include <cstdlib>
+#include <string>
+#include <sstream> //para cazar las líneas del fichero.
 #include "monticuloDonantesInterfaz.hpp"
+#include "donante.hpp"
 
+
+using std::ifstream;
+using std::stringstream;
+using std::ofstream;
 
 namespace ed{
 
@@ -78,7 +86,7 @@ namespace ed{
 			void setVector (Donante d){
 		
 			}*/
-			
+
 			Donante top() const{					//en la diapo top, en la práctica cima
 				assert (!isEmpty());
 				return _v.front();
@@ -93,7 +101,7 @@ namespace ed{
 			}*/
 
 			bool has(Donante d){
-				assert(!isEmpty());
+				//assert(!isEmpty());
 			
 				int i=0;
 
@@ -107,21 +115,9 @@ namespace ed{
 			}
 
 
-			void insert(Donante d){
-					
-				//assert (!isFull());
-				bool enc;
+			void insertarDonante(Donante d){
 
-				enc = has(d);
-
-				if(!enc){
-//					string n;
-//					cout << "Introduzca el factor\t..: " << endl;
-//					cin >> n;
-//					d.setFactor(n);
-//					cout << "Introduzca el grupo\t..: " << endl;
-//					cin >> n;
-//					d.setGrupo(n);
+				if(!has(d)){
 					_v.push_back(d);
 					shiftUp(_v.size()-1);
 				}
@@ -130,33 +126,74 @@ namespace ed{
 			}
 
 			
-			void crear(string nombreF){
+	        /*! 
+	            \brief Carga la base de datos desde un fichero pasado por teclado.
+	            \param nombreFichero de tipo string
+	            \pre El Fichero debe existir.
+	            \post Ninguna
+	            \sa cargarBBDD()
+	        */
+			bool cargarBBDD(string nombreFichero){
+				Donante D;
+				string linea, apellidos, nombre, grupo, factor, donaciones;
 
-				ifstream entrada(nombreF.c_str());
-				char nombre[50], apellidos[50], grupo[50], rh[50], donacion[50];				
+				ifstream bbddEntrada(nombreFichero.c_str());
 
-				Donante d;
+				if(!bbddEntrada)
+					return false;
 
-				while( entrada.getline(nombre,256,',') )
-				{
-					  entrada.getline(apellidos,256,',');
-					  entrada.getline(grupo,256,',');
-					  entrada.getline(rh,256,',');
-					  entrada.getline(donacion,256,'\n');
+				else{
+					while (getline(bbddEntrada, linea))
+					{
+					    stringstream lineaCompleta(linea);
 
-					  d.setNombre(nombre);
-					  d.setApellidos(apellidos);
-					  d.setGrupo(grupo);
-					  d.setRH(rh);
-				          d.setDonacion(atoi(donacion));
-					 
-					  insert(d);
+					    getline(lineaCompleta, apellidos, ';');
+					    getline(lineaCompleta, nombre, ';');
+					    getline(lineaCompleta, grupo, ';');
+					    getline(lineaCompleta, factor, ';');
+					    getline(lineaCompleta, donaciones, '\n');
+
+						D.setApellidos(apellidos);
+						D.setNombre(nombre);
+						D.setGrupo(grupo);
+						D.setFactor(factor);
+						int auxiliar = atoi(donaciones.c_str());
+						cout << "Donaciones Prueba..: " << auxiliar << endl;
+						//D.setDonaciones(atoi(donaciones.c_str()));
+						D.setDonaciones(auxiliar);
+
+						insertarDonante(D); 
+					}
+
+					bbddEntrada.close(); 
 				}
-				entrada.close();
-
-
-
+				return true;
 			}
+
+	        /*! 
+	            \brief Guarda la base de datos a un fichero pasado por teclado.
+	            \param nombreFichero de tipo string
+	            \post Ninguna
+	            \sa guardarBBDD()
+	        */
+			void guardarBBDD(string nombreFichero){
+				
+				ofstream bbddSalida(nombreFichero.c_str()); 
+
+				int cont = 0; Donante data;
+				while(cont < _v.size()){
+				data = _v[cont]; 
+					bbddSalida 	<< data.getApellidos() << ";" 
+								<< data.getNombre() << ";"
+								<< data.getGrupo() << ";"
+								<< data.getFactor() << ";"
+								<< data.getDonaciones() << "\n";
+					cont++;
+				}
+	
+
+				bbddSalida.close(); 
+			}			
 
 			void grabar(string nombreF){
 
@@ -164,7 +201,7 @@ namespace ed{
 				Donante d;
 				for(int i=0; i< _v.size(); i++){
 				
-				  	salida<<_v[i].getNombre()<<","<< _v[i].getApellidos()<<","<<_v[i].getGrupo()<<","<<_v[i].getRH()<<","<<_v[i].getDonacion()<<endl;
+				  	salida<<_v[i].getNombre()<<","<< _v[i].getApellidos()<<","<<_v[i].getGrupo()<<","<<_v[i].getFactor()<<","<<_v[i].getDonaciones()<<endl;
 					 
 				}
 				salida.close();
