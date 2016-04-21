@@ -73,10 +73,16 @@ class Donante: public ed::DonanteInterfaz {
         */
         string getFactor() const{ return factor_; }         
 
-        //! \name Funciones de modificación de Donante
-
+        /*! 
+            \brief Devuelve el número de donaciones de un Donante
+            \return componente "donaciones_" del Donante
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa getDonaciones()
+        */
         int getDonaciones() const{ return donaciones_; }
 
+        //! \name Funciones de modificación de Donante
         /*! 
             \brief Asigna un valor "nombre" a la coordenada "nombre_" de un Donante
             \param nombre de tipo string
@@ -129,6 +135,13 @@ class Donante: public ed::DonanteInterfaz {
         	factor_ = factor; 
         } 
 
+        /*! 
+            \brief Asigna un valor "donaciones" a la coordenada "donaciones_" de un Donante
+            \param donaciones de tipo int
+            \pre El Donante debe existir
+            \post Ninguna
+            \sa setDonaciones()
+        */  
         void setDonaciones(int donaciones){
             if(donaciones >= 0)
                 donaciones_ = donaciones;
@@ -141,8 +154,9 @@ class Donante: public ed::DonanteInterfaz {
         \note Los parámetros tienen valores por defecto
         \param nombre valor por defecto "XXXXX"
         \param apellidos valor por defecto "XXXXX XXXXX"
-	\param grupo valor por defecto "@"
-	\param factor valor por defecto "@@@@@@@@"
+	    \param grupo valor por defecto "@"
+	    \param factor valor por defecto "@@@@@@@@"
+        \param donaciones valor por defecto "0"
         \pre Ninguna
         \post Ninguna
         \sa setNombre(), setApellidos(), setGrupo(), setFactor()
@@ -170,6 +184,7 @@ class Donante: public ed::DonanteInterfaz {
         	setApellidos(D.getApellidos());
         	setGrupo(D.getGrupo());
         	setFactor(D.getFactor());
+            setDonaciones(D.getDonaciones());
         }
      	
         //! \name Funciones de tratamiento por pantalla de Donante
@@ -305,13 +320,10 @@ class Donante: public ed::DonanteInterfaz {
             \post Ninguna
             \sa operator==()
         */ 
-/*        bool operator==(const Donante &D){
-        	return  this->getNombre() == D.getNombre() && this->getApellidos() == D.getApellidos();
-        }
-*/
         bool operator==(const Donante &D){ //Volverlo a dejar como estaba
                 return  this->getNombre() == D.getNombre() && this->getApellidos() == D.getApellidos();
         }
+
         /*! 
             \brief Sobrecarga del operador <= para poder comparar Donantes.
             \param D de tipo Donante por referencia
@@ -319,25 +331,13 @@ class Donante: public ed::DonanteInterfaz {
             \post Ninguna
             \sa operator<=()
         */ 
- /*       bool operator<=(const Donante &D){
-        	bool devuelve = false;
-        	if(this->getApellidos() == D.getApellidos()){
-        		if(this->getNombre() <= D.getNombre())
-        			devuelve = true;
-        	}
-        	else if(this->getApellidos() <= D.getApellidos()){
-        		devuelve = true;
-        	}
-
-        	return devuelve;
-        }
-*/
         bool operator<=(const Donante &D){
             if(getDonaciones() <= D.getDonaciones())
                 return true;
 
             return false;
         }
+
         /*! 
             \brief Sobrecarga del operador de flujo >> para simplificar la introducción de donantes.
             \param D de tipo Donante por referencia

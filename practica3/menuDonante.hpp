@@ -24,14 +24,12 @@ using namespace ed;
 
 /*! 
 	\brief Menú para gestionar la parte de la lista de donante (singular) de la práctica2
-        \param D1 de tipo Donante por referencia
-        \param D2 de tipo Donante por referencia
-        \param D3 de tipo Donante por referencia
         \post Ninguna
-        \sa menuDonantes()
+        \sa menu()
 */
 void menu(){
 	int opcion;
+	int donaciones;
 	string fichero;
 	Donante D1("Teófilo", "Rojas Mata", "A", "positivo");
 	MonticuloDonantes Monticulo;
@@ -45,6 +43,8 @@ void menu(){
 		cout << "3.- Guardar el montículo en un fichero." << endl;
 		cout << "4.- Mostrar el donante que se encuentra en la cima." << endl;
 		cout << "5.- Realizar una donación." << endl;
+		cout << "6.- Mostrar toda la lista de donantes." << endl;
+		cout << "7.- Borrar cima del montículo." << endl;
 		cout << "0.- Para Salir." << endl;
 		cout << "\tIntroduzca una opción >> ";
 		cin >> opcion;
@@ -93,7 +93,30 @@ void menu(){
 				system("read");	
 				break;	
 			case 5:
-				//Falta por hacer.
+				cout << "Introduzca el número de donaciones a añadir" << endl;
+				cin >> donaciones;
+				Monticulo.aniadeDonacion(donaciones);
+ 		       	cout << "==========================================" << endl;		
+				cout << "Presione la tecla 'Intro' para continuar..." << endl;
+				system("read");					
+				break;	
+			case 6:
+				if(Monticulo.isEmpty())
+					cout << "El montículo está vacío" << endl;
+				else
+					Monticulo.mostrar();
+ 		       	cout << "==========================================" << endl;		
+				cout << "Presione la tecla 'Intro' para continuar..." << endl;
+				system("read");				
+				break;	
+			case 7:
+				if(Monticulo.isEmpty())
+					cout << "El montículo está vacío" << endl;
+				else
+					Monticulo.remove();
+ 		       	cout << "==========================================" << endl;		
+				cout << "Presione la tecla 'Intro' para continuar..." << endl;
+				system("read");				
 				break;				
 			case 0:
 				cout << "Saliendo ..." << endl;
