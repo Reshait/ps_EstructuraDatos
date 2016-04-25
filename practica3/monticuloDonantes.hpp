@@ -1,3 +1,9 @@
+/*! 
+  \file     monticuloDonantes.hpp
+  \brief    monticuloDonantes.hpp representa la clase monticuloDonantes definida en el arhcivo monticuloDonantesInterfaz.hpp.
+  \author   Teófilo Rojas Mata
+  \date     10/04/2016
+*/
 #ifndef MONTICULODONANTES_HPP
 #define MONTICULODONANTES_HPP
 
@@ -7,7 +13,9 @@
 #include <sstream> //para cazar las líneas del fichero.
 #include "monticuloDonantesInterfaz.hpp"
 #include "donante.hpp"
-
+/*!
+   \brief Partes necesiaras de espacio de nombres para la asignatura de Estructura de datos.
+*/
 using std::ifstream;
 using std::stringstream;
 using std::ofstream;
@@ -15,11 +23,11 @@ using std::swap;
 using std::string;
 
 namespace ed{
-
+//!  Definición de la plantilla de la clase MonticuloDonantes
 	class MonticuloDonantes : public MonticuloDonantesInterfaz{
 
 		private:
-			
+    //! \name Atributos privados de la clase MonticuloDonantes (_V)
 			vector<Donante> _v; 							//vector dinámico stl
 
 	        /*! 
@@ -132,7 +140,7 @@ namespace ed{
 	            \sa has()
 	        */
 			bool has(Donante d){					//busca un donante	
-				int i=0;
+				int unsigned i=0;
 
 				while(i<_v.size()){ 
 					if(_v[i] == d)
@@ -218,21 +226,21 @@ namespace ed{
 	        */
 			void guardarBBDD(string nombreFichero){
 				
-				ofstream bbddSalida(nombreFichero.c_str()); 
+				ofstream bbddSalida(nombreFichero.c_str()); 			//Crea el fichero con el nombre pasado
 
-				int cont = 0; Donante data;
+				int unsigned cont = 0; Donante data;
 				while(cont < _v.size()){
 				data = _v[cont]; 
-					bbddSalida 	<< data.getApellidos() << ";" 
+					bbddSalida 	<< data.getApellidos() << ";" 			//Se van añadiendo los parámetros del Donante al fichero mientras haya donantes.
 								<< data.getNombre() << ";"
 								<< data.getGrupo() << ";"
 								<< data.getFactor() << ";"
-								<< data.getDonaciones() << "\n";
+								<< data.getDonaciones() << "\n";		//Intro para cambiar de línea al cambiar de Donante.
 					cont++;
 				}
 	
 
-				bbddSalida.close(); 
+				bbddSalida.close(); 									//Cerrar el fichero con los cambios realizados correctamente.
 			}			
 
 	        /*! 
@@ -243,7 +251,7 @@ namespace ed{
 	        */
 			void mostrar(){
 
-				for(int i = 0; i < _v.size(); i++)
+				for(int unsigned i = 0; i < _v.size(); i++)
 				  	cout << _v[i];
 	
 			}
@@ -272,14 +280,14 @@ namespace ed{
 	            \post Ninguna
 	            \sa aniadeDonacion()
 	        */
-			void aniadeDonacion(int veces){
+			void aniadeDonacion(int veces){					//Añadiremos las donaciones a la cima
 				assert(!isEmpty());
 				Donante D;
-				for(int i = 0; i < veces; i++){
-					D = top();
+				for(int i = 0; i < veces; i++){				//Mientras que haya donaciones que añadir
+					D = top();								//Añade la (1)donación al Donante que está en la cima
 					D.setDonaciones(D.getDonaciones()+1);
-					remove();
-					insertarDonante(D);
+					remove();								//Borra al donante que había
+					insertarDonante(D);						//Vuélvelo a instertar para que se reestructure el Montículo.
 				}
 			}
 

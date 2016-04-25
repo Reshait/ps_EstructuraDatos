@@ -1,6 +1,6 @@
 /*! 
   \file     donanteinterfaz.hpp
-  \brief    DonanteInterfaz representa la clase de preRequisitos para la clase Donante.
+  \brief    DonanteInterfaz representa la clase de preRequisitos para la clase Donante especificada en el archivo donante.hpp.
   \author   Teófilo Rojas Mata
   \date     10/04/2016
 */
@@ -10,7 +10,7 @@
 #include <string>
 
 using std::string; 
-//!  Definición del espacio de nombres ED de la asignatura
+
 namespace ed{
 
 //!  Definición de la plantilla de la clase Donante
@@ -85,6 +85,12 @@ namespace ed{
         */    
         virtual void setFactor(string nombre) = 0; 
 
+        /*! 
+            \brief Declaración virtual pura de la función setDonaciones
+            \param donaciones de tipo int
+            \pre El Donante debe existir
+            \post Ninguna
+        */ 
         virtual void setDonaciones(int donaciones) = 0;       
     };
 }

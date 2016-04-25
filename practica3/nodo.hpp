@@ -10,7 +10,7 @@
 #include "donante.hpp"
 
 namespace ed{
-	//!  Definición de la clase Donantes
+	//!  Definición de la clase Nodo
 	class Nodo{
 	    //! \name Atributos privados de la clase Nodo (data y siguiente)
 		private:

@@ -1,5 +1,5 @@
 # Nombre del proyecto
-PROJECT_NAME           = Práctica 2 de Estructura de datos. by Teo.
+PROJECT_NAME           = Práctica 3 de Estructura de datos. by Teo.
 
 # Idioma: español
 OUTPUT_LANGUAGE        = Spanish

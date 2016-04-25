@@ -111,9 +111,11 @@ void menu(){
 				break;	
 			case 7:
 				if(Monticulo.isEmpty())
-					cout << "El montículo está vacío" << endl;
-				else
+					cout << "El montículo está vacío." << endl;
+				else{
 					Monticulo.remove();
+					cout << "Cima eliminada Correctamente." << endl;
+				}
  		       	cout << "==========================================" << endl;		
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");				
