@@ -1,8 +1,11 @@
 #ifndef __GRAFO_HPP__
 #define __GRAFO_HPP__
+#define INFINITO std::numeric_limits<double>::infinity()
 
 #include <vector>
 #include <iostream>
+#include <cassert>
+#include <limits>
 #include "vertice.hpp"
 #include "lado.hpp"
 
@@ -14,6 +17,7 @@ namespace ed{
 		private:
 			vector<Vertice> v_; //aquí van todas las ciudades
 			double **matriz_; 	//Matriz de adyacencia
+			//mejor vector de vectores de float pq es más eficiente. vector<vector<double>> v_;
 			bool dirigido_; 	//bandera de dirigido o no
 			int a_;				//cursor para los vértices 
 			int b_;				//cursor para los lados
@@ -32,7 +36,7 @@ namespace ed{
 
 				for(int i = 0; i < tam; i++){					//Inicializo matriz a valor infinito
 					for(int j = 0; j < tam; j++){
-						matriz_[i][j] = 32000;
+						matriz_[i][j] = INFINITO;
 					}
 				}
 
@@ -48,9 +52,12 @@ namespace ed{
 			inline bool getDiri() const { return dirigido_; }
 			inline bool estaVacia() const { return getNumV() == 0 && getNumL() == 0; }
 			inline bool adyacencia(Vertice &U, Vertice &V){ 	//Comprueba si dos vertices son adyacentes
-				assert(tiene(U));
-				assert(tiene(V));
-				return U.otro(V) == U || V.otro(U) == V;
+				//Recibes dos vertices, si con sus posiciones en la matriz el valor es menor que infinito, es que sí existen.
+				//assert(L.tiene(U));
+				//assert(L.tiene(V));
+				assert(V.getLabel() < numVertices_);
+				assert(U.getLabel() < numVertices_);
+				return matriz_[U.getLabel()][V.getLabel()] < INFINITO;
 			} 
 			inline bool verticeCorrecto(){
 				if(a_ < getNumV())
@@ -70,8 +77,8 @@ namespace ed{
 				assert(ladoCorrecto());
 				Lado L;
 				L.setDistancia(matriz_[a_][b_]);			//Rellena la distancia que hay entre dos nodos en la matriz de adyacencia
-				L.inicio(v_[a_]);							//Rellena el primer nodo
-				L.fin(v_[b_]);								//Rellena el último nodo
+				L.getInicio(v_[a_]);							//Rellena el primer nodo
+				L.getFin(v_[b_]);								//Rellena el último nodo
 				return L;
 			} 
 
@@ -85,10 +92,10 @@ namespace ed{
 				v_.push_back(V);
 			}
 			inline void aniadeLado(Vertice U, Vertice V, double distancia){		
-				matriz_[U.label()][V.label()] = distancia;
+				matriz_[U.getLabel()][V.getLabel()] = distancia;
 				numLados_++;
 				if(!dirigido_)								//Si el grafo no es dirigido, en la otra dirección tiene la misma distancia
-					matriz_[V.label()][U.label()] = distancia;
+					matriz_[V.getLabel()][U.getLabel()] = distancia;
 			}
 
 	};
