@@ -77,8 +77,8 @@ namespace ed{
 				assert(ladoCorrecto());
 				Lado L;
 				L.setDistancia(matriz_[a_][b_]);			//Rellena la distancia que hay entre dos nodos en la matriz de adyacencia
-				L.getInicio(v_[a_]);							//Rellena el primer nodo
-				L.getFin(v_[b_]);								//Rellena el último nodo
+				L.setInicio(v_[a_]);							//Rellena el primer nodo
+				L.setFin(v_[b_]);								//Rellena el último nodo
 				return L;
 			} 
 
@@ -96,6 +96,79 @@ namespace ed{
 				numLados_++;
 				if(!dirigido_)								//Si el grafo no es dirigido, en la otra dirección tiene la misma distancia
 					matriz_[V.getLabel()][U.getLabel()] = distancia;
+			}
+
+			inline void buscarVertice(string ciudad){		//Lleva el cursor de vertices a la posición de la ciudad pasada
+				bool encontrado = false;
+				for(int i = 0; i < numVertices_ && encontrado == false; i++){
+					if(v_[i].getData() == ciudad){
+						a_ = i;
+						encontrado = true;
+					}
+				}
+			}
+
+			inline void irA(Vertice &V){					//Se posiciona en un vértice de la matriz
+				bool encontrado = false;
+				for(int i = 0; i < numVertices_ && encontrado == false; i++){
+					if(v_[i] == V){
+						a_ = i;
+						encontrado = true;
+					}
+				}				
+			}
+
+			inline void buscarLado(Vertice &U, Vertice &V){	//Pone el cursor en el lado referenciado
+				assert(V.getLabel() < numVertices_);
+				assert(U.getLabel() < numVertices_);
+				bool encontrado = false;
+				a_ = U.getLabel();
+				b_ = V.getLabel();
+			}
+
+			inline Vertice devuelveVerticeCero(){						//Devuelve el primer vértice
+				a_ = 0;
+				return v_[a_];
+			} 
+
+			inline Vertice siguienteVertice(){							//Devuelve el vértice siguiente al cursor
+				a_++;
+				return v_[a_];
+			}
+
+			inline bool sobrepasaLosVertices(){ 						//Comprueba si el cursor ha sobrepasado la última posición válida
+				return a_ >= numVertices_;
+			}
+
+			inline Lado beginEgde(Vertice &V){							//Lleva el cursor al primer vértice del lado recibido
+				a_ = V.getLabel();
+				b_ = 0;
+				while(matriz_[a_][b_] == INFINITO && !sobrepasaLosLados()){
+					b_++;
+				}
+
+				Lado L;
+				L.setDistancia(matriz_[a_][b_]);						//Rellena la distancia que hay entre dos nodos en la matriz de adyacencia
+				L.setInicio(v_[a_]);									//Rellena el primer nodo
+				L.setFin(v_[b_]);										//Rellena el último nodo
+				return L;
+			}
+
+			inline Lado siguienteLado(){								//Devuelve el siguiente lado del cursor que tiene valor válido
+				b_++;
+				while(matriz_[a_][b_] == INFINITO && !sobrepasaLosLados()){
+					b_++;
+				}
+
+				Lado L;
+				L.setDistancia(matriz_[a_][b_]);						//Rellena la distancia que hay entre dos nodos en la matriz de adyacencia
+				L.setInicio(v_[a_]);									//Rellena el primer nodo
+				L.setFin(v_[b_]);										//Rellena el último nodo
+				return L;
+			}
+
+			inline bool sobrepasaLosLados(){							//Comprueba si el cursor ha sobrepasado la última posición válida
+				return b_ >= numLados_;
 			}
 
 	};
