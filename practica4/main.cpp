@@ -69,7 +69,10 @@ int main(){
 			case 3:
 				cabecera(4);
 
-				Floyd(G, distancia, intermedio);
+				if(G->estaVacio())
+					cout << "El Grafo está vacío" << endl << "Usted debe cargar previamente un fichero." << endl << " (Opción del 1 del menú)" << endl;
+				else
+					Floyd(G, distancia, intermedio);
  		       	cout << "==========================================" << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");			

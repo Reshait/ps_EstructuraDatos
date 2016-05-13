@@ -108,28 +108,20 @@ namespace ed{
 
 
 	void pasaAmayuscula(string &ciudad){
-		char copia[ciudad.size()+1];
-		ciudad.c_str();
-		strcpy(copia, ciudad.c_str());
 
-		char conTildes[] = "áéíóú", sinTildes[] = "AEIOU";
+		string conTildes = "áéíóú", sinTildes = "AEIOU";
 
-		for(int i = 0; ciudad[i] != '\0'; i++)
-			for(int j = 0; j < 5; j++)
-				if(ciudad[i] == conTildes[j])
-					ciudad[i] = sinTildes[j];
-
-/*		string conTildes = "áéíóú", sinTildes = "AEIOU";
-
-		for(int i = 0; i < ciudad.size(); i++){		
-			for(int j = 0; j < 5; j++){
-				if(ciudad[i] == conTildes[j])
-					ciudad[i] = sinTildes[j];
+		for(int i = 0; i < ciudad.size(); i++){							//El truco está en que un carácter con tilde en c++ pesa dos posiciones.
+			for(int j = 0; j < conTildes.size(); j+=2){
+				if(ciudad[i] == conTildes[j] && ciudad[i+1] == conTildes[j+1]){
+					ciudad[i] = sinTildes[j/2];							//sustituyo el primer caracter con tilde por uno sin tilde
+					ciudad.erase(ciudad.begin()+i+1);					//Borro el carácter siguiente que ocupa un 2do espacio por la tilde
+				}
 			}
 
-			//ciudad[i] = toupper(ciudad[i]);
+			ciudad[i] = toupper(ciudad[i]);
 		}
-*/
+
 		cout << ciudad << endl;
 
 	}
@@ -216,8 +208,10 @@ namespace ed{
 		if( distancias[U.getLabel()][V.getLabel()] == INFINITO )
 			cout << "No existe distancia mínima" << endl;
 
-		else
-			cout << "La distancia mínima entre "<< U.getData() <<" y " << V.getData()<<" es: " << distancias[U.getLabel()][V.getLabel()] << endl;
+		else{
+			cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << endl;
+			cout << "La distancia mínima entre "<< U.getData() <<" y " << V.getData()<<" es: " << distancias[U.getLabel()][V.getLabel()] << "km" << endl;
+		}
 
 		cout << "El camino mínimo es: ";
 		cout << U.getData() << " ";
