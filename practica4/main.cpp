@@ -3,7 +3,7 @@
 #include "vertice.hpp"
 #include "lado.hpp"
 #include "grafo.hpp"
-#include "cargaFichero.hpp"
+#include "Funciones.hpp"
 
 using namespace ed;
 using namespace std;
@@ -21,7 +21,7 @@ int main(){
 			cin >> nombreFichero;
 			G=cargarFichero(nombreFichero);
 			//case 2
-			mostarGrafo(G);
+//			mostarGrafo(G);
 //		break;
 //	}
 

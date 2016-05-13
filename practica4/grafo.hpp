@@ -31,16 +31,6 @@ namespace ed{
 					tam = 0;
 				matriz_ = new double *[tam];				//Inicio reserva de memoria para matriz
 
-/*				for(int i = 0; i < tam; i++)
-					matriz_[i] = new double [tam];			//Fin reserva de memoria para matriz
-
-				for(int i = 0; i < tam; i++){					//Inicializo matriz a valor infinito
-					for(int j = 0; j < tam; j++){
-						matriz_[i][j] = 32000;
-					}
-				}
-*/
-
 				for(int i = 0; i < tam; i++){					//Inicializo matriz a valor infinito
 					matriz_[i] = new double [tam];
 					for(int j = 0; j < tam; j++){
