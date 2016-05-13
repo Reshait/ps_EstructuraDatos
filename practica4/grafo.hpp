@@ -48,7 +48,7 @@ namespace ed{
 			inline int getNumL() const { return numLados_; }
 			inline int getTam() const { return tamanio_; }
 			inline bool getDiri() const { return dirigido_; }
-			inline bool estaVacia() const { return getNumV() == 0 && getNumL() == 0; }
+			inline bool estaVacio() const { return getNumV() == 0 && getNumL() == 0; }
 			inline double adyacencia(Vertice &U, Vertice &V){ 	//Comprueba si dos vertices son adyacentes
 				//Recibes dos vertices, si con sus posiciones en la matriz el valor es menor que infinito, es que sí existen.
 				assert(V.getLabel() < numVertices_);
@@ -97,7 +97,7 @@ namespace ed{
 					matriz_[V.getLabel()][U.getLabel()] = distancia;
 			}
 
-			inline void buscarVertice(string ciudad){		//Lleva el cursor de vertices a la posición de la ciudad pasada
+/*			inline void buscarVertice(string ciudad){		//Lleva el cursor de vertices a la posición de la ciudad pasada
 				bool encontrado = false;
 				for(int i = 0; i < numVertices_ && encontrado == false; i++){
 					if(v_[i].getData() == ciudad){
@@ -105,6 +105,17 @@ namespace ed{
 						encontrado = true;
 					}
 				}
+			}
+*/
+			inline bool buscarVertice(string ciudad){		//Lleva el cursor de vertices a la posición de la ciudad pasada
+				bool encontrado = false;
+				for(int i = 0; i < numVertices_ && encontrado == false; i++){
+					if(v_[i].getData() == ciudad){
+						a_ = i;
+						encontrado = true;
+					}
+				}
+				return encontrado;
 			}
 
 			inline void irA(Vertice &V){					//Se posiciona en un vértice de la matriz
@@ -165,8 +176,6 @@ namespace ed{
 			inline bool sobrepasaLosLados(){							//Comprueba si el cursor ha sobrepasado la última posición válida
 				return b_ == numLados_;
 			}
-
-
 
 	};
 }

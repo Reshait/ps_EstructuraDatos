@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <ctype.h>
 #include "vertice.hpp"
 #include "lado.hpp"
 #include "grafo.hpp"
@@ -15,6 +16,24 @@ using std::cout;
 using std::endl;
 
 namespace ed{
+	/*! 
+	  \brief Muestra la cabecera de la práctica3 con mis datos personales.
+	  \post Ninguna
+	  \sa cabecera()
+	  \param x tipo entero con el número de la práctica.
+	*/
+	void cabecera(int x){
+	    system("clear");
+	    system("tput bold");
+
+	    cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
+	    cout << "┃ Teófilo Rojas Mata, Práctica " << x << " de Estructura de Datos ┃" << endl;
+	    cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
+	    system("tput sgr0");
+
+	    cout << endl;
+	}
+
 	Grafo * cargarFichero(string nombreFichero){
 
 		ifstream f(nombreFichero.c_str());								// abre fichero
@@ -59,7 +78,7 @@ namespace ed{
 
 	}
 
-	void mostarGrafo(Grafo *G){
+	void mostrarGrafo(Grafo *G){
 		Vertice aux;
 		G->posicionaVerticeCero();										// posiciona al principio del grafo
 
@@ -86,12 +105,56 @@ namespace ed{
 			G->siguienteVertice();										// pasa al siguiente lado
 		}
 	}
-	
+
+
+	void pasaAmayuscula(string &ciudad){
+		char copia[ciudad.size()+1];
+		ciudad.c_str();
+		strcpy(copia, ciudad.c_str());
+
+		char conTildes[] = "áéíóú", sinTildes[] = "AEIOU";
+
+		for(int i = 0; ciudad[i] != '\0'; i++)
+			for(int j = 0; j < 5; j++)
+				if(ciudad[i] == conTildes[j])
+					ciudad[i] = sinTildes[j];
+
+/*		string conTildes = "áéíóú", sinTildes = "AEIOU";
+
+		for(int i = 0; i < ciudad.size(); i++){		
+			for(int j = 0; j < 5; j++){
+				if(ciudad[i] == conTildes[j])
+					ciudad[i] = sinTildes[j];
+			}
+
+			//ciudad[i] = toupper(ciudad[i]);
+		}
+*/
+		cout << ciudad << endl;
+
+	}
+
+
 	Vertice pideLaCiudad(Grafo *G, int ordenCiudad){
 		string ciudad;
-		cout << "Introduzca la " << ordenCiudad << "º ciudad\t..: ";
-		cin >> ciudad;
-		G->buscarVertice(ciudad);
+		bool primeraVez = true;
+		
+//		pasaAmayuscula(ciudad);
+		
+		while(!G->buscarVertice(ciudad)){
+			if(primeraVez)
+				cout << "Introduzca la " << ordenCiudad << "º ciudad\t..: ";
+			else{
+				cout << "La ciudad no existe." << endl;
+				cout << "Introduzca la " << ordenCiudad << "º ciudad\t..: ";
+			}
+
+			primeraVez = false;
+			cin >> ciudad;
+			pasaAmayuscula(ciudad);
+		}		
+
+		//G->buscarVertice(ciudad);
 		return G->verticeActual();
 	}
 
@@ -162,6 +225,17 @@ namespace ed{
 		cout << V.getData() << endl;
 
 	}	
+
+	bool existeFichero(string nombreFichero){
+		bool devuelve = false;
+		ifstream f(nombreFichero.c_str());
+
+		if(f)
+			devuelve = true;
+		
+		f.close();
+		return devuelve;
+	}
 
 }
 #endif
