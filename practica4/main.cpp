@@ -4,7 +4,7 @@
 #include "vertice.hpp"
 #include "lado.hpp"
 #include "grafo.hpp"
-#include "Funciones.hpp"
+#include "funciones.hpp"
 
 using namespace ed;
 using namespace std;
