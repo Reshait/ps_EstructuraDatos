@@ -24,10 +24,8 @@ namespace ed{
 				Vertice aux;
 				if (V == getInicio())
 					aux = getFin();
-					//return getFin();
 				else if(V == getFin())
 					aux = getInicio();
-					//return getInicio();
 				return aux;
 			}
 
