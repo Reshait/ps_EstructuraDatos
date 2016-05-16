@@ -33,6 +33,7 @@ int main(){
 	double **distancia;
 	int **intermedio;
 	int opcion;
+	int opcion2;
 
 	do{
 
@@ -84,17 +85,62 @@ int main(){
 				break;
 			
 			case 3:
-				cabecera(4);
+				do{
+					cabecera(4);
 
-				if(G->estaVacio())
-					cout << "El Grafo está vacío" << endl << "Usted debe cargar previamente un fichero." << endl << " (Opción del 1 del menú)" << endl;
-				else{
-					verticeMenorSuma(G);
-					Floyd(G, distancia, intermedio);
-				}
- 		       	cout << "==========================================" << endl;
-				cout << "Presione la tecla 'Intro' para continuar..." << endl;
-				system("read");			
+					if(G->estaVacio())
+						cout << "El Grafo está vacío" << endl << "Usted debe cargar previamente un fichero." << endl << " (Opción del 1 del menú)" << endl;
+					else{
+						cout << "\t\t\tFLOYD" << endl;
+	 		       		cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << endl;
+						cout << ">>\t1.- Mostrar el vértice con menor suma." << endl;
+						cout << ">>\t2.- Mostrar suma de distancias de cada vértice." << endl;
+						cout << ">>\t3.- Aplicar algoritmo de Floyd." << endl;
+						cout << ">>\t0.- Para Salir." << endl;
+						cout << ">>\t\tIntroduzca una opción >> ";
+						cin >> opcion2;
+						getchar();
+
+						switch(opcion2){
+							case 1:
+								cabecera(4);
+								cout << "\t\t>> VERTICE CON MENOR SUMA" << endl;
+								verticeMenorSuma(G);
+							break;
+
+							case 2:
+								cabecera(4);							
+		 		       			cout << "\t>> SUMA DE DISTANCIAS DE CADA VERTICE" << endl;
+		 		       			for(int i = 0; i < G->getNumV(); i++){
+		 		       				sumaDistancias(G, i);
+		 		       				cout << endl;
+		 		       			}
+							break;
+
+							case 3:
+								cabecera(4);
+								cout << "\t>> MINIMA DISTANCIA ENTRE UNA CIUDAD Y OTRA" << endl;						
+								Floyd(G, distancia, intermedio);
+							break;
+
+							case 0:
+								cabecera(4);
+								cout << "Volviendo al menú principal" << endl;
+							break;
+
+							default:
+								cabecera(4);
+								cout << "Opción introducida incorrecta." << endl;
+								cout << "Pulse intro para continuar..." << endl;
+								system("read");
+							break;	
+						}
+					}
+	 		       	cout << "==========================================" << endl;
+					cout << "Presione la tecla 'Intro' para continuar..." << endl;
+					system("read");	
+
+				}while(opcion2 != 0);	
 				break;				
 			
 			case 0:
