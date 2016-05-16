@@ -88,8 +88,10 @@ int main(){
 
 				if(G->estaVacio())
 					cout << "El Grafo está vacío" << endl << "Usted debe cargar previamente un fichero." << endl << " (Opción del 1 del menú)" << endl;
-				else
+				else{
+					verticeMenorSuma(G);
 					Floyd(G, distancia, intermedio);
+				}
  		       	cout << "==========================================" << endl;
 				cout << "Presione la tecla 'Intro' para continuar..." << endl;
 				system("read");			

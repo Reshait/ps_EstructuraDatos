@@ -9,7 +9,7 @@
 
 #ifndef __FUNCIONES_HPP__
 #define __FUNCIONES_HPP__
-#define INFINITO 32000
+#define INFINITO 999999
 
 #include <iostream>
 #include <string>
@@ -271,5 +271,52 @@ namespace ed{
 		return devuelve;
 	}
 
+	void verticeMenorSuma(Grafo *G){
+		double minimo = INFINITO;
+		double distancia;
+		double sumDistancia;
+		int posicionSolucion;
+		int tam = G->getNumV();
+		Vertice U, V;
+
+		for(int i; i < tam; i++){
+			sumDistancia = 0;
+			G->irA(i);
+			U = G->verticeActual();		
+			
+			for(int j; j < tam; j++){
+
+				G->irA(j);
+				V = G->verticeActual();
+				distancia = G->adyacencia(U,V);
+
+				if(distancia < INFINITO)
+					sumDistancia += distancia;
+			}
+
+			//cout << "Ciudad\t..: " << U.getData() << endl;
+			//cout << "Suma dis\t..:" << sumDistancia << endl;
+
+			if(sumDistancia < minimo){
+				minimo = sumDistancia;
+				cout << "Entra aquí malditooooooo -->" << minimo << endl;
+				posicionSolucion = i;
+			}
+		}
+
+		G->irA(posicionSolucion);
+		U = G->verticeActual();
+		cout << "Vértice con la menor suma de distancias\t..: " << U.getData() << endl;
+		cout << "Valor de la suma de sus distancias\t..: " << minimo << "km" << endl;
+	}
+/*
+	void sumaDistancias(Grafo *G, int posicionVertice){
+		G->irA(posicionVertice);
+		Vertice U = G->verticeActual();
+		double distancia;
+		double sumaDistancia = 0;
+
+	}
+*/
 }
 #endif

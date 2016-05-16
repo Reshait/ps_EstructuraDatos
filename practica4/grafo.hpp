@@ -7,7 +7,7 @@
 
 #ifndef __GRAFO_HPP__
 #define __GRAFO_HPP__
-#define INFINITO 32000
+#define INFINITO 999999
 
 #include <vector>
 #include <iostream>
