@@ -29,12 +29,14 @@ namespace ed{
 			Grafo(unsigned int tam = 0, bool dirigido = true){
 				if(tam < 0)
 					tam = 0;
-				matriz_ = new double *[tamanio_];				//Inicio reserva de memoria para matriz
-				
-				for(int i = 0; i < tam; i++)
-					matriz_[i] = new double [tamanio_];			//Fin reserva de memoria para matriz
+				//matriz_ = new double *[tamanio_];				//Inicio reserva de memoria para matriz
+//						tamanio_ = tam;
+		
+				//for(int i = 0; i < tam; i++)
+				//	matriz_[i] = new double [tamanio_];			//Fin reserva de memoria para matriz
 
 				for(int i = 0; i < tam; i++){					//Inicializo matriz a valor infinito
+					matriz_[i] = new double [tamanio_];
 					for(int j = 0; j < tam; j++){
 						matriz_[i][j] = INFINITO;
 					}
@@ -42,7 +44,6 @@ namespace ed{
 
 				numVertices_ = 0;	
 				numLados_ = 0;
-				tamanio_ = tam;
 				dirigido_ = dirigido;
 			}
 
@@ -53,8 +54,6 @@ namespace ed{
 			inline bool estaVacia() const { return getNumV() == 0 && getNumL() == 0; }
 			inline bool adyacencia(Vertice &U, Vertice &V){ 	//Comprueba si dos vertices son adyacentes
 				//Recibes dos vertices, si con sus posiciones en la matriz el valor es menor que infinito, es que sí existen.
-				//assert(L.tiene(U));
-				//assert(L.tiene(V));
 				assert(V.getLabel() < numVertices_);
 				assert(U.getLabel() < numVertices_);
 				return matriz_[U.getLabel()][V.getLabel()] < INFINITO;
@@ -91,7 +90,9 @@ namespace ed{
 				numVertices_++;
 				v_.push_back(V);
 			}
-			inline void aniadeLado(Vertice U, Vertice V, double distancia){		
+			inline void aniadeLado(Vertice U, Vertice V, double distancia){	
+				//assert(U.getLabel() < numVertices_);
+				//assert(V.getLabel() < numVertices_);	
 				matriz_[U.getLabel()][V.getLabel()] = distancia;
 				numLados_++;
 				if(!dirigido_)								//Si el grafo no es dirigido, en la otra dirección tiene la misma distancia

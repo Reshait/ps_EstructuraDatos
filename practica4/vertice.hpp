@@ -2,6 +2,8 @@
 #define __VERTICE_HPP__
 
 #include <iostream>
+#include <string>
+
 using std::string;
 
 namespace ed{

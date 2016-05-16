@@ -9,6 +9,7 @@
 #include "grafo.hpp"
 
 using std::ifstream;
+using std::string;
 
 namespace ed{
 	void cargarFichero(Grafo &G, string nombreFichero){
