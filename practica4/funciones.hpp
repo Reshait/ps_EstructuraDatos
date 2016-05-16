@@ -1,3 +1,12 @@
+/*! 
+  \file     funciones.hpp
+  \brief    Funciones restantes para realizar Floyd, camino, cargar Fichero y varios...
+  \author   Teófilo Rojas Mata
+  \date     16/05/2016
+*/
+
+//Me queda por comentar un poco.
+
 #ifndef __FUNCIONES_HPP__
 #define __FUNCIONES_HPP__
 #define INFINITO 32000
@@ -34,6 +43,12 @@ namespace ed{
 	    cout << endl;
 	}
 
+    /*! 
+      \brief Función para cargar los datos desde un fichero
+      \param nombreFichero tipo string
+      \post Ninguna
+      \sa cargarfichero()
+    */
 	Grafo * cargarFichero(string nombreFichero){
 
 		ifstream f(nombreFichero.c_str());								// abre fichero
@@ -78,6 +93,13 @@ namespace ed{
 
 	}
 
+    /*! 
+      \brief Imprime el Grafo por pantalla
+      \param G tipo Grafo
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa mostrarGrafo()
+    */
 	void mostrarGrafo(Grafo *G){
 		Vertice aux;
 		G->posicionaVerticeCero();										// posiciona al principio del grafo
@@ -106,7 +128,13 @@ namespace ed{
 		}
 	}
 
-
+    /*! 
+      \brief Función para controlar/arreglar el error de que el texto se pase en minúscula o con tíldes.
+      \param ciudad tipo string
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa pasarAmayuscula()
+    */
 	void pasaAmayuscula(string &ciudad){
 
 		string conTildes = "áéíóú", sinTildes = "AEIOU";
@@ -126,30 +154,42 @@ namespace ed{
 
 	}
 
-
+    /*! 
+      \brief Controla que la ciudad introducida exista, si no, la vuelve a pedir.
+      \param G tipo Grafo
+      \param ordenCiudad tipo int
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa pideLaCiudad()
+    */
 	Vertice pideLaCiudad(Grafo *G, int ordenCiudad){
 		string ciudad;
 		bool primeraVez = true;
 		
-//		pasaAmayuscula(ciudad);
-		
 		while(!G->buscarVertice(ciudad)){
-			if(primeraVez)
-				cout << "Introduzca la " << ordenCiudad << "º ciudad\t..: ";
-			else{
-				cout << "La ciudad no existe." << endl;
-				cout << "Introduzca la " << ordenCiudad << "º ciudad\t..: ";
-			}
+			if(!primeraVez)												//si NO es la primera vez que se entra en el bucle, 
+				cout << "La ciudad no existe." << endl;					//es pq la ciudad introducida no existe, 
+																		//indica que no existe y vuelve a pedirla
+			cout << "Introduzca la " << ordenCiudad << "º ciudad\t..: ";
 
 			primeraVez = false;
 			cin >> ciudad;
 			pasaAmayuscula(ciudad);
 		}		
 
-		//G->buscarVertice(ciudad);
 		return G->verticeActual();
 	}
 
+    /*! 
+      \brief Función para mostrar el camino mínimo de las ciudades
+      \param G tipo Grafo
+      \param origen tipo Vertice
+      \param destino tipo Vertice
+      \param intermedios tipo int
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa camino()
+    */
 	void camino(Grafo *G,Vertice &origen,Vertice &destino,int **intermedios){
 
 		if(intermedios[origen.getLabel()][destino.getLabel()] != -1){

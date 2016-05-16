@@ -1,6 +1,17 @@
+/*! 
+  \file     main.cpp
+  \brief    Es el archivo que carga el menú correspondiente exigido por la práctica 4 de la asignatura Estructura de Datos.
+  \author   Teófilo Rojas Mata
+  \date     16/05/2016
+*/
+
+//compilar con:
+//g++ main.cpp
+
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cstdlib> // para los systems
 #include "vertice.hpp"
 #include "lado.hpp"
 #include "grafo.hpp"
@@ -9,6 +20,12 @@
 using namespace ed;
 using namespace std;
 
+/*! 
+  	\brief Menú para gestionar los ejercicios requeridos en la práctica 4 de la asignatura Estructura de Datos
+    \pre Ninguna
+    \post Ninguna
+    \sa main()
+*/
 int main(){
 	Grafo *G;
 	G = new Grafo(0,1);
