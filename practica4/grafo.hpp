@@ -303,7 +303,6 @@ namespace ed{
 			inline void buscarLado(Vertice &U, Vertice &V){		//Pone el cursor en el lado referenciado
 				assert(V.getLabel() < numVertices_);
 				assert(U.getLabel() < numVertices_);
-				bool encontrado = false;
 				a_ = U.getLabel();
 				b_ = V.getLabel();
 			}

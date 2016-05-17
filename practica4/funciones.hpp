@@ -143,8 +143,8 @@ using ed::Vertice;
 
 		string conTildes = "áéíóú", sinTildes = "AEIOU";
 
-		for(int i = 0; i < ciudad.size(); i++){							//El truco está en que un carácter con tilde en c++ pesa dos posiciones.
-			for(int j = 0; j < conTildes.size(); j+=2){
+		for(unsigned int i = 0; i < ciudad.size(); i++){							//El truco está en que un carácter con tilde en c++ pesa dos posiciones.
+			for(unsigned int j = 0; j < conTildes.size(); j+=2){
 				if(ciudad[i] == conTildes[j] && ciudad[i+1] == conTildes[j+1]){
 					ciudad[i] = sinTildes[j/2];							//sustituyo el primer caracter con tilde por uno sin tilde
 					ciudad.erase(ciudad.begin()+i+1);					//Borro el carácter siguiente que ocupa un 2do espacio por la tilde
@@ -216,7 +216,6 @@ using ed::Vertice;
     */
 	void Floyd(Grafo * &G,double **&distancias,int **intermedios){
 		int i,j,k;
-		double distanciaT;
 		Vertice U,V;
 		string origen,destino;
 																		// Reserva memoria para las dos matrices
@@ -367,7 +366,6 @@ using ed::Vertice;
 		Vertice U;
 		double sumaDistancia = 0;
 		double minimaDistancia = INFINITO;
-		int posicionMinimo;
 
 		G->irA(posicionVertice);
 

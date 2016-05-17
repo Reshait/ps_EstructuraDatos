@@ -38,8 +38,8 @@ int main(){
 	Grafo *G;
 	G = new Grafo(0,1);
 	string fichero;
-	double **distancia;
-	int **intermedio;
+	double **distancia = NULL;
+	int **intermedio = NULL;
 	int opcion;
 	int opcion2;
 	bool floydPasado = false;

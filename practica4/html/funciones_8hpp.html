@@ -1,0 +1,532 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PrÃ¡ctica4deEstructuradedatos.byTeo.: Referencia del Archivo funciones.hpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.1 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Página&nbsp;principal</span></a></li>
+    <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+    <li><a href="annotated.html"><span>Clases</span></a></li>
+    <li id="current"><a href="files.html"><span>Archivos</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+    <li><a href="globals.html"><span>Archivos&nbsp;de&nbsp;los&nbsp;miembros</span></a></li>
+  </ul></div>
+<h1>Referencia del Archivo funciones.hpp</h1>Funciones restantes para realizar Floyd, camino, cargar Fichero y varios... <a href="#_details">Más...</a>
+<p>
+<code>#include &lt;iostream&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;fstream&gt;</code><br>
+<code>#include &lt;ctype.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="vertice_8hpp-source.html">vertice.hpp</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="lado_8hpp-source.html">lado.hpp</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="grafo_8hpp-source.html">grafo.hpp</a>&quot;</code><br>
+
+<p>
+<a href="funciones_8hpp-source.html">Ir al código fuente de este archivo.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Definiciones</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#f076440f216f5a40a11563e489f04932">INFINITO</a>&nbsp;&nbsp;&nbsp;999999</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">SimulaciÃ³n de distancias rellenas al mÃ¡ximo para inicializar la matriz.  <a href="#f076440f216f5a40a11563e489f04932"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Funciones</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#d9096cdf27ef955bbba3b28d554d614c">cabecera</a> (int x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Muestra la cabecera de la prÃ¡ctica3 con mis datos personales.  <a href="#d9096cdf27ef955bbba3b28d554d614c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#1a96918280d49e92442fb2e2d514ffca">cargarFichero</a> (string nombreFichero)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n para cargar los datos desde un fichero.  <a href="#1a96918280d49e92442fb2e2d514ffca"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#b4c81caff4181478c3181b188fcfc6d1">mostrarGrafo</a> (<a class="el" href="classed_1_1Grafo.html">Grafo</a> *G)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Imprime el Grafo por pantalla.  <a href="#b4c81caff4181478c3181b188fcfc6d1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#fd0248a182f20fa177ce385c36d25572">pasaAmayuscula</a> (string &amp;ciudad)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n para controlar/arreglar el error de que el texto se pase en minÃºscula o con tÃ­ldes.  <a href="#fd0248a182f20fa177ce385c36d25572"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classed_1_1Vertice.html">Vertice</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#d091c6fd67425ac550298edb2fd7d1c9">pideLaCiudad</a> (<a class="el" href="classed_1_1Grafo.html">Grafo</a> *G, int ordenCiudad)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Controla que la ciudad introducida exista, si no, la vuelve a pedir.  <a href="#d091c6fd67425ac550298edb2fd7d1c9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#bceb1f374df6bec0033b9243c1f75a06">camino</a> (<a class="el" href="classed_1_1Grafo.html">Grafo</a> *G, <a class="el" href="classed_1_1Vertice.html">Vertice</a> &amp;origen, <a class="el" href="classed_1_1Vertice.html">Vertice</a> &amp;destino, int **intermedios)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n para mostrar el camino mÃ­nimo de las ciudades.  <a href="#bceb1f374df6bec0033b9243c1f75a06"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#c4191549758c6bb916f166abf42dec9d">Floyd</a> (<a class="el" href="classed_1_1Grafo.html">Grafo</a> *&amp;G, double **&amp;distancias, int **intermedios)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n para generar el Algoritmo de Floyd.  <a href="#c4191549758c6bb916f166abf42dec9d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#e22bcb32f2ed2b3db944b875ad7e4736">existeFichero</a> (string nombreFichero)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n para controlar el error de que no exista el fichero.  <a href="#e22bcb32f2ed2b3db944b875ad7e4736"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#b2e4b975235468dbd2f13768f85b18fd">verticeMenorSuma</a> (<a class="el" href="classed_1_1Grafo.html">Grafo</a> *G, double **distancias)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n obtener la menor suma de los vÃ©rtices.  <a href="#b2e4b975235468dbd2f13768f85b18fd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="funciones_8hpp.html#df1645efa59fd2e5f5d8666f9fb62fc9">sumaDistancias</a> (<a class="el" href="classed_1_1Grafo.html">Grafo</a> *G, int posicionVertice, double **distancias)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">FunciÃ³n para obtener la suma de las distancias.  <a href="#df1645efa59fd2e5f5d8666f9fb62fc9"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Funciones restantes para realizar Floyd, camino, cargar Fichero y varios... 
+<p>
+<dl class="author" compact><dt><b>Autor:</b></dt><dd>TeÃ³filo Rojas Mata </dd></dl>
+<dl class="date" compact><dt><b>Fecha:</b></dt><dd>16/05/2016 </dd></dl>
+
+<p>
+Definición en el archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.<hr><h2>Documentación de las definiciones</h2>
+<a class="anchor" name="f076440f216f5a40a11563e489f04932"></a><!-- doxytag: member="funciones.hpp::INFINITO" ref="f076440f216f5a40a11563e489f04932" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INFINITO&nbsp;&nbsp;&nbsp;999999          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+SimulaciÃ³n de distancias rellenas al mÃ¡ximo para inicializar la matriz. 
+<p>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="grafo_8hpp.html#f076440f216f5a40a11563e489f04932">INFINITO</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00014">14</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Referenciado por <a class="el" href="grafo_8hpp-source.html#l00348">ed::Grafo::beginEdge()</a>, <a class="el" href="funciones_8hpp-source.html#l00217">Floyd()</a>, <a class="el" href="grafo_8hpp-source.html#l00055">ed::Grafo::Grafo()</a>, <a class="el" href="grafo_8hpp-source.html#l00362">ed::Grafo::siguienteLado()</a>, <a class="el" href="funciones_8hpp-source.html#l00366">sumaDistancias()</a>, y <a class="el" href="funciones_8hpp-source.html#l00301">verticeMenorSuma()</a>.
+</div>
+</div><p>
+<hr><h2>Documentación de las funciones</h2>
+<a class="anchor" name="d9096cdf27ef955bbba3b28d554d614c"></a><!-- doxytag: member="funciones.hpp::cabecera" ref="d9096cdf27ef955bbba3b28d554d614c" args="(int x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cabecera           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Muestra la cabecera de la prÃ¡ctica3 con mis datos personales. 
+<p>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#d9096cdf27ef955bbba3b28d554d614c">cabecera()</a> </dd></dl>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>tipo entero con el nÃºmero de la prÃ¡ctica. </td></tr>
+  </table>
+</dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00038">38</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<a class="anchor" name="bceb1f374df6bec0033b9243c1f75a06"></a><!-- doxytag: member="funciones.hpp::camino" ref="bceb1f374df6bec0033b9243c1f75a06" args="(Grafo *G, Vertice &amp;origen, Vertice &amp;destino, int **intermedios)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void camino           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&nbsp;</td>
+          <td class="paramname"> <em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classed_1_1Vertice.html">Vertice</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>origen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classed_1_1Vertice.html">Vertice</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>destino</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&nbsp;</td>
+          <td class="paramname"> <em>intermedios</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n para mostrar el camino mÃ­nimo de las ciudades. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>G</em>&nbsp;</td><td>tipo Grafo </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>origen</em>&nbsp;</td><td>tipo Vertice </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>destino</em>&nbsp;</td><td>tipo Vertice </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>intermedios</em>&nbsp;</td><td>tipo int </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#bceb1f374df6bec0033b9243c1f75a06">camino()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00197">197</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="vertice_8hpp-source.html#l00037">ed::Vertice::getData()</a>, <a class="el" href="vertice_8hpp-source.html#l00046">ed::Vertice::getLabel()</a>, <a class="el" href="grafo_8hpp-source.html#l00267">ed::Grafo::irA()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="funciones_8hpp-source.html#l00217">Floyd()</a>.
+</div>
+</div><p>
+<a class="anchor" name="1a96918280d49e92442fb2e2d514ffca"></a><!-- doxytag: member="funciones.hpp::cargarFichero" ref="1a96918280d49e92442fb2e2d514ffca" args="(string nombreFichero)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classed_1_1Grafo.html">Grafo</a>* cargarFichero           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>nombreFichero</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n para cargar los datos desde un fichero. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>nombreFichero</em>&nbsp;</td><td>tipo string </td></tr>
+  </table>
+</dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd>cargarfichero() </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00056">56</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="grafo_8hpp-source.html#l00236">ed::Grafo::aniadeLado()</a>, <a class="el" href="grafo_8hpp-source.html#l00218">ed::Grafo::aniadeVertice()</a>, <a class="el" href="grafo_8hpp-source.html#l00249">ed::Grafo::buscarVertice()</a>, <a class="el" href="vertice_8hpp-source.html#l00046">ed::Vertice::getLabel()</a>, <a class="el" href="vertice_8hpp-source.html#l00056">ed::Vertice::setData()</a>, <a class="el" href="vertice_8hpp-source.html#l00065">ed::Vertice::setLabel()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<a class="anchor" name="e22bcb32f2ed2b3db944b875ad7e4736"></a><!-- doxytag: member="funciones.hpp::existeFichero" ref="e22bcb32f2ed2b3db944b875ad7e4736" args="(string nombreFichero)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool existeFichero           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>nombreFichero</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n para controlar el error de que no exista el fichero. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>nombreFichero</em>&nbsp;</td><td>tipo string </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El fichero debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#e22bcb32f2ed2b3db944b875ad7e4736">existeFichero()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00283">283</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<a class="anchor" name="c4191549758c6bb916f166abf42dec9d"></a><!-- doxytag: member="funciones.hpp::Floyd" ref="c4191549758c6bb916f166abf42dec9d" args="(Grafo *&amp;G, double **&amp;distancias, int **intermedios)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Floyd           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&amp;&nbsp;</td>
+          <td class="paramname"> <em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&amp;&nbsp;</td>
+          <td class="paramname"> <em>distancias</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&nbsp;</td>
+          <td class="paramname"> <em>intermedios</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n para generar el Algoritmo de Floyd. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>G</em>&nbsp;</td><td>tipo Grafo </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>distancias</em>&nbsp;</td><td>tipo double** </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>intermedios</em>&nbsp;</td><td>tipo int** </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#c4191549758c6bb916f166abf42dec9d">Floyd()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00217">217</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="grafo_8hpp-source.html#l00126">ed::Grafo::adyacencia()</a>, <a class="el" href="funciones_8hpp-source.html#l00197">camino()</a>, <a class="el" href="vertice_8hpp-source.html#l00037">ed::Vertice::getData()</a>, <a class="el" href="vertice_8hpp-source.html#l00046">ed::Vertice::getLabel()</a>, <a class="el" href="grafo_8hpp-source.html#l00081">ed::Grafo::getNumV()</a>, <a class="el" href="grafo_8hpp-source.html#l00099">ed::Grafo::getTam()</a>, <a class="el" href="funciones_8hpp-source.html#l00014">INFINITO</a>, <a class="el" href="grafo_8hpp-source.html#l00267">ed::Grafo::irA()</a>, <a class="el" href="funciones_8hpp-source.html#l00169">pideLaCiudad()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<a class="anchor" name="b4c81caff4181478c3181b188fcfc6d1"></a><!-- doxytag: member="funciones.hpp::mostrarGrafo" ref="b4c81caff4181478c3181b188fcfc6d1" args="(Grafo *G)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mostrarGrafo           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&nbsp;</td>
+          <td class="paramname"> <em>G</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Imprime el Grafo por pantalla. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>G</em>&nbsp;</td><td>tipo Grafo </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#b4c81caff4181478c3181b188fcfc6d1">mostrarGrafo()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00107">107</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="grafo_8hpp-source.html#l00348">ed::Grafo::beginEdge()</a>, <a class="el" href="vertice_8hpp-source.html#l00037">ed::Vertice::getData()</a>, <a class="el" href="lado_8hpp-source.html#l00032">ed::Lado::getDistancia()</a>, <a class="el" href="lado_8hpp-source.html#l00050">ed::Lado::getFin()</a>, <a class="el" href="lado_8hpp-source.html#l00041">ed::Lado::getInicio()</a>, <a class="el" href="vertice_8hpp-source.html#l00046">ed::Vertice::getLabel()</a>, <a class="el" href="grafo_8hpp-source.html#l00177">ed::Grafo::ladoActual()</a>, <a class="el" href="grafo_8hpp-source.html#l00317">ed::Grafo::posicionaVerticeCero()</a>, <a class="el" href="grafo_8hpp-source.html#l00362">ed::Grafo::siguienteLado()</a>, <a class="el" href="grafo_8hpp-source.html#l00327">ed::Grafo::siguienteVertice()</a>, <a class="el" href="grafo_8hpp-source.html#l00375">ed::Grafo::sobrepasaLosLados()</a>, <a class="el" href="grafo_8hpp-source.html#l00337">ed::Grafo::sobrepasaLosVertices()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<a class="anchor" name="fd0248a182f20fa177ce385c36d25572"></a><!-- doxytag: member="funciones.hpp::pasaAmayuscula" ref="fd0248a182f20fa177ce385c36d25572" args="(string &amp;ciudad)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pasaAmayuscula           </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&nbsp;</td>
+          <td class="paramname"> <em>ciudad</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n para controlar/arreglar el error de que el texto se pase en minÃºscula o con tÃ­ldes. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>ciudad</em>&nbsp;</td><td>tipo string </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd>pasarAmayuscula() </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00142">142</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Referenciado por <a class="el" href="funciones_8hpp-source.html#l00169">pideLaCiudad()</a>.
+</div>
+</div><p>
+<a class="anchor" name="d091c6fd67425ac550298edb2fd7d1c9"></a><!-- doxytag: member="funciones.hpp::pideLaCiudad" ref="d091c6fd67425ac550298edb2fd7d1c9" args="(Grafo *G, int ordenCiudad)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classed_1_1Vertice.html">Vertice</a> pideLaCiudad           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&nbsp;</td>
+          <td class="paramname"> <em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>ordenCiudad</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Controla que la ciudad introducida exista, si no, la vuelve a pedir. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>G</em>&nbsp;</td><td>tipo Grafo </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ordenCiudad</em>&nbsp;</td><td>tipo int </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#d091c6fd67425ac550298edb2fd7d1c9">pideLaCiudad()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00169">169</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="grafo_8hpp-source.html#l00249">ed::Grafo::buscarVertice()</a>, <a class="el" href="funciones_8hpp-source.html#l00142">pasaAmayuscula()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="funciones_8hpp-source.html#l00217">Floyd()</a>.
+</div>
+</div><p>
+<a class="anchor" name="df1645efa59fd2e5f5d8666f9fb62fc9"></a><!-- doxytag: member="funciones.hpp::sumaDistancias" ref="df1645efa59fd2e5f5d8666f9fb62fc9" args="(Grafo *G, int posicionVertice, double **distancias)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sumaDistancias           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&nbsp;</td>
+          <td class="paramname"> <em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>posicionVertice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&nbsp;</td>
+          <td class="paramname"> <em>distancias</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n para obtener la suma de las distancias. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>G</em>&nbsp;</td><td>tipo Grafo* </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>posicionVertice</em>&nbsp;</td><td>tipo int </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#df1645efa59fd2e5f5d8666f9fb62fc9">sumaDistancias()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00366">366</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="vertice_8hpp-source.html#l00037">ed::Vertice::getData()</a>, <a class="el" href="grafo_8hpp-source.html#l00081">ed::Grafo::getNumV()</a>, <a class="el" href="funciones_8hpp-source.html#l00014">INFINITO</a>, <a class="el" href="grafo_8hpp-source.html#l00267">ed::Grafo::irA()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<a class="anchor" name="b2e4b975235468dbd2f13768f85b18fd"></a><!-- doxytag: member="funciones.hpp::verticeMenorSuma" ref="b2e4b975235468dbd2f13768f85b18fd" args="(Grafo *G, double **distancias)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void verticeMenorSuma           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classed_1_1Grafo.html">Grafo</a> *&nbsp;</td>
+          <td class="paramname"> <em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&nbsp;</td>
+          <td class="paramname"> <em>distancias</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+FunciÃ³n obtener la menor suma de los vÃ©rtices. 
+<p>
+<dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>G</em>&nbsp;</td><td>tipo Grafo* </td></tr>
+  </table>
+</dl>
+<dl class="pre" compact><dt><b>Precondición:</b></dt><dd>El Grafo debe existir </dd></dl>
+<dl class="post" compact><dt><b>Postcondición:</b></dt><dd>Ninguna </dd></dl>
+<dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="funciones_8hpp.html#b2e4b975235468dbd2f13768f85b18fd">verticeMenorSuma()</a> </dd></dl>
+
+<p>
+Definición en la línea <a class="el" href="funciones_8hpp-source.html#l00301">301</a> del archivo <a class="el" href="funciones_8hpp-source.html">funciones.hpp</a>.
+<p>
+Hace referencia a <a class="el" href="vertice_8hpp-source.html#l00037">ed::Vertice::getData()</a>, <a class="el" href="grafo_8hpp-source.html#l00081">ed::Grafo::getNumV()</a>, <a class="el" href="funciones_8hpp-source.html#l00014">INFINITO</a>, <a class="el" href="grafo_8hpp-source.html#l00267">ed::Grafo::irA()</a>, y <a class="el" href="grafo_8hpp-source.html#l00165">ed::Grafo::verticeActual()</a>.
+<p>
+Referenciado por <a class="el" href="main_8cpp-source.html#l00037">main()</a>.
+</div>
+</div><p>
+<hr size="1"><address style="align: right;"><small>Generado el Tue May 17 19:43:06 2016 para PrÃ¡ctica4deEstructuradedatos.byTeo. por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
+</body>
+</html>

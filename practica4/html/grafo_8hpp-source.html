@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Práctica4deEstructuradedatos.byTeo.: Fichero Fuente grafo.hpp</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.1 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>P�gina&nbsp;principal</span></a></li>
+    <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+    <li><a href="annotated.html"><span>Clases</span></a></li>
+    <li id="current"><a href="files.html"><span>Archivos</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+    <li><a href="globals.html"><span>Archivos&nbsp;de&nbsp;los&nbsp;miembros</span></a></li>
+  </ul></div>
+<h1>grafo.hpp</h1><a href="grafo_8hpp.html">Ir a la documentaci�n de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00008"></a>00008 <span class="preprocessor">#ifndef __GRAFO_HPP__</span>
+<a name="l00009"></a>00009 <span class="preprocessor"></span><span class="preprocessor">#define __GRAFO_HPP__</span>
+<a name="l00010"></a>00010 <span class="preprocessor"></span>
+<a name="l00014"></a><a class="code" href="grafo_8hpp.html#f076440f216f5a40a11563e489f04932">00014</a> <span class="preprocessor">#define INFINITO 999999</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;cassert&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;limits&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include "<a class="code" href="vertice_8hpp.html">vertice.hpp</a>"</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include "<a class="code" href="lado_8hpp.html">lado.hpp</a>"</span>
+<a name="l00022"></a>00022 
+<a name="l00026"></a>00026 <span class="keyword">using</span> std::vector;
+<a name="l00027"></a>00027 <span class="keyword">using</span> std::string;
+<a name="l00028"></a>00028 
+<a name="l00030"></a><a class="code" href="namespaceed.html">00030</a> <span class="keyword">namespace </span>ed{
+<a name="l00032"></a><a class="code" href="classed_1_1Grafo.html">00032</a>         <span class="keyword">class </span><a class="code" href="classed_1_1Grafo.html">Grafo</a>{
+<a name="l00033"></a>00033                 <span class="keyword">private</span>:
+<a name="l00035"></a><a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">00035</a>                         vector&lt;Vertice&gt; <a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>;                                                             <span class="comment">//aquí van todas las ciudades</span>
+<a name="l00036"></a><a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">00036</a>                         <span class="keywordtype">double</span> **<a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>;                                                                       <span class="comment">//Matriz de adyacencia</span>
+<a name="l00037"></a><a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">00037</a>                         <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">dirigido_</a>;                                                                         <span class="comment">//bandera de dirigido o no</span>
+<a name="l00038"></a><a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">00038</a>                         <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>;                                                                                         <span class="comment">//cursor para los vértices </span>
+<a name="l00039"></a><a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">00039</a>                         <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>;                                                                                         <span class="comment">//cursor para los lados</span>
+<a name="l00040"></a><a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">00040</a>                         <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>;                                                                       <span class="comment">//numero de vértices</span>
+<a name="l00041"></a><a class="code" href="classed_1_1Grafo.html#532ea787e00fa86b0a6eaf4bad222f13">00041</a>                         <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#532ea787e00fa86b0a6eaf4bad222f13">numLados_</a>;                                                                          <span class="comment">//numero de lados</span>
+<a name="l00042"></a><a class="code" href="classed_1_1Grafo.html#7f7761d5080ccfb0dee71b28a20a2898">00042</a>                         <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#7f7761d5080ccfb0dee71b28a20a2898">tamanio_</a>;                                                                           <span class="comment">//capacidad del grafo</span>
+<a name="l00043"></a>00043 
+<a name="l00045"></a>00045                 <span class="keyword">public</span>:
+<a name="l00047"></a>00047 
+<a name="l00055"></a><a class="code" href="classed_1_1Grafo.html#9f9d0776db7767ea5ff92113ead337fb">00055</a>                         <a class="code" href="classed_1_1Grafo.html#9f9d0776db7767ea5ff92113ead337fb">Grafo</a>(<span class="keywordtype">int</span> tam = 0, <span class="keywordtype">bool</span> dirigido = <span class="keyword">true</span>){
+<a name="l00056"></a>00056                                 <span class="keywordflow">if</span>(tam &lt; 0)
+<a name="l00057"></a>00057                                         tam = 0;
+<a name="l00058"></a>00058                                 <a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a> = <span class="keyword">new</span> <span class="keywordtype">double</span> *[tam];                                    <span class="comment">//Inicio reserva de memoria para matriz</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060                                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; tam; i++){                                   <span class="comment">//Inicializo matriz a valor infinito</span>
+<a name="l00061"></a>00061                                         <a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[i] = <span class="keyword">new</span> <span class="keywordtype">double</span> [tam];
+<a name="l00062"></a>00062                                         <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; tam; j++){
+<a name="l00063"></a>00063                                                 <a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[i][j] = <a class="code" href="funciones_8hpp.html#f076440f216f5a40a11563e489f04932">INFINITO</a>;
+<a name="l00064"></a>00064                                         }
+<a name="l00065"></a>00065                                 }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067                                 <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a> = 0;       
+<a name="l00068"></a>00068                                 <a class="code" href="classed_1_1Grafo.html#532ea787e00fa86b0a6eaf4bad222f13">numLados_</a> = 0;
+<a name="l00069"></a>00069                                 <a class="code" href="classed_1_1Grafo.html#7f7761d5080ccfb0dee71b28a20a2898">tamanio_</a> = tam;
+<a name="l00070"></a>00070                                 <a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">dirigido_</a> = dirigido;
+<a name="l00071"></a>00071                         }
+<a name="l00072"></a>00072 
+<a name="l00074"></a>00074 
+<a name="l00081"></a><a class="code" href="classed_1_1Grafo.html#68bf54034d7dfe1eabdf4b483f146847">00081</a>                         <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#68bf54034d7dfe1eabdf4b483f146847">getNumV</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>; }
+<a name="l00082"></a>00082 
+<a name="l00090"></a><a class="code" href="classed_1_1Grafo.html#bce1766d463511c4f4db03faec99082f">00090</a>                         <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#bce1766d463511c4f4db03faec99082f">getNumL</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#532ea787e00fa86b0a6eaf4bad222f13">numLados_</a>; }
+<a name="l00091"></a>00091 
+<a name="l00099"></a><a class="code" href="classed_1_1Grafo.html#a65f73e62abb5ca9c8aa78289cb0aa11">00099</a>                         <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classed_1_1Grafo.html#a65f73e62abb5ca9c8aa78289cb0aa11">getTam</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#7f7761d5080ccfb0dee71b28a20a2898">tamanio_</a>; }
+<a name="l00100"></a>00100 
+<a name="l00108"></a><a class="code" href="classed_1_1Grafo.html#a7b51590ed5adc536341a14209af2e90">00108</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#a7b51590ed5adc536341a14209af2e90">getDiri</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">dirigido_</a>; }
+<a name="l00109"></a>00109 
+<a name="l00117"></a><a class="code" href="classed_1_1Grafo.html#115bb4b7942be2045f7634a4516d660a">00117</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#115bb4b7942be2045f7634a4516d660a">estaVacio</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#68bf54034d7dfe1eabdf4b483f146847">getNumV</a>() == 0 &amp;&amp; <a class="code" href="classed_1_1Grafo.html#bce1766d463511c4f4db03faec99082f">getNumL</a>() == 0; }
+<a name="l00118"></a>00118 
+<a name="l00126"></a><a class="code" href="classed_1_1Grafo.html#6007b8a64700dca572862f558b40d42e">00126</a>                         <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="classed_1_1Grafo.html#6007b8a64700dca572862f558b40d42e">adyacencia</a>(<a class="code" href="classed_1_1Vertice.html">Vertice</a> &amp;U, <a class="code" href="classed_1_1Vertice.html">Vertice</a> &amp;V){       <span class="comment">//Comprueba si dos vertices son adyacentes (INFINITO o no)</span>
+<a name="l00127"></a>00127                                 assert(V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>() &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>);                    <span class="comment">//Recibes dos vertices, si con sus posiciones en la matriz el valor es menor que infinito, es que sí existen.</span>
+<a name="l00128"></a>00128                                 assert(U.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>() &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>);
+<a name="l00129"></a>00129                                 <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[U.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>()][V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>()];
+<a name="l00130"></a>00130                         } 
+<a name="l00131"></a>00131 
+<a name="l00139"></a><a class="code" href="classed_1_1Grafo.html#9d36c91d367fa2f1b1c1743b0a60f277">00139</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#9d36c91d367fa2f1b1c1743b0a60f277">verticeCorrecto</a>(){
+<a name="l00140"></a>00140                                 <span class="keywordflow">if</span>(<a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> &lt; <a class="code" href="classed_1_1Grafo.html#68bf54034d7dfe1eabdf4b483f146847">getNumV</a>())
+<a name="l00141"></a>00141                                         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00142"></a>00142                                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00143"></a>00143                         }
+<a name="l00144"></a>00144 
+<a name="l00152"></a><a class="code" href="classed_1_1Grafo.html#56006bc302096f064fbc522024bd13df">00152</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#56006bc302096f064fbc522024bd13df">ladoCorrecto</a>(){
+<a name="l00153"></a>00153                                 <span class="keywordflow">if</span>(<a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a> &lt; <a class="code" href="classed_1_1Grafo.html#68bf54034d7dfe1eabdf4b483f146847">getNumV</a>())
+<a name="l00154"></a>00154                                         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00155"></a>00155                                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00156"></a>00156                         }
+<a name="l00157"></a>00157 
+<a name="l00165"></a><a class="code" href="classed_1_1Grafo.html#0bcb08846034a44ef697cc12d78303dd">00165</a>                         <span class="keyword">inline</span> <a class="code" href="classed_1_1Vertice.html">Vertice</a> <a class="code" href="classed_1_1Grafo.html#0bcb08846034a44ef697cc12d78303dd">verticeActual</a>(){
+<a name="l00166"></a>00166                                 assert(<a class="code" href="classed_1_1Grafo.html#9d36c91d367fa2f1b1c1743b0a60f277">verticeCorrecto</a>());                                              <span class="comment">//Comprueba que el valor privado de la posición sea correcto</span>
+<a name="l00167"></a>00167                                 <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>[<a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>];
+<a name="l00168"></a>00168                         }
+<a name="l00169"></a>00169 
+<a name="l00177"></a><a class="code" href="classed_1_1Grafo.html#a1d41c8743d041910177d5c27e51f06b">00177</a>                         <span class="keyword">inline</span> <a class="code" href="classed_1_1Lado.html">Lado</a> <a class="code" href="classed_1_1Grafo.html#a1d41c8743d041910177d5c27e51f06b">ladoActual</a>(){
+<a name="l00178"></a>00178                                 assert(<a class="code" href="classed_1_1Grafo.html#56006bc302096f064fbc522024bd13df">ladoCorrecto</a>());
+<a name="l00179"></a>00179                                 <a class="code" href="classed_1_1Lado.html">Lado</a> L;
+<a name="l00180"></a>00180                                 L.<a class="code" href="classed_1_1Lado.html#f79681a5c3f07e5fc6228590465ce121">setDistancia</a>(<a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[<a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>][<a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>]);                                <span class="comment">//Rellena la distancia que hay entre dos nodos en la matriz de adyacencia</span>
+<a name="l00181"></a>00181                                 L.<a class="code" href="classed_1_1Lado.html#ab719681910aec5ab42b0cb4335d67d9">setInicio</a>(<a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>[<a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>]);                                                    <span class="comment">//Rellena el primer nodo</span>
+<a name="l00182"></a>00182                                 L.<a class="code" href="classed_1_1Lado.html#2c6c3acb7159b27d620d1249f7b0c378">setFin</a>(<a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>[b_]);                                                               <span class="comment">//Rellena el último nodo</span>
+<a name="l00183"></a>00183                                 <span class="keywordflow">return</span> L;
+<a name="l00184"></a>00184                         } 
+<a name="l00185"></a>00185 
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195 
+<a name="l00201"></a><a class="code" href="classed_1_1Grafo.html#047ac428acd628f8bbcb63290dc4d758">00201</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#047ac428acd628f8bbcb63290dc4d758">setDirecto</a>(){ <a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">dirigido_</a> = <span class="keyword">true</span>; }
+<a name="l00202"></a>00202 
+<a name="l00209"></a><a class="code" href="classed_1_1Grafo.html#be5b1c6b1fb118223db3f256a253756b">00209</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#be5b1c6b1fb118223db3f256a253756b">setIndirecto</a>(){ <a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">dirigido_</a> = <span class="keyword">false</span>; }
+<a name="l00210"></a>00210 
+<a name="l00218"></a><a class="code" href="classed_1_1Grafo.html#bce87aaf1a718879e03f5e314aeb4e5a">00218</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#bce87aaf1a718879e03f5e314aeb4e5a">aniadeVertice</a>(string nombre){
+<a name="l00219"></a>00219                                 <a class="code" href="classed_1_1Vertice.html">Vertice</a> V;
+<a name="l00220"></a>00220                                 V.<a class="code" href="classed_1_1Vertice.html#6105b7459f8e6c934045368f26c8255e">setData</a>(nombre);                                                              <span class="comment">//Mete el nombre al vertice</span>
+<a name="l00221"></a>00221                                 V.<a class="code" href="classed_1_1Vertice.html#daf056e476b69e8d4498f5b9c14e7afc">setLabel</a>(<a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>);                                               <span class="comment">//Mete la posición al vertice</span>
+<a name="l00222"></a>00222                                 <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>++;                                                                 <span class="comment">//acctualiza contadores</span>
+<a name="l00223"></a>00223                                 <a class="code" href="classed_1_1Grafo.html#532ea787e00fa86b0a6eaf4bad222f13">numLados_</a>++;
+<a name="l00224"></a>00224                                 <a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>.push_back(V);                                                                <span class="comment">//insertalo en el vector/grafo</span>
+<a name="l00225"></a>00225                         }
+<a name="l00226"></a>00226 
+<a name="l00236"></a><a class="code" href="classed_1_1Grafo.html#3ab914a34a0a726809b2ae40d4342876">00236</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#3ab914a34a0a726809b2ae40d4342876">aniadeLado</a>(<a class="code" href="classed_1_1Vertice.html">Vertice</a> U, <a class="code" href="classed_1_1Vertice.html">Vertice</a> V, <span class="keywordtype">double</span> distancia){         
+<a name="l00237"></a>00237                                 <a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[U.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>()][V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>()] = distancia;
+<a name="l00238"></a>00238                                 <span class="keywordflow">if</span>(!<a class="code" href="classed_1_1Grafo.html#9d0d7c46ad8329385a79e1d676ad01cf">dirigido_</a>)                                                                  <span class="comment">//Si el grafo no es dirigido, en la otra dirección tiene la misma distancia</span>
+<a name="l00239"></a>00239                                         <a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>()][U.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>()] = distancia;
+<a name="l00240"></a>00240                         }
+<a name="l00241"></a>00241 
+<a name="l00249"></a><a class="code" href="classed_1_1Grafo.html#0270b4ecf5fb0d1b9467e80e057d536d">00249</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#0270b4ecf5fb0d1b9467e80e057d536d">buscarVertice</a>(string ciudad){                       
+<a name="l00250"></a>00250                                 <span class="keywordtype">bool</span> encontrado = <span class="keyword">false</span>;
+<a name="l00251"></a>00251                                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a> &amp;&amp; encontrado == <span class="keyword">false</span>; i++){
+<a name="l00252"></a>00252                                         <span class="keywordflow">if</span>(<a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>[i].getData() == ciudad){                          <span class="comment">//Si existe:</span>
+<a name="l00253"></a>00253                                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> = i;                                                                 <span class="comment">//posicionate en su posición</span>
+<a name="l00254"></a>00254                                                 encontrado = <span class="keyword">true</span>;                                              <span class="comment">//indica que lo ha encontrado</span>
+<a name="l00255"></a>00255                                         }
+<a name="l00256"></a>00256                                 }
+<a name="l00257"></a>00257                                 <span class="keywordflow">return</span> encontrado;
+<a name="l00258"></a>00258                         }
+<a name="l00259"></a>00259 
+<a name="l00267"></a><a class="code" href="classed_1_1Grafo.html#20b4d0aa7fe9a2b2de679ddc78c382ee">00267</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#20b4d0aa7fe9a2b2de679ddc78c382ee">irA</a>(<a class="code" href="classed_1_1Vertice.html">Vertice</a> &amp;V){                                            <span class="comment">//Se posiciona en un vértice de la matriz</span>
+<a name="l00268"></a>00268                                 <span class="keywordtype">bool</span> encontrado = <span class="keyword">false</span>;
+<a name="l00269"></a>00269                                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a> &amp;&amp; encontrado == <span class="keyword">false</span>; i++){
+<a name="l00270"></a>00270                                         <span class="keywordflow">if</span>(<a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>[i] == V){                                                         <span class="comment">//si existe:</span>
+<a name="l00271"></a>00271                                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> = i;                                                                 <span class="comment">//vete a su posición</span>
+<a name="l00272"></a>00272                                                 encontrado = <span class="keyword">true</span>;                                              <span class="comment">//indica que lo ha encontrado</span>
+<a name="l00273"></a>00273                                         }
+<a name="l00274"></a>00274                                 }                               
+<a name="l00275"></a>00275                         }
+<a name="l00276"></a>00276 
+<a name="l00285"></a><a class="code" href="classed_1_1Grafo.html#429d0fb97584e2cc9706895f9150931a">00285</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#20b4d0aa7fe9a2b2de679ddc78c382ee">irA</a>(<span class="keywordtype">int</span> pos){
+<a name="l00286"></a>00286                                 <span class="keywordtype">bool</span> encontrado = <span class="keyword">false</span>;                                                <span class="comment">//identica a la anterior</span>
+<a name="l00287"></a>00287                                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a> &amp;&amp; encontrado == <span class="keyword">false</span>; i++){
+<a name="l00288"></a>00288                                         <span class="keywordflow">if</span>(<a class="code" href="classed_1_1Grafo.html#4e5f924f2f6e4601ac6313ae0e5e1741">v_</a>[i].getLabel() == pos){
+<a name="l00289"></a>00289                                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> = i;
+<a name="l00290"></a>00290                                                 encontrado = <span class="keyword">true</span>;
+<a name="l00291"></a>00291                                         }
+<a name="l00292"></a>00292                                 }                                       
+<a name="l00293"></a>00293                         }
+<a name="l00294"></a>00294 
+<a name="l00303"></a><a class="code" href="classed_1_1Grafo.html#1af03c055260a5be3ac275cf94f6f655">00303</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#1af03c055260a5be3ac275cf94f6f655">buscarLado</a>(<a class="code" href="classed_1_1Vertice.html">Vertice</a> &amp;U, <a class="code" href="classed_1_1Vertice.html">Vertice</a> &amp;V){         <span class="comment">//Pone el cursor en el lado referenciado</span>
+<a name="l00304"></a>00304                                 assert(V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>() &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>);
+<a name="l00305"></a>00305                                 assert(U.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>() &lt; <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>);
+<a name="l00306"></a>00306                                 <span class="keywordtype">bool</span> encontrado = <span class="keyword">false</span>;
+<a name="l00307"></a>00307                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> = U.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>();
+<a name="l00308"></a>00308                                 <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a> = V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>();
+<a name="l00309"></a>00309                         }
+<a name="l00310"></a>00310 
+<a name="l00317"></a><a class="code" href="classed_1_1Grafo.html#0a02e939234f4f63cc272df3fadbf06b">00317</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#0a02e939234f4f63cc272df3fadbf06b">posicionaVerticeCero</a>(){                                     <span class="comment">//Actualiza la posición al primer vértice</span>
+<a name="l00318"></a>00318                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> = 0;
+<a name="l00319"></a>00319                         } 
+<a name="l00320"></a>00320 
+<a name="l00327"></a><a class="code" href="classed_1_1Grafo.html#0160439dfcc91635bdd1f4caf24a8667">00327</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#0160439dfcc91635bdd1f4caf24a8667">siguienteVertice</a>(){                                         <span class="comment">//Actualiza la posición del cursor al siguiente vértice.</span>
+<a name="l00328"></a>00328                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>++;
+<a name="l00329"></a>00329                         }
+<a name="l00330"></a>00330 
+<a name="l00337"></a><a class="code" href="classed_1_1Grafo.html#91d43e126e7acef9da13fd8e4aa9cf40">00337</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#91d43e126e7acef9da13fd8e4aa9cf40">sobrepasaLosVertices</a>(){                             <span class="comment">//Comprueba si el cursor ha sobrepasado la última posición válida</span>
+<a name="l00338"></a>00338                                 <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> == <a class="code" href="classed_1_1Grafo.html#5d1210386f96c6828c5b9c2920dcfaf3">numVertices_</a>;
+<a name="l00339"></a>00339                         }
+<a name="l00340"></a>00340 
+<a name="l00348"></a><a class="code" href="classed_1_1Grafo.html#40ae6435187780dfaaf8c68ad9ba0754">00348</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#40ae6435187780dfaaf8c68ad9ba0754">beginEdge</a>(<a class="code" href="classed_1_1Vertice.html">Vertice</a> &amp;V){                                      <span class="comment">//Lleva el cursor al primer vértice del lado recibido</span>
+<a name="l00349"></a>00349                                 <a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a> = V.<a class="code" href="classed_1_1Vertice.html#e5cc43eb8fe6fa6aa370efea16d77aa5">getLabel</a>();
+<a name="l00350"></a>00350                                 <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a> = 0;
+<a name="l00351"></a>00351                                 <span class="keywordflow">while</span>(<a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[<a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>][<a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>] == <a class="code" href="funciones_8hpp.html#f076440f216f5a40a11563e489f04932">INFINITO</a> &amp;&amp; !<a class="code" href="classed_1_1Grafo.html#9d2c244774024060243997644202c387">sobrepasaLosLados</a>()){
+<a name="l00352"></a>00352                                         <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>++;
+<a name="l00353"></a>00353                                 }
+<a name="l00354"></a>00354                         }
+<a name="l00355"></a>00355 
+<a name="l00362"></a><a class="code" href="classed_1_1Grafo.html#0ebbd7e0f978e06782b6454c5765b544">00362</a>                         <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classed_1_1Grafo.html#0ebbd7e0f978e06782b6454c5765b544">siguienteLado</a>(){                                            <span class="comment">//Devuelve el siguiente lado del cursor que tiene valor válido</span>
+<a name="l00363"></a>00363                                 <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>++;
+<a name="l00364"></a>00364                                 <span class="keywordflow">while</span>(<a class="code" href="classed_1_1Grafo.html#ed395c36a611c24c6a60f5f68afd0028">matriz_</a>[<a class="code" href="classed_1_1Grafo.html#115ae21e2b79db7aef7af16e55e439a1">a_</a>][<a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>] == <a class="code" href="funciones_8hpp.html#f076440f216f5a40a11563e489f04932">INFINITO</a> &amp;&amp; !<a class="code" href="classed_1_1Grafo.html#9d2c244774024060243997644202c387">sobrepasaLosLados</a>()){
+<a name="l00365"></a>00365                                         <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a>++;
+<a name="l00366"></a>00366                                 }
+<a name="l00367"></a>00367                         }
+<a name="l00368"></a>00368 
+<a name="l00375"></a><a class="code" href="classed_1_1Grafo.html#9d2c244774024060243997644202c387">00375</a>                         <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classed_1_1Grafo.html#9d2c244774024060243997644202c387">sobrepasaLosLados</a>(){                                        <span class="comment">//Comprueba si el cursor ha sobrepasado la última posición válida</span>
+<a name="l00376"></a>00376                                 <span class="keywordflow">return</span> <a class="code" href="classed_1_1Grafo.html#66c232c46ea9d1ca2241a63a657410eb">b_</a> == <a class="code" href="classed_1_1Grafo.html#532ea787e00fa86b0a6eaf4bad222f13">numLados_</a>;
+<a name="l00377"></a>00377                         }
+<a name="l00378"></a>00378 
+<a name="l00379"></a>00379         };
+<a name="l00380"></a>00380 }
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generado el Tue May 17 19:43:06 2016 para Práctica4deEstructuradedatos.byTeo. por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
+</body>
+</html>
