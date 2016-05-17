@@ -1,6 +1,9 @@
 # Nombre del proyecto
 PROJECT_NAME           = Práctica 4 de Estructura de datos. by Teo.
 
+# Tildes
+INPUT_ENCODING = ISO-8859-1
+
 # Idioma: español
 OUTPUT_LANGUAGE        = Spanish
 

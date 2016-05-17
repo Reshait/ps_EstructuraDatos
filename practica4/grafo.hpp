@@ -7,6 +7,10 @@
 
 #ifndef __GRAFO_HPP__
 #define __GRAFO_HPP__
+/*! 
+ \brief Simulación de distancias rellenas al máximo para inicializar la matriz
+ \sa INFINITO
+*/   
 #define INFINITO 999999
 
 #include <vector>

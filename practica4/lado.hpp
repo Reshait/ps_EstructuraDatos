@@ -10,7 +10,6 @@
 
 #include "vertice.hpp"
 
-//!  Espacio de nombre creado para las prácticas de la asignatura de Estructura de Datos.
 namespace ed{
     //!  Definición de la clase Lado
 	class Lado{
@@ -53,7 +52,7 @@ namespace ed{
             //! \name Funciones de modificación de Lado
             /*! 
                 \brief Asigna un valor "distancia" a la coordenada "distancia_" de un Lado
-                \param data de tipo double
+                \param distancia de tipo double
                 \pre El Lado debe existir
                 \post Ninguna
                 \sa setDistancia()
@@ -62,7 +61,7 @@ namespace ed{
 
             /*! 
                 \brief Asigna un valor "inicio" a la coordenada "inicio_" de un Lado
-                \param data de tipo Vertice
+                \param inicio de tipo Vertice
                 \pre El Lado debe existir
                 \post Ninguna
                 \sa setInicio()
@@ -71,7 +70,7 @@ namespace ed{
 
             /*! 
                 \brief Asigna un valor "fin" a la coordenada "fin_" de un Lado
-                \param data de tipo Vertice
+                \param fin de tipo Vertice
                 \pre El Lado debe existir
                 \post Ninguna
                 \sa setFin()

@@ -16,7 +16,6 @@
 */
 using std::string;
 
-//!  Espacio de nombre creado para las prácticas de la asignatura de Estructura de Datos.
 namespace ed{
     //!  Definición de la clase Vertice
 	class Vertice{
@@ -58,7 +57,7 @@ namespace ed{
 
             /*! 
                 \brief Asigna un valor "label" a la coordenada "label_" de un Vertice
-                \param data de tipo int
+                \param label de tipo int
                 \pre El Vertice debe existir
                 \post Ninguna
                 \sa setLabel()

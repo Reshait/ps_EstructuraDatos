@@ -5,10 +5,12 @@
   \date     16/05/2016
 */
 
-//Me queda por comentar un poco.
-
 #ifndef __FUNCIONES_HPP__
 #define __FUNCIONES_HPP__
+/*! 
+ \brief Simulación de distancias rellenas al máximo para inicializar la matriz
+ \sa INFINITO
+*/   
 #define INFINITO 999999
 
 #include <iostream>
@@ -269,6 +271,13 @@ namespace ed{
 
 	}	
 
+    /*! 
+      \brief Función para controlar el error de que no exista el fichero
+      \param nombreFichero tipo string
+      \pre El fichero debe existir
+      \post Ninguna
+      \sa existeFichero()
+    */
 	bool existeFichero(string nombreFichero){
 		bool devuelve = false;
 		ifstream f(nombreFichero.c_str());
@@ -280,6 +289,13 @@ namespace ed{
 		return devuelve;
 	}
 
+    /*! 
+      \brief Función obtener la menor suma de los vértices
+      \param G tipo Grafo*
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa verticeMenorSuma()
+    */
 	void verticeMenorSuma(Grafo *G){
 		double minimo = INFINITO;
 		double sumDistancia;
@@ -315,10 +331,16 @@ namespace ed{
 		U=G->verticeActual();
 		cout<<"Vértice con la menor suma de distancias\t..: "<<U.getData()<<endl;
 		cout << "Valor de la suma de sus distancias\t..: " << minimo << "km" << endl;
-
-
-
 	}
+
+    /*! 
+      \brief Función para obtener la suma de las distancias
+      \param G tipo Grafo*
+      \param posicionVertice tipo int
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa sumaDistancias()
+    */	
 	void sumaDistancias(Grafo *G, int posicionVertice){
 		G->irA(posicionVertice);
 		Vertice U = G->verticeActual();

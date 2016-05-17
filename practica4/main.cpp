@@ -1,3 +1,11 @@
+
+/*!
+	@mainpage Teófilo Rojas Mata
+	@brief Programa principal de la practica 4 de ED, Grafo de Floyd<br>
+	@brief Curso: <i>2º Grado de Ingeniería Informática</i><br>
+	@brief <center><img src='http://images.slideplayer.es/17/5319031/slides/slide_52.jpg'></center>
+	
+*/
 /*! 
   \file     main.cpp
   \brief    Es el archivo que carga el menú correspondiente exigido por la práctica 4 de la asignatura Estructura de Datos.
