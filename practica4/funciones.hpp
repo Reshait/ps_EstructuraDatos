@@ -192,15 +192,24 @@ namespace ed{
     */
 	void camino(Grafo *G,Vertice &origen,Vertice &destino,int **intermedios){
 
-		if(intermedios[origen.getLabel()][destino.getLabel()] != -1){
-			G->irA(intermedios[origen.getLabel()][destino.getLabel()]);
-			Vertice intermedio = G->verticeActual();
-			camino(G, origen, intermedio, intermedios);
-			cout << intermedio.getData() << " ";
-			camino(G, intermedio, destino, intermedios);
+		if(intermedios[origen.getLabel()][destino.getLabel()] != -1){	// Si hay conexión entre vértices
+			G->irA(intermedios[origen.getLabel()][destino.getLabel()]);	// Posicionate en ese punto
+			Vertice intermedio = G->verticeActual();					// guarda el vértice intermedio
+			camino(G, origen, intermedio, intermedios);					// recursivo
+			cout << intermedio.getData() << " ";						// imprime un intermedio
+			camino(G, intermedio, destino, intermedios);				// recursivo
 		}
 	}
 
+    /*! 
+      \brief Función para generar el Algoritmo de Floyd
+      \param G tipo Grafo
+      \param distancias tipo double**
+      \param intermedios tipo int**
+      \pre El Grafo debe existir
+      \post Ninguna
+      \sa Floyd()
+    */
 	void Floyd(Grafo * &G,double **distancias,int **intermedios){
 		int i,j,k;
 		double distanciaT;
@@ -242,18 +251,18 @@ namespace ed{
 			}
 		}
 
-		U = pideLaCiudad(G, 1);
+		U = pideLaCiudad(G, 1);											// pide las ciudades
 		V = pideLaCiudad(G, 2);
 
-		if( distancias[U.getLabel()][V.getLabel()] == INFINITO )
-			cout << "No existe distancia mínima" << endl;
+		if( distancias[U.getLabel()][V.getLabel()] == INFINITO )		// si no están conectados, imprímelo
+			cout << "No existe distancia mínima" << endl;				
 
 		else{
-			cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << endl;
+			cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << endl; // si están conectados, impríme la distancia
 			cout << "La distancia mínima entre "<< U.getData() <<" y " << V.getData()<<" es: " << distancias[U.getLabel()][V.getLabel()] << "km" << endl;
 		}
 
-		cout << "El camino mínimo es: ";
+		cout << "El camino mínimo es: ";								// muestra el camino
 		cout << U.getData() << " ";
 		camino(G, U, V, intermedios);
 		cout << V.getData() << endl;
