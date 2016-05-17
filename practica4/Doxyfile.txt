@@ -2,7 +2,8 @@
 PROJECT_NAME           = Práctica 4 de Estructura de datos. by Teo.
 
 # Tildes
-INPUT_ENCODING = ISO-8859-1
+INPUT_ENCODING         = UNICODE
+DOXYFILE_ENCODING      = UNICODE
 
 # Idioma: español
 OUTPUT_LANGUAGE        = Spanish

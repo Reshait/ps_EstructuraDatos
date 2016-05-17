@@ -25,8 +25,10 @@ using std::ifstream;
 using std::cin;
 using std::cout;
 using std::endl;
+using ed::Grafo;
+using ed::Lado;
+using ed::Vertice;
 
-namespace ed{
 	/*! 
 	  \brief Muestra la cabecera de la práctica3 con mis datos personales.
 	  \post Ninguna
@@ -212,7 +214,7 @@ namespace ed{
       \post Ninguna
       \sa Floyd()
     */
-	void Floyd(Grafo * &G,double **distancias,int **intermedios){
+	void Floyd(Grafo * &G,double **&distancias,int **intermedios){
 		int i,j,k;
 		double distanciaT;
 		Vertice U,V;
@@ -296,8 +298,8 @@ namespace ed{
       \post Ninguna
       \sa verticeMenorSuma()
     */
-	void verticeMenorSuma(Grafo *G){
-		double minimo = INFINITO;
+	void verticeMenorSuma(Grafo *G, double** distancias){
+/*		double minimo = INFINITO;
 		double sumDistancia;
 		double distancia;
 		int posicionSolucion = 0;
@@ -331,6 +333,26 @@ namespace ed{
 		U=G->verticeActual();
 		cout<<"Vértice con la menor suma de distancias\t..: "<<U.getData()<<endl;
 		cout << "Valor de la suma de sus distancias\t..: " << minimo << "km" << endl;
+*/
+		Vertice U;
+		double sumaDistancia;
+		double minimaDistancia = INFINITO;
+		int posicionMinimo;
+
+		for(int i = 0; i < G->getNumV(); i++){
+			sumaDistancia = 0;
+			for(int j = 0; j < G->getNumV(); j++)
+				sumaDistancia += distancias[i][j];
+
+			if(sumaDistancia < minimaDistancia){
+				minimaDistancia = sumaDistancia;
+				posicionMinimo = i;
+			}
+		}		
+		G->irA(posicionMinimo);
+		U = G->verticeActual();
+		cout << U.getData()  << endl;
+		cout << "Con una distancia de\t..: " << minimaDistancia;
 	}
 
     /*! 
@@ -341,26 +363,25 @@ namespace ed{
       \post Ninguna
       \sa sumaDistancias()
     */	
-	void sumaDistancias(Grafo *G, int posicionVertice){
-		G->irA(posicionVertice);
-		Vertice U = G->verticeActual();
-		Vertice V;
-		double distancia;
+	void sumaDistancias(Grafo *G, int posicionVertice, double** distancias){
+		Vertice U;
 		double sumaDistancia = 0;
+		double minimaDistancia = INFINITO;
+		int posicionMinimo;
 
-		for(int i = 0; i < G->getNumV(); i++){
-			G->irA(i);
-			V = G->verticeActual();
-			distancia = G->adyacencia(U,V);
+		G->irA(posicionVertice);
 
-			if(distancia < INFINITO)
-				sumaDistancia += distancia;
-			
-		}
-		cout << U.getData() << endl;
-		cout << "La distancia a todas sus provincias es\t..: " << sumaDistancia  << "km" << endl;
+		for(int j = 0; j < G->getNumV(); j++)
+			sumaDistancia += distancias[posicionVertice][j];
+
+		if(sumaDistancia < minimaDistancia)
+			minimaDistancia = sumaDistancia;
+		
+		U = G->verticeActual();
+		cout << U.getData()  << endl;
+		cout << "Con una distancia de\t..: " << minimaDistancia;		
+
 
 	}
 
-}
 #endif

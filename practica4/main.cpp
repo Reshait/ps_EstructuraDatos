@@ -42,6 +42,7 @@ int main(){
 	int **intermedio;
 	int opcion;
 	int opcion2;
+	bool floydPasado = false;
 
 	do{
 
@@ -112,23 +113,33 @@ int main(){
 						switch(opcion2){
 							case 1:
 								cabecera(4);
-								cout << "\t\t>> VERTICE CON MENOR SUMA" << endl;
-								verticeMenorSuma(G);
+								if(floydPasado){
+									cout << "\t\t>> VERTICE CON MENOR SUMA" << endl;
+									verticeMenorSuma(G, distancia);
+									cout << endl;
+								}
+								else
+									cout << "Primero Debe realizar FLOYD(pto. 3)" << endl << "para rellenar la matriz de distancias" << endl ;
 							break;
 
 							case 2:
-								cabecera(4);							
-		 		       			cout << "\t>> SUMA DE DISTANCIAS DE CADA VERTICE" << endl;
-		 		       			for(int i = 0; i < G->getNumV(); i++){
-		 		       				sumaDistancias(G, i);
-		 		       				cout << endl;
+								cabecera(4);
+								if(floydPasado){
+			 		       			cout << "\t>> SUMA DE DISTANCIAS DE CADA VERTICE" << endl;
+			 		       			for(int i = 0; i < G->getNumV(); i++){
+			 		       				sumaDistancias(G, i, distancia);
+			 		       				cout << endl;
+			 		       			}
 		 		       			}
+		 		       			else
+									cout << "Primero Debe realizar FLOYD(pto. 3)" << endl << "para rellenar la matriz de distancias" << endl ;
 							break;
 
 							case 3:
 								cabecera(4);
 								cout << "\t>> MINIMA DISTANCIA ENTRE UNA CIUDAD Y OTRA" << endl;						
 								Floyd(G, distancia, intermedio);
+								floydPasado = true;
 							break;
 
 							case 0:
