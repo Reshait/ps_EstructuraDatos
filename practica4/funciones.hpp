@@ -282,50 +282,63 @@ namespace ed{
 
 	void verticeMenorSuma(Grafo *G){
 		double minimo = INFINITO;
-		double distancia;
 		double sumDistancia;
-		int posicionSolucion;
-		int tam = G->getNumV();
+		double distancia;
+		int posicionSolucion = 0;
 		Vertice U, V;
 
-		for(int i; i < tam; i++){
+		for(int i = 0; i < G->getNumV(); i++)							//Recorre la matriz
+		{
 			sumDistancia = 0;
-			G->irA(i);
-			U = G->verticeActual();		
-			
-			for(int j; j < tam; j++){
+			G->irA(i);													//Fija la ciudad 1ª
+			U = G->verticeActual();
 
+			for(int j = 0; j < G->getNumV(); j++)
+			{
 				G->irA(j);
-				V = G->verticeActual();
-				distancia = G->adyacencia(U,V);
+				V = G->verticeActual();									//Fija la ciudad 2ª
 
-				if(distancia < INFINITO)
+				distancia = G->adyacencia(U,V);							//Toma la distancia entre ciudades
+
+				if(distancia < INFINITO)								//Si están unidas añade su distancia
 					sumDistancia += distancia;
 			}
 
-			//cout << "Ciudad\t..: " << U.getData() << endl;
-			//cout << "Suma dis\t..:" << sumDistancia << endl;
-
-			if(sumDistancia < minimo){
+			if(sumDistancia < minimo)									//Actualiza a mínima distancia
+			{
 				minimo = sumDistancia;
-				cout << "Entra aquí malditooooooo -->" << minimo << endl;
 				posicionSolucion = i;
 			}
 		}
 
 		G->irA(posicionSolucion);
-		U = G->verticeActual();
-		cout << "Vértice con la menor suma de distancias\t..: " << U.getData() << endl;
+		U=G->verticeActual();
+		cout<<"Vértice con la menor suma de distancias\t..: "<<U.getData()<<endl;
 		cout << "Valor de la suma de sus distancias\t..: " << minimo << "km" << endl;
+
+
+
 	}
-/*
 	void sumaDistancias(Grafo *G, int posicionVertice){
 		G->irA(posicionVertice);
 		Vertice U = G->verticeActual();
+		Vertice V;
 		double distancia;
 		double sumaDistancia = 0;
 
+		for(int i = 0; i < G->getNumV(); i++){
+			G->irA(i);
+			V = G->verticeActual();
+			distancia = G->adyacencia(U,V);
+
+			if(distancia < INFINITO)
+				sumaDistancia += distancia;
+			
+		}
+		cout << U.getData() << endl;
+		cout << "La distancia a todas sus provincias es\t..: " << sumaDistancia  << "km" << endl;
+
 	}
-*/
+
 }
 #endif
